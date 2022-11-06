@@ -51,7 +51,6 @@ h1 {
 
 .drag-over {
   border: dashed 3px red;
-  border-radius: 50%;
 }
 
 .item {

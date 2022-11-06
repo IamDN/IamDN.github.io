@@ -28,26 +28,26 @@ boxes.forEach(box => {
 
 function dragEnter(e) {
     e.preventDefault();
-    if  (target.id === "actions" || target.id === "arena"){
+    if  (e.target.id === "actions" || e.target.id === "arena"){
         e.target.classList.add('drag-over');
     }
 }
 
 function dragOver(e) {
     e.preventDefault();
-    if  (target.id === "actions" || target.id === "arena"){
+    if  (e.target.id === "actions" || e.arget.id === "arena"){
        e.target.classList.add('drag-over');
     }
 }
 
 function dragLeave(e) {
-    if  (target.id === "actions" || target.id === "arena"){
+    if  (e.target.id === "actions" || e.target.id === "arena"){
        e.target.classList.remove('drag-over');
     }
 }
 
 function drop(e) {
-    if  (target.id === "actions" || target.id === "arena"){
+    if  (e.target.id === "actions" || e.target.id === "arena"){
         e.target.classList.remove('drag-over');
     }
 
