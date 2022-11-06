@@ -28,20 +28,28 @@ boxes.forEach(box => {
 
 function dragEnter(e) {
     e.preventDefault();
-    e.target.classList.add('drag-over');
+    if  (target.id === "actions" || target.id === "arena"){
+        e.target.classList.add('drag-over');
+    }
 }
 
 function dragOver(e) {
     e.preventDefault();
-    e.target.classList.add('drag-over');
+    if  (target.id === "actions" || target.id === "arena"){
+       e.target.classList.add('drag-over');
+    }
 }
 
 function dragLeave(e) {
-    e.target.classList.remove('drag-over');
+    if  (target.id === "actions" || target.id === "arena"){
+       e.target.classList.remove('drag-over');
+    }
 }
 
 function drop(e) {
-    e.target.classList.remove('drag-over');
+    if  (target.id === "actions" || target.id === "arena"){
+        e.target.classList.remove('drag-over');
+    }
 
     // get the draggable element
     const id = e.dataTransfer.getData('text/plain');
