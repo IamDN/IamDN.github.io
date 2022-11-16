@@ -40,11 +40,11 @@ h1 {
   border: solid 3px #ccc;
   margin: 10px;
 
-  /* align items in the box */
+
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
 
 }
 
@@ -54,36 +54,17 @@ h1 {
 }
 
 .item {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  border-radius: 40%;
   color: white;
   text-align: center;
-  display: table;
-  vertical-align: middle;
+  display: block;
+  filter: blur(0px);
+  position: absolute;
 }
 
-.action1 {
-  background-color: #ff7f07;
-  border-color: #ff7f07;
 
-}
-.action2 {
-  background-color: #F0DB4F;
-  border-color:  #F0DB4F;
-}
-.action3 {
-  background-color: #14b524;
-  border-color:  #14b524;
-}
-.action4 {
-  background-color: #d258d2;
-  border-color:  #d258d2;
-}
-.action5 {
-  background-color: #5343df;
-  border-color:  #5343df;
-}
 
 .hide {
   display: none;

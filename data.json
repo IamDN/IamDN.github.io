@@ -1,0 +1,40 @@
+{
+    "action": [
+      {
+        "id": "action0",
+        "group": "1",
+        "color": "#F2E291",
+        "name": "Sense",
+        "outcome": ["Problem", "Stakeholders"]
+      },
+      {
+        "id": "action1",
+        "group": "1",
+        "color": "#F28963",
+        "name": "Observe",
+        "outcome": [ "Needs"]
+      },
+      {
+        "id": "action2",
+        "group": "1",
+        "color": "#4C797B",
+        "name": "Engage",
+        "outcome": ["Target", "Resources"]
+      },
+      {
+        "id": "action3",
+        "group": "1",
+        "color": "#F29F05",
+        "name": "Experiment",
+        "outcome": ["Possibilities", "Outcomes"]
+      },
+      {
+        "id": "action4",
+        "group": "1",
+        "color": "#9DBCAC",
+        "name": "Gather",
+        "outcome": ["Data sources", "Network"]
+      }
+    ]
+  }
+  
