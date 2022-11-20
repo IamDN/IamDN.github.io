@@ -104,9 +104,9 @@ function createDiv(outcome, i, obj) {
     div.className = outcome + i;
     //div.draggable = "true";
     let count= arenaNodes.length;
-    let r = 12* (count+ 3);
-    div.style.left = arenax + Math.round((r*Math.cos(arenaNodes.length*(2*Math.PI/9))))-25 + 'px';
-    div.style.top = arenay+ Math.round((r*Math.sin(arenaNodes.length*(2*Math.PI/9))))-25 + 'px';
+    let r = 8* (count) + 30;
+    div.style.left = arenax + Math.round((r*Math.cos(arenaNodes.length*(2*Math.PI/12))))-25 + 'px';
+    div.style.top = arenay+ Math.round((r*Math.sin(arenaNodes.length*(2*Math.PI/12))))-25 + 'px';
     div.style.setProperty(  "background-color", obj.color);
     div.style.setProperty('height',80 + 'px');
     div.style.setProperty('width', 80 + 'px');
@@ -114,7 +114,7 @@ function createDiv(outcome, i, obj) {
     div.style.setProperty('position', 'absolute');
     div.style.setProperty('color', 'white');
     div.style.setProperty('text-align', ' center');
-    div.style.setProperty('font-size', '10px');
+    div.style.setProperty('font-size', '12px');
     div.style.setProperty('opacity', '50%');
     div.innerHTML = "<br>" +outcome;
     //div.addEventListener('dragstart', dragStart);

@@ -5,35 +5,42 @@
         "group": "1",
         "color": "#F2E291",
         "name": "Sense",
-        "outcome": ["Problem", "Stakeholders"]
+        "outcome": ["(why) Articulate challenges", "(what)Record of needs", "(how) Withess, Map"]
       },
       {
         "id": "action1",
         "group": "1",
         "color": "#F28963",
-        "name": "Observe",
-        "outcome": [ "Needs"]
+        "name": "Theorise",
+        "outcome": [ "(why) Thicken context", "(what) Aspirations and desires", "(how)Collect, compare, historicise"  ]
       },
       {
         "id": "action2",
         "group": "1",
         "color": "#4C797B",
-        "name": "Engage",
-        "outcome": ["Target", "Resources"]
+        "name": "Gather",
+        "outcome": ["(why) Shape parameters", "(what) Define conditions", "(how)Critically assess data"]
       },
       {
         "id": "action3",
         "group": "1",
         "color": "#F29F05",
         "name": "Experiment",
-        "outcome": ["Possibilities", "Outcomes"]
+        "outcome": ["(why) generate ideas", "(what)Identify patterns ", "(how) Use heuristic approaches"]
       },
       {
         "id": "action4",
         "group": "1",
         "color": "#9DBCAC",
-        "name": "Gather",
-        "outcome": ["Data sources", "Network"]
+        "name": "Engage",
+        "outcome": ["(why) Create plans", "(what)Engages stakeholders", "(how)Exhibit data openly"]
+      },
+      {
+        "id": "action5",
+        "group": "1",
+        "color": "#7691AD",
+        "name": "Situate",
+        "outcome": ["(why) Craft solutions", "(what)validate results", "(how)Transmute insights"]
       }
     ]
   }
