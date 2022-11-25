@@ -47,6 +47,19 @@ h1 {
   justify-content: center; 
 
 }
+.group {
+  height: 200px;
+  width: 300px;
+  border: dashed 3px #ccc;
+  margin: 10px;
+
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+
+}
 
 
 .drag-over {
