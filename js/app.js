@@ -88,7 +88,6 @@ function drop(e) {
         createDiv(obj.outcome[i], i, obj, e,num);
     }
 
-    createShadow(e);
     // add it to the drop target
     if(e.target.id == "arena" || e.target.id == "actions")
     {
@@ -125,35 +124,12 @@ function createDiv(outcome, i, obj, e, num) {
     div.style.setProperty('color', 'white');
     div.style.setProperty('text-align', ' center');
     div.style.setProperty('font-size', '12px');
-    // if(outcome.includes("(what)"))
-    // {
-
-    //     div.style.setProperty('border', 'dashed 3px grey'); 
-    // }
     div.setAttribute("count", num);
     div.innerHTML = "<br>" +outcome;
+    div.draggable = "true";
+	div.addEventListener('dragstart', dragStart);
     var arena =  document.getElementById("arena");
     arena.appendChild(div); 
-
-}
-
-function createShadow(e)
-{   var r  = e.target.style.getPropertyValue('border');
-
-    var arena =  document.getElementById("arena");
-    let shadow = document.createElement("div");
-    let left = e.screenX ;
-    let top = e.screenY;
-    shadow.style.left = left -100+ 'px';
-    shadow.style.top = top+ -100 +'px';
-    shadow.style.setProperty(  "background-color", "grey");
-    shadow.style.setProperty('height',100 + 'px');
-    shadow.style.setProperty('width', 100 + 'px');
-    shadow.style.setProperty('border-radius', 50 + '%');
-    shadow.style.setProperty('position', 'absolute');
-    shadow.style.setProperty('filter', "blur(50px)");
-    //shadow.style.setProperty('opacity', '50%');
-    arena.prepend(shadow);
 
 }
 
