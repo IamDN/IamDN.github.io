@@ -1,0 +1,1 @@
+{"nodes": [{"color": "#ff9b00ff", "radius": 60, "id": 1, "overcolor": "#ff9b00ff", "name": "SDG_11"}, {"color": "#4b4b4bff", "radius": 30, "id": 2, "overcolor": "#666666ff", "name": "Footprint"}, {"color": "#4b4b4bff", "radius": 30, "id": 3, "overcolor": "#666666ff", "name": "Urban design"}], "links": [{"source_id": 1, "target_id": 2}, {"source_id": 1, "target_id": 3}]}
