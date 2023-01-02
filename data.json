@@ -5,42 +5,138 @@
         "group": "1",
         "color": "#F2E291",
         "name": "Sense",
-        "outcome": ["(why) Articulate challenges", "(what)Record of needs", "(how) Withess, Map"]
-      },
+        "outcome": [         
+          {  
+           "promt": "why",
+           "name": "Articulate challanges" ,
+           "tags": ["challanges"]
+          },
+          {  
+            "promt": "what",
+            "name": "Record of needs" ,
+            "tags": ["recording"]
+           },
+           {  
+            "promt": "how",
+            "name": "Withess, Map" ,
+            "tags": ["map"]
+           }
+          ]
+        },
       {
         "id": "action1",
         "group": "1",
         "color": "#F28963",
         "name": "Theorise",
-        "outcome": [ "(why) Thicken context", "(what) Aspirations and desires", "(how)Collect, compare, historicise"  ]
+        "outcome": [         
+          {  
+           "promt": "why",
+           "name": "Thicken context" ,
+           "tags": ["context"]
+          },
+          {  
+            "promt": "what",
+            "name": "Aspirations and desires" ,
+            "tags": []
+           },
+           {  
+            "promt": "how",
+            "name": "Collect, compare, historicise" ,
+            "tags": ["collect"]
+           }
+          ]
       },
       {
         "id": "action2",
         "group": "1",
         "color": "#4C797B",
         "name": "Gather",
-        "outcome": ["(why) Shape parameters", "(what) Define conditions", "(how)Critically assess data"]
+        "outcome": [         
+          {  
+           "promt": "why",
+           "name": "Shape parameters" ,
+           "tags": ["shape", "test"]
+          },
+          {  
+            "promt": "what",
+            "name": "Define conditions" ,
+            "tags": ["define", "test"]
+           },
+           {  
+            "promt": "how",
+            "name": "Critically assess data" ,
+            "tags": ["assess", "test"]
+           }
+          ]
       },
       {
         "id": "action3",
         "group": "1",
         "color": "#F29F05",
         "name": "Experiment",
-        "outcome": ["(why) generate ideas", "(what)Identify patterns ", "(how) Use heuristic approaches"]
+        "outcome": [         
+          {  
+           "promt": "why",
+           "name": "generate ideas" ,
+           "tags": ["idea"]
+          },
+          {  
+            "promt": "what",
+            "name": "Identify patterns" ,
+            "tags": ["patterns"]
+           },
+           {  
+            "promt": "how",
+            "name": "Use heuristic approaches" ,
+            "tags": []
+           }
+          ]
       },
       {
         "id": "action4",
         "group": "1",
         "color": "#9DBCAC",
         "name": "Engage",
-        "outcome": ["(why) Create plans", "(what)Engages stakeholders", "(how)Exhibit data openly"]
+        "outcome": [         
+          {  
+           "promt": "why",
+           "name": "Create plans" ,
+           "tags": ["plans"]
+          },
+          {  
+            "promt": "what",
+            "name": "Engages stakeholders" ,
+            "tags": ["engage"]
+           },
+           {  
+            "promt": "how",
+            "name": "Exhibit data openly" ,
+            "tags": ["data"]
+           }
+          ]
       },
       {
         "id": "action5",
         "group": "1",
         "color": "#7691AD",
         "name": "Situate",
-        "outcome": ["(why) Craft solutions", "(what)validate results", "(how)Transmute insights"]
+        "outcome": [         
+          {  
+           "promt": "why",
+           "name": "Craft solutions" ,
+           "tags": ["plans"]
+          },
+          {  
+            "promt": "what",
+            "name": "validate results" ,
+            "tags": ["data"]
+           },
+           {  
+            "promt": "how",
+            "name": "Transmute insights" ,
+            "tags": ["data"]
+           }
+          ]
       }
     ],
 	 "tools": [
@@ -49,23 +145,23 @@
         "group": "1",
         "color": "#4d4d4d",
         "name": "urscape",
-        "tags": ["", "", ""]
+        "tags": ["data", "engage", "patterns","map"]
       },
       {
         "id": "arcGIS",
         "group": "1",
         "color": "#4d4d4d",
         "name": "arcGISe",
-        "tags": [ "", "", ""  ]
-      }
-    ],
-	 "groups": [
-      {
-        "id": "group1"
+        "tags": [ "data", "plans", "assess","map" ]
       },
       {
-        "id": "group2"
+        "id": "paper",
+        "group": "1",
+        "color": "#4d4d4d",
+        "name": "paper",
+        "tags": [ "idea", "recording" ]
       }
-    ]
+    ],
+	 "groups": []
   }
   

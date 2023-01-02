@@ -14,6 +14,16 @@ body {
 h1 {
   color: #080808;
 }
+svg {
+  display: block;
+  border: 1px solid #ccc;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 60%;
+  height:80%;
+  background: rgba(155, 155, 155, 30);
+}
 
 .container {
   height: 100vh;
@@ -35,50 +45,79 @@ h1 {
 }
 
 .box {
-  height: 600px;
-  width: 600px;
   border: solid 3px #ccc;
-  margin: 10px;
-
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center; 
-
-}
-.group {
-  height: 200px;
-  width: 300px;
-  border: dashed 3px #ccc;
-  margin: 10px;
-
+  margin: 0px;
+  position: absolute;
 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center; 
-
 }
 
+.actions {
+  top: 10%;
+  left: 10%;
+  width: 10%;
+  height:80%;
+}
+
+.arena {
+  top: 10%;
+  left: 20%;
+  width: 60%;
+  height:80%;
+}
+
+.tools {
+  top: 10%;
+  left: 80%;
+  width: 10%;
+  height:80%;
+}
 
 .drag-over {
   border: dashed 3px red;
 }
 
 .item {
-  height: 120px;
-  width: 120px;
-  border-radius: 40%;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
   color: white;
   text-align: center;
-  display: block;
+  vertical-align:middle;
   filter: blur(0px);
   position: absolute;
-  opacity:60%;
+  opacity:100%;
+  text-align: center;
+  vertical-align:middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
+.subItem {
+
+  text-align: center;
+  vertical-align:middle;
+  filter: blur(0px);
+  position: absolute;
+  opacity:100%;
+  text-align: center;
+  vertical-align:middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.action {
+  border-radius: 50%;
+}
+
+.tool {
+  border-radius: 0%;
+}
 
 .hide {
   display: none;
