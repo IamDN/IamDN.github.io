@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Game</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+   
+    <div class="container">
+  
+            <div class="box intput" id= "input">
+                <form>
+                  <input type="name" placeholder="Name " id="nameID">
+                  <br> <br>
+                  <select id="landuseID">
+                    <option>landuse</option>
+                     <option>demography</option>
+                     <option>economy</option>
+                     <option>transport</option>
+                     <option>other</option>
+                   </select>
+                   <br> <br>
+                   <select id="typeID">
+                    <option>geojson</option>
+                     <option>georaster</option>
+                     <option>shapefile</option>
+                   </select>
+                   <br> <br>
+                   <select id="spatial resolution">
+                    <option>non spatial</option>
+                    <option>10 km</option>
+                    <option>1 km</option>
+                    <option>100 m</option>
+                    <option>50 m</option>
+                    <option>30 m</option>
+                    <option>10 m</option>
+                    <option>5 m</option>
+                    <option>1 m</option>
+                  </select>
+                  <br> <br>
+                  <select id="temporal resolution">
+                    <option>adhoc</option>
+                    <option>yearly</option>
+                    <option>monthly</option>
+                    <option>weekly</option>
+                    <option>daily</option>
+                    <option>hourly</option>
+                    <option>minutely</option>
+                  </select>
+                  <br> <br>
+                  <input type="name" placeholder="min spatial Extend" id="minSpaceExtendID">
+                  <input type="name" placeholder="max spatialExtend" id="maxSpaceExtendID">
+                  <br> <br>
+                  <input type="name" placeholder="min temposral Extend" id="minTimeExtendID">
+                  <input type="name" placeholder="max max temportal Extend" id="maxTimeExtendID">
+                  <br> <br>
+                  <input type="text" placeholder="Source " id="sourceID">
+                  <br> <br>
+                  <input type="text" placeholder="Link" id="linkID">
+                  <br> <br>
+                  <input type="button" onclick="enable()" value="Submit">
+                </form>
+            </div>
+                
+
+                <svg id= "svg">
+                  <line x1="10%" y1="10%" x2="10%" y2="90%" style="stroke:rgb(0, 0, 0);stroke-width:2" />
+                  <line x1="10%" y1="90%" x2="85%" y2="90%" style="stroke:rgb(0, 0, 0);stroke-width:2" />
+                </svg>
+
+            
+
+    </div>
+    <div class="panel" id="panelID"> </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
