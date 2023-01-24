@@ -305,7 +305,7 @@ function updateGroupSelection()
             
                   if (i !==ii)
                   {
-                      if(compare(groupKeys[i], groupKeys[ii]) > slider.value )
+                      if(compare(groupKeys[i], groupKeys[ii]) > (slider.value -1) )
                       {
                           const intersection = groupKeys[i].filter(e => groupKeys[ii].includes(e));
                           if (!searchForArray(selectedKeys,intersection))
