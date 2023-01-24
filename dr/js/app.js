@@ -4,6 +4,7 @@ const tools =  document.getElementById("tools");
 const actions =  document.getElementById("actions");
 const svgns = "http://www.w3.org/2000/svg";
 var groups = [];
+var groupKeys = [];
 
 fetch('./data.json')
     .then((response) => response.json())
@@ -91,11 +92,8 @@ function drop(e) {
 
 	if(obj !== undefined)
     {
-		for(i=0; i <  obj.outcome.length; i++)
-		{
-			createDiv(obj.outcome[i], i, obj, e, draggable.id);
-		}
-        updateGroups(draggable.id,draggable.style.backgroundColor);
+        inputPopopup(obj, i, e, draggable);
+
 	} else if (e.target.id === "arena" )
 	{
 		    // case of movement inside of arena
@@ -123,38 +121,43 @@ function drop(e) {
 
         // Update relevant group    
         let actionsAll = Array.from(actions.querySelectorAll(`[id^="action"]`));
-        let idAction = draggable.id.split(" ")[2];
-        let action = actionsAll.filter(item => item.id.includes(idAction) );
-        updateGroups(action[0].id, action[0].style.backgroundColor);
+        console.log(actionsAll);
+        
+     
+        let idAction = draggable.id.split("|")[1];
+        console.log(draggable.id.split("|")[1]);
+       for (var i =0; i < groups.length; i++)
+       {
+            groups[i].update();
+
+       }
 	} 
     draggable.classList.remove('hide');
    
 }
 
-function updateGroups(id, color)
-{
+function inputPopopup(obj, i, e, draggable) {
+    let description = prompt("Please describe your action");
+    if (description == null || description == "") {
+        window.alert("Okey, i see, you don't want to play, fine then");
+    } else {
+        for(i=0; i <  obj.outcome.length; i++)
+		{
+			createDiv(obj.outcome[i], i, obj, e, draggable.id, description,draggable.style.backgroundColor);
+		}
+       groupKeys.push(description.split(" "));
+       updateGroupSelection();
+    }
+  }
 
-    var thisGroup = groups.find(x => x.id === id) ;
-    if (thisGroup === undefined)
-         {
 
-            var newGroup = new Group (id, color);
-            newGroup.update(id);
-            groups.push(newGroup);
-         }
-    else 
-        {
-            thisGroup.update( id );
-        }   
-}
-
-function createDiv(outcome, i, obj, e, id) {
+function createDiv(outcome, i, obj, e, id, descr,color) {
 
     var arenaNodes =arena.childNodes;
   
     let div = document.createElement("div");
-    div.id = "tags " + outcome.tags + " " + id;
-    div.className = "subItem " + outcome.name + i;
+    div.id = "tags " + outcome.tags + " " + id + "|"+ descr;
+    div.className = "subItem " + outcome.name + i ;
     let count= arenaNodes.length;
     let r =   60 ;
      
@@ -164,7 +167,7 @@ function createDiv(outcome, i, obj, e, id) {
     let topString = top + 'px';
     div.style.left = leftString;
     div.style.top = topString;
-    div.style.setProperty(  "background-color", "grey");
+    div.style.setProperty(  "background-color", color);
     div.style.setProperty('height',r+ 'px');
     div.style.setProperty('width', r + 'px');
     div.style.setProperty('border-radius', 40 + '%');
@@ -179,7 +182,7 @@ function createDiv(outcome, i, obj, e, id) {
     arena.appendChild(div); 
 
     let tags = Array.from(document.querySelectorAll(`[id^="tags"]`));
-    console.log(outcome.tags)
+
     for (var i=0; i<outcome.tags.length;i++)
     {
         let tag = outcome.tags[i];
@@ -216,9 +219,7 @@ function createLine (x1,y1,x2,y2, name)
     newLine.setAttribute ("stroke-width" ,1);
     svg.append(newLine);
 }
-
-
-
+const checker = (arr, target) => target.every(v => arr.includes(v));
 class Group
 {
    constructor(id, color)
@@ -226,36 +227,54 @@ class Group
        this.id = id;
        this.createGroup(color);
        this.poly;
-       console.log("Hello word" +color);
    }
 
-   update(name)
+   update()
    {
-    let all = Array.from(document.querySelectorAll(`[id^="tags"]`));
+    let allPoints = Array.from(document.querySelectorAll(`[id^="tags"]`));
+    var points = [];
+    for (var i =0 ; i< allPoints.length; ++i){
+       var description = allPoints[i].id.split("|")[1];
+       if (description !== undefined)
+       {   
+            var arr = description.split(" ");
+            if (checker(arr, this.id))
+            {
+               points.push(allPoints[i]);
+            }
+       }
+    }
 
-    let points = all.filter(item => item.id.includes(name) );
-    console.log(points);
-    var pointString = "";
-    points.forEach(point=> { 
-        var box = point.getBoundingClientRect();
-        var x = box.left + box.width/2 - arena.offsetLeft;
-        var y = box.top + box.height/2- arena.offsetTop;
-        pointString = pointString + x+ "," + y + " ";
-    });
 
-    //Add again first to close loop
-    var box = points[0].getBoundingClientRect();
-    var x = box.left + box.width/2 - arena.offsetLeft;
-    var y = box.top + box.height/2- arena.offsetTop;
-    pointString = pointString + x+ "," + y + " ";
+    if (points.length > 0){
+         //let points = all.filter(item => item.id.includes(name) );
 
-    this.poly.setAttributeNS(null, "points", pointString);
+           var pointString = "";
+           points.forEach(point=> { 
+              var box = point.getBoundingClientRect();
+              var x = box.left + box.width/2 - arena.offsetLeft;
+              var y = box.top + box.height/2- arena.offsetTop;
+              pointString = pointString + x+ "," + y + " ";
+           });
+
+           //Add again first to close loop
+           var box = points[0].getBoundingClientRect();
+           var x = box.left + box.width/2 - arena.offsetLeft;
+           var y = box.top + box.height/2- arena.offsetTop;
+           pointString = pointString + x+ "," + y + " ";
+           this.poly.setAttributeNS(null, "points", pointString);
+        }
+        else 
+        {
+        console.log("EMPTY INETRSECTION!!")
+        }
    }
 
    createGroup (color)
    {
     // Create line in svg format
     let poly = document.createElementNS(svgns ,'polyline');
+    poly.id = "poly "  + this.id.toString();
     poly.setAttributeNS(null, "points", "0,0 1,1");
     poly.setAttributeNS(null, "fill", "none");
     poly.setAttribute ("stroke" ,color);
@@ -267,5 +286,73 @@ class Group
     this.poly = poly;
 }
 }
+compare = (a1, a2) => a1.reduce((a, c) => a + a2.includes(c), 0);
+var slider = document.getElementById("myRange");
 
+//Assign function to listen slider events
+slider.oninput = function() {
+    document.getElementById("label").innerHTML = "Group proms by number of similar words: " + this.value;
+    updateGroupSelection();
+  }
+function updateGroupSelection()
+{
+          // Search for common keys
+          selectedKeys = [];
+          for (var  i=0; i < groupKeys.length; i++)
+          {
+              for (var ii=0; ii < groupKeys.length; ii++)
+              {
+            
+                  if (i !==ii)
+                  {
+                      if(compare(groupKeys[i], groupKeys[ii]) > slider.value )
+                      {
+                          const intersection = groupKeys[i].filter(e => groupKeys[ii].includes(e));
+                          if (!searchForArray(selectedKeys,intersection))
+                              selectedKeys.push(intersection);
+                      }
+                  }
+              }
+          }
+      
+          for (var i =0; i < groups.length; i++)
+          {
+              var deleteThis =  svg.getElementById("poly " + groups[i].id.toString());
+              deleteThis.remove();
+          }
+          groups = [];
+          selectedKeys.forEach(key => updateGroups(key, "rgb(100,100,100)"))
+
+}
+
+function updateGroups(intersection, color)
+{
+    var thisGroup = groups.find(x => x.id.toString() == intersection.toString()) ;
+
+    if (thisGroup === undefined)
+    {
+        var newGroup = new Group (intersection, color);
+        newGroup.update(intersection);
+        groups.push(newGroup);
+    }
+    else 
+    {
+        thisGroup.update( intersection );
+    }
+        
+    
+}
+
+function searchForArray(haystack, needle){
+    var i, j, current;
+    for(i = 0; i < haystack.length; ++i){
+      if(needle.length === haystack[i].length){
+        current = haystack[i];
+        for(j = 0; j < needle.length && needle[j] === current[j]; ++j);
+        if(j === needle.length)
+          return true;
+      }
+    }
+    return false;
+  }
 

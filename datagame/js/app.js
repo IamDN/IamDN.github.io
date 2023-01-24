@@ -1,10 +1,11 @@
 const radius = 5;
 var data = [];
-var adjustArray = [{x:0, y:1},{x:-1, y:-1},{x:1, y:-1},{x:0, y:-3},{x:-2, y:1},{x:2, y:1},{x:-1, y:3},{x:1, y:3},{x:3, y:-1},{x:-3, y:-1} ,{x:2, y:-3},{x:-2, y:-3}];
+var adjustArray = [{x:0, y:1},{x:-3.5, y:-1},{x:3.5, y:-1},{x:0, y:-3},{x:-3.5, y:3},{x:3.5, y:3}];
 var svgns = "http://www.w3.org/2000/svg";
 var svg = document.getElementById('svg');
 var sr =  document.getElementById("spatial resolution");
 var tr =  document.getElementById("temporal resolution");
+var shortNameInput =  document.getElementById("shortNameID");
 var nameInput =  document.getElementById("nameID");
 var landuseInput =  document.getElementById("landuseID");
 var typeInput =  document.getElementById("typeID");
@@ -20,6 +21,7 @@ drawLines();
 
 function enable() {
     var record = {
+        shortName: shortNameInput.value,
         srv: sr.selectedIndex, 
         srt : sr.options[sr.selectedIndex].text,
         trv: tr.selectedIndex, 
@@ -56,7 +58,7 @@ function drawLines() {
     var label = document.createElementNS(svgns, 'text');
     label.setAttributeNS(null, 'x', '1%');
     label.setAttributeNS(null, 'y', 5 +  i/tr.length * 90 + '%');
-    label.setAttributeNS(null, 'text-font', '8');
+    label.setAttributeNS(null, 'font-size', '10px');
     label.innerHTML = tr.options[i].text;
     svg.appendChild(label);
   }
@@ -65,7 +67,7 @@ function drawLines() {
     var label = document.createElementNS(svgns, 'text');
     label.setAttributeNS(null, 'x', 13 +i/sr.length * 85 + '%');
     label.setAttributeNS(null, 'y', '95%');
-    label.setAttributeNS(null, 'text-font', '8');
+    label.setAttributeNS(null, 'font-size', '10px');
     label.innerHTML = sr.options[sr.length - (i+1)].text;
     svg.appendChild(label);
   }
@@ -77,22 +79,21 @@ function updateGraph()
     for (let i =0; i< data.length;i++)
     {
       //? var box = svg.getBoundingClientRect();
-      if(data[i].draw && data[i].count <12 )
+      if(data[i].draw && data[i].count <adjustArray.length )
       {
-      var circle = document.createElementNS(svgns, 'circle');
+      var label = document.createElementNS(svgns, 'text');
       var adjust = adjustArray[data[i].count];
 
       var x = 90 - data[i].srv /sr.length *85 + adjust.x;
       var y =  5 +data[i].trv /tr.length *90+ adjust.y;
-      circle.setAttributeNS(null, 'cx', x + '%');
-      circle.setAttributeNS(null, 'cy', y+'%');
-      circle.setAttributeNS(null, 'height', '50');
-      circle.setAttributeNS(null, 'width', '50');
-      circle.setAttributeNS(null, 'fill', 'black');
-      circle.setAttributeNS(null, 'r', radius +'');
-      circle.addEventListener("mouseenter", (e) =>  mouseEnter(e,data[i]));
-      circle.addEventListener("mouseout", mouseExit);
-      svg.appendChild(circle);
+      label.setAttributeNS(null, 'x', x + '%');
+      label.setAttributeNS(null, 'y', y+'%');
+      label.setAttributeNS(null, 'font-size', '10px');
+      label.setAttributeNS(null, 'fill', 'black');
+      label.innerHTML = data[i].shortName;
+      label.addEventListener("mouseenter", (e) =>  mouseEnter(e,data[i]));
+      label.addEventListener("mouseout", mouseExit);
+      svg.appendChild(label);
       data[i].draw = false;
       }
     }
