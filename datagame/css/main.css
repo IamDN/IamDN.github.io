@@ -89,4 +89,25 @@ svg {
   height:5%;
 }
 
+.tutorial
+{
+  position: absolute;
+  top: 90%;
+  left: 10%;
+  width: 80%;
+  height:5%;
+  align-items: center;
+  justify-content: center; 
+}
+.buttoncsv
+{
+  position: absolute;
+  top: 90%;
+  left: 10%;
+  width: 80%;
+  height:5%;
+  align-items: center;
+  justify-content: center; 
+}
+
 
