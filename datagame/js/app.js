@@ -121,3 +121,23 @@ function mouseExit(e)
 {
   panel.style.display = 'none';
 }
+function download()
+{
+console.log(CSV(data))
+var encodedUri = encodeURI(CSV(data));
+window.open(encodedUri);
+}
+function CSV(array) {
+  // Use first element to choose the keys and the order
+  var keys = Object.keys(array[0]);
+
+  // Build header
+  var result = keys.join(",") + "\n";
+
+  // Add the rows
+  array.forEach(function(obj){
+      result += keys.map(k => obj[k]).join(",") + "\n";
+  });
+
+  return result;
+}

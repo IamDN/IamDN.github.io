@@ -12,27 +12,36 @@
    
     <div class="container">
   
-            <div class="box intput" id= "input">
+            <div class="box intput" id= "input" style="overflow-y:auto;">
+             
                 <form>
-                  <input type="name" maxlength="10" placeholder="ShortName" id="shortNameID">
-                  <br> <br>
-                  <input type="name" placeholder="Name " id="nameID">
-                  <br> <br>
-                  <select id="landuseID">
+                  <br><br><br><br><br><br><br><br>
+                  <h3>Metadata Editor</h3>
+                  <br> 
+                  <h6>Short Name</h6>
+                  <input  class= "input" type="name" maxlength="10" placeholder="max 10 characters" id="shortNameID">
+                  <br> <br> 
+                  <h6>Full Name</h6>
+                  <input class= "input" type="name" placeholder="Name " id="nameID">
+                  <br> <br> 
+                  <h6>Theme</h6>
+                  <select class= "input" id="landuseID">
                     <option>landuse</option>
                      <option>demography</option>
                      <option>economy</option>
                      <option>transport</option>
                      <option>other</option>
                    </select>
-                   <br> <br>
-                   <select id="typeID">
+                   <br> <br> 
+                   <h6>File Type</h6>
+                   <select class= "input" id="typeID">
                     <option>geojson</option>
                      <option>georaster</option>
                      <option>shapefile</option>
                    </select>
-                   <br> <br>
-                   <select id="spatial resolution">
+                   <br> <br> 
+                   <h6>Spatial Resolution</h6>
+                   <select class= "input" id="spatial resolution">
                     <option>non spatial</option>
                     <option>10 km</option>
                     <option>1 km</option>
@@ -43,8 +52,9 @@
                     <option>5 m</option>
                     <option>1 m</option>
                   </select>
-                  <br> <br>
-                  <select id="temporal resolution">
+                  <br> <br> 
+                  <h6>Temporal Resolution</h6>
+                  <select class= "input" id="temporal resolution">
                     <option>adhoc</option>
                     <option>yearly</option>
                     <option>monthly</option>
@@ -54,21 +64,33 @@
                     <option>minutely</option>
                   </select>
                   <br> <br>
-                  <input type="name" placeholder="min spatial Extend" id="minSpaceExtendID">
-                  <input type="name" placeholder="max spatialExtend" id="maxSpaceExtendID">
+                  <h6>Spatial Extend (From -To)</h6>
+                  <input class= "input" type="name" placeholder="min Longtitude , Lattitude" id="minSpaceExtendID">  
+                  <input class= "input"  type="name" placeholder="max Longtitude , Lattitude" id="maxSpaceExtendID">
                   <br> <br>
-                  <input type="name" placeholder="min temposral Extend" id="minTimeExtendID">
-                  <input type="name" placeholder="max max temportal Extend" id="maxTimeExtendID">
+                  <h6>Temporal Extend (From -To)</h6>
+                  <input class= "input" type="name" placeholder="startting date" id="minTimeExtendID">
+                  <input class= "input" type="name" placeholder="ending date" id="maxTimeExtendID">
                   <br> <br>
-                  <input type="text" placeholder="Source " id="sourceID">
+                  <h6>Source of data</h6>
+                  <input class= "input" type="text" placeholder="Source " id="sourceID">
                   <br> <br>
-                  <input type="text" placeholder="Link" id="linkID">
+                  <h6>Link to data</h6>
+                  <input class= "input" type="text" placeholder="Link" id="linkID">
                   <br> <br>
-                  <input type="button" onclick="enable()" value="Submit">
+                  <h6>Contact Person</h6>
+                  <input class= "input" type="text" placeholder="Contact" id="linkID">
+                  <br> <br>
+                  <h6>Known issues of data</h6>
+                  <input class= "input" type="text" placeholder="description" id="linkID">
+                  <br> <br>
+                  <h6>Add new metadata</h6>
+                  <input class= "input" type="button" onclick="enable()" value="Submit">
+               
                 </form>
             </div>
                 
-
+            
                 <svg id= "svg">
                   <line x1="10%" y1="10%" x2="10%" y2="90%" style="stroke:rgb(0, 0, 0);stroke-width:2" />
                   <line x1="10%" y1="90%" x2="85%" y2="90%" style="stroke:rgb(0, 0, 0);stroke-width:2" />
@@ -76,8 +98,9 @@
 
             
 
-    </div>
+    </div> 
     <div class="panel" id="panelID"> </div>
+    <input  type="button" onclick="download()" value="Download csv">
     <script src="js/app.js"></script>
 </body>
 
