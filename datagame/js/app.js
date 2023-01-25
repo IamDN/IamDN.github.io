@@ -1,6 +1,6 @@
 const radius = 5;
 var data = [];
-var adjustArray = [{x:0, y:1},{x:-3.5, y:-1},{x:3.5, y:-1},{x:0, y:-3},{x:-3.5, y:3},{x:3.5, y:3}];
+var adjustArray = [{x:0, y:1},{x:-1, y:-1},{x:1, y:-1},{x:0, y:-3},{x:-2, y:1},{x:2, y:1},{x:-1, y:3},{x:1, y:3},{x:3, y:-1},{x:-3, y:-1} ,{x:2, y:-3},{x:-2, y:-3}];
 var svgns = "http://www.w3.org/2000/svg";
 var svg = document.getElementById('svg');
 var sr =  document.getElementById("spatial resolution");
@@ -15,6 +15,8 @@ var minSpatialInput =  document.getElementById("minSpaceExtendID");
 var maxSpatialInput =  document.getElementById("maxSpaceExtendID");
 var minTimeInput =  document.getElementById("minTimeExtendID");
 var maxTimeInput =  document.getElementById("maxTimeExtendID");
+var contactInput =  document.getElementById("contactID");
+var issuesInput =  document.getElementById("issuesID");
 
 var panel =  document.getElementById("panelID");
 drawLines();
@@ -36,6 +38,8 @@ function enable() {
         maxSpatial: maxSpatialInput.value,
         minTime: minTimeInput.value,
         maxTime: maxTimeInput.value,
+        issues: issuesInput.value,
+        contact: contactInput.value,
         draw: true,
      } 
      data.push(record);
@@ -81,20 +85,21 @@ function updateGraph()
       //? var box = svg.getBoundingClientRect();
       if(data[i].draw && data[i].count <adjustArray.length )
       {
-      var label = document.createElementNS(svgns, 'text');
-      var adjust = adjustArray[data[i].count];
-
-      var x = 90 - data[i].srv /sr.length *85 + adjust.x;
-      var y =  5 +data[i].trv /tr.length *90+ adjust.y;
-      label.setAttributeNS(null, 'x', x + '%');
-      label.setAttributeNS(null, 'y', y+'%');
-      label.setAttributeNS(null, 'font-size', '10px');
-      label.setAttributeNS(null, 'fill', 'black');
-      label.innerHTML = data[i].shortName;
-      label.addEventListener("mouseenter", (e) =>  mouseEnter(e,data[i]));
-      label.addEventListener("mouseout", mouseExit);
-      svg.appendChild(label);
-      data[i].draw = false;
+        var circle = document.createElementNS(svgns, 'circle');
+        var adjust = adjustArray[data[i].count];
+  
+        var x = 90 - data[i].srv /sr.length *85 + adjust.x;
+        var y =  5 +data[i].trv /tr.length *90+ adjust.y;
+        circle.setAttributeNS(null, 'cx', x + '%');
+        circle.setAttributeNS(null, 'cy', y+'%');
+        circle.setAttributeNS(null, 'height', '50');
+        circle.setAttributeNS(null, 'width', '50');
+        circle.setAttributeNS(null, 'fill', 'black');
+        circle.setAttributeNS(null, 'r', radius +'');
+        circle.addEventListener("mouseenter", (e) =>  mouseEnter(e,data[i]));
+        circle.addEventListener("mouseout", mouseExit);
+        svg.appendChild(circle);
+        data[i].draw = false;
       }
     }
 }
@@ -114,7 +119,9 @@ function mouseEnter(e,data)
                     "Min Temporal Extent: " + data.minTime + " <br>" + 
                     "Max Temporal Extent: " + data.maxTime + " <br>" + 
                     "Source: " + data.source+ " <br>" +  
-                    "Link: " + data.link+ " <br>" ;  
+                    "Link: " + data.link+ " <br>" +  
+                    "Conatct: " + data.contact+ " <br>" +  
+                    "Issues: " + data.issues+ " <br>" ;  
                     
 }
 function mouseExit(e)
@@ -123,9 +130,17 @@ function mouseExit(e)
 }
 function download()
 {
-console.log(CSV(data))
-var encodedUri = encodeURI(CSV(data));
-window.open(encodedUri);
+
+var csv = CSV(data);
+var downloadLink = document.createElement("a");
+var blob = new Blob(["\ufeff", csv]);
+var url = URL.createObjectURL(blob);
+downloadLink.href = url;
+downloadLink.download = "data.csv";
+
+document.body.appendChild(downloadLink);
+downloadLink.click();
+document.body.removeChild(downloadLink);
 }
 function CSV(array) {
   // Use first element to choose the keys and the order

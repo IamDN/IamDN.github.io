@@ -57,6 +57,36 @@ svg {
   width: 100%;
 }
 
+.csv {
+  float: right;
+  
+}
 
+.header {
+  border: solid 0px #ccc;
+  margin: 0px;
+  position: absolute;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+}
+.left
+{
+  top: 5%;
+  left: 10%;
+  width: 20%;
+  height:5%;
+}
+
+
+.right
+{
+  top: 5%;
+  left: 30%;
+  width: 60%;
+  height:5%;
+}
 
 
