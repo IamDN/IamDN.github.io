@@ -1,0 +1,212 @@
+{
+ "name": "Start",
+ "size": 4,
+ "text" :  "Start your journey by clicking on the circle",
+ "children": [
+  {
+   "name": "Sence",
+   "size": 3,
+   "text" :  "The needs and aspirations of people are not always voiced nor heard. The structuring power of institutions is often overlooked. Natural environments and their nonhuman inhabitants are routinely marginalised ",
+   "children": [
+    {
+     "name": "needs",
+     "size": 2,
+     "text" : 	"Record of human and nonhuman needs, expressed in flexible ways", 
+     "children": [
+      {"name": "by withnessing" , "size": 1, "text" : "Witness the everyday lives of individuals and communities"},
+      {"name": "by feeling", "size": 1, "text" :  "Feel for the rules and resources of social institutions"}
+     ]
+    },
+    {
+     "name": "aspiration",
+     "size": 2,
+     "text" : 	"Record of human and nonhuman aspiration, expressed in flexible ways", 
+     "children": [
+        {"name": "by acknowladging", "size": 1, "text" : "Acknowledge urgent demands for reform and discern weak signals of change" }
+     ]
+    },
+    {
+     "name": "desires",
+     "size": 2,
+     "text" : 	"Record of human and nonhuman latent desires, expressed in flexible ways", 
+     "children": [
+        {"name": "by whitnessing" , "size": 1, "text" : "Witness the everyday lives of individuals and communities"},
+        {"name": "by feeling", "size": 1, "text" :  "Feel for the rules and resources of social institutions"},
+        {"name": "by acknowladging", "size": 1, "text" : "Acknowledge urgent demands for reform and discern weak signals of change"}
+     ]
+    },
+    {
+     "name": "interdependece",
+     "size": 2,
+     "text" : 	"Record of the interdependence of all life forms.", 
+     "children": [
+        {"name": "by mapping", "size": 1, "text" : "Map human-environment interdependencies"}
+     ]
+    }
+   ]
+  },
+  {
+    "name": "Theoresise",
+    "size": 3,
+    "text" :  "Complex challenges are too novel, unique and ambiguous to be approached without the comparative perspective that context provides",
+    "children": [
+     {
+      "name": "needs",
+      "size": 2,
+      "text" : "Needs of a given challenge compared to those in other places and times", 
+      "children": [
+       {"name": "by collecting" , "size": 1 , "text" : "Collect and cite relevant contextual information"},
+       {"name": "by comparing", "size": 1, "text" : "Compare and cite relevant contextual information"},
+       {"name": "by historizing", "size": 1, "text" : "Historicise and cite relevant contextual information"},
+       {"name": "by recording", "size": 1, "text" : "Record how local issues were articulated, addressed and solved" }
+      ]
+     },
+     {
+      "name": "aspirations",
+      "size": 2,
+      "children": [
+         {"name": "by recording", "size": 1, "text" : "Record how local aspirations were articulated, addressed and solved" }
+      ]
+     },
+     {
+      "name": "desires",
+      "size": 2,
+      "children": [
+         {"name": "by recording", "size": 1, "text" : "Record how local desires were articulated, addressed and solved" }
+      ]
+     },
+     {
+      "name": "ceses",
+      "size": 2,
+      "children": [
+         {"name": "by developing codes" , "size": 1, "text" : "Develop codes that may be transmissible and adaptable to other settings"},
+         {"name": "by developing rules", "size": 1, "text" : "Develop rules that may be transmissible and adaptable to other settings"},
+         {"name": "by developing typologies", "size": 1, "text" : "Develop typologies that may be transmissible and adaptable to other settings"}
+      ]
+     }
+    ]
+  },
+  {
+     "name": "Gather",
+     "size": 3,
+     "text": "Complex challenges generate extensive data trails that can help to focus the task of generating solutions",
+     "children": [
+      {
+       "name": "Data",
+       "size": 2,
+       "children": [
+        {"name": "by assesing quantitative data" , "size": 1},
+        {"name": "by assesing qulitativee data" , "size": 1},
+        {"name": "by clean data", "size": 1},
+        {"name": "by identifing gaps", "size": 1},
+        {"name": "by curate privacy protection", "size": 1}
+       ]
+      }
+     ]
+  },
+  {
+      "name": "Experiment with",
+      "size": 3,
+      "text": "Solution spaces help focus the work of innovation [and production of ideas -- Latin from Greek idea ‘form, pattern’, from the base of idein ‘to see’]",
+      "children": [
+       {
+        "name": "pattern",
+        "size": 2,
+        "children": [
+         {"name": "by using heuristic aproaches" , "size": 1},
+         {"name": "by using satisficing aproaches" , "size": 1}
+
+        ]
+       },
+       {
+        "name": "data intersect",
+        "size": 2,
+        "children": [
+         {"name": "by encouraging rapid iteration" , "size": 1}
+
+        ]
+       }
+       ,
+       {
+        "name": "identify fragments",
+        "size": 2,
+        "children": [
+         {"name": " with chontroled experiments" , "size": 1}
+
+        ]
+       },
+       {
+        "name": "generate ideas",
+        "size": 2,
+        "children": [
+         {"name": "with play" , "size": 1}
+
+        ]
+       }
+      ]
+  },
+  {
+      "name": "Situate",
+      "size": 3,
+      "text": "Ideas flourish in response to specific cultural, economic and environmental situations",
+      "children": [
+       {
+        "name": "cultural situation",
+        "size": 2,
+        "children": [
+         {"name": "by checking for feasibility" , "size": 1},
+         {"name": "validate results" , "size": 1}
+
+        ]
+       },
+       {
+        "name": "economic situation",
+        "size": 2,
+        "children": [
+         {"name": "by defining stepping stones" , "size": 1}
+
+        ]
+       }
+       ,
+       {
+        "name": "enviromental situation",
+        "size": 2,
+        "children": [
+         {"name": "with prototype" , "size": 1}
+
+        ]
+       }
+      ]
+  },
+  {
+      "name": "Engage",
+      "size": 3,
+      "text": "People and institutions are diverse. They have distinctive motivations, world views and ways of working. If they are to be involved in crafting solutions they must be engaged to do so",
+      "children": [
+       {
+        "name": "people ",
+        "size": 2,
+        "children": [
+         {"name": "with build concensus" , "size": 1},
+         {"name": "by defining possible solution spaces" , "size": 1}
+
+        ]
+       },
+       {
+        "name": "Institutions",
+        "size": 2,
+        "children": [
+         {"name": "by exhibiting data openly" , "size": 1},
+         {"name": "by illustrating possobilities" , "size": 1},
+         {"name": "by working with multyple mediums" , "size": 1},
+         {"name": "by making prototypes" , "size": 1},
+         {"name": "by making pilots" , "size": 1},
+         {"name": "by making instalations" , "size": 1}
+
+        ]
+       }
+      
+      ]
+  }
+ ]
+}

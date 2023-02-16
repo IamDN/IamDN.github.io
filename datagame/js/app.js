@@ -1,5 +1,6 @@
 const radius = 5;
 var data = [];
+var cleanData = [];
 var adjustArray = [{x:0, y:1},{x:-1, y:-1},{x:1, y:-1},{x:0, y:-3},{x:-2, y:1},{x:2, y:1},{x:-1, y:3},{x:1, y:3},{x:3, y:-1},{x:-3, y:-1} ,{x:2, y:-3},{x:-2, y:-3}];
 var svgns = "http://www.w3.org/2000/svg";
 var svg = document.getElementById('svg');
@@ -17,7 +18,7 @@ var minTimeInput =  document.getElementById("minTimeExtendID");
 var maxTimeInput =  document.getElementById("maxTimeExtendID");
 var contactInput =  document.getElementById("contactID");
 var issuesInput =  document.getElementById("issuesID");
-
+var unitsInput =  document.getElementById("unitID");
 var panel =  document.getElementById("panelID");
 drawLines();
 
@@ -40,9 +41,31 @@ function enable() {
         maxTime: maxTimeInput.value,
         issues: issuesInput.value,
         contact: contactInput.value,
+        units: unitsInput.value,
+        timeStamp: new Date(),
         draw: true,
      } 
+
+     var cleanRecord = {
+      shortName: shortNameInput.value,
+      spatialResolution : sr.options[sr.selectedIndex].text,
+      temporalResolution : tr.options[tr.selectedIndex].text,
+      landuse : landuseInput.options[landuseInput.selectedIndex].text,
+      fileType : typeInput.options[landuseInput.selectedIndex].text,
+      fullName: nameInput.value,
+      source: sourceInput.value,
+      link: linkInput.value,
+      minSpatialExtend: minSpatialInput.value,
+      maxSpatialExtend: maxSpatialInput.value,
+      minTimeExtend: minTimeInput.value,
+      maxTimeExtend: maxTimeInput.value,
+      issues: issuesInput.value,
+      contact: contactInput.value,
+      timeStamp: new Date(),
+      dataUnits: unitsInput.value,
+   } 
      data.push(record);
+     cleanData.push(cleanRecord)
      updateGraph();
 }
 
@@ -118,10 +141,12 @@ function mouseEnter(e,data)
                     "Max Spatial Extent: " + data.maxSpatial + " <br>" + 
                     "Min Temporal Extent: " + data.minTime + " <br>" + 
                     "Max Temporal Extent: " + data.maxTime + " <br>" + 
+                    "Units: " + data.units+ " <br>"  +
                     "Source: " + data.source+ " <br>" +  
                     "Link: " + data.link+ " <br>" +  
                     "Conatct: " + data.contact+ " <br>" +  
-                    "Issues: " + data.issues+ " <br>" ;  
+                    "Issues: " + data.issues+ " <br>"+
+                    "Time Stamp: " + data.timeStamp+ " <br>"  ;  
                     
 }
 function mouseExit(e)
@@ -131,7 +156,7 @@ function mouseExit(e)
 function download()
 {
 
-var csv = CSV(data);
+var csv = CSV(cleanData);
 var downloadLink = document.createElement("a");
 var blob = new Blob(["\ufeff", csv]);
 var url = URL.createObjectURL(blob);
