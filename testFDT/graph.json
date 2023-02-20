@@ -1,5 +1,5 @@
 {
- "name": "Start",
+ "name": "Start Design research",
  "size": 4,
  "text" :  "Start your journey by clicking on the circle",
  "children": [
@@ -13,8 +13,24 @@
      "size": 2,
      "text" : 	"Record of human and nonhuman needs, expressed in flexible ways", 
      "children": [
-      {"name": "by withnessing" , "size": 1, "text" : "Witness the everyday lives of individuals and communities"},
-      {"name": "by feeling", "size": 1, "text" :  "Feel for the rules and resources of social institutions"}
+      {
+         "name": "by withnessing" , 
+         "size": 1, 
+         "text" : "Witness the everyday lives of individuals and communities",
+         "tools" : [
+            {"name":"camera" , "fit": 7},
+             {"name":"notebook", "fit":10}
+         ]
+      },
+      {
+         "name": "by feeling", 
+         "size": 1, 
+         "text" :  "Feel for the rules and resources of social institutions",
+         "tools" : [
+            {"name":"camera" , "fit": 3},
+            {"name":"notebook", "fit":10}
+         ]
+      }
      ]
     },
     {
@@ -22,7 +38,15 @@
      "size": 2,
      "text" : 	"Record of human and nonhuman aspiration, expressed in flexible ways", 
      "children": [
-        {"name": "by acknowladging", "size": 1, "text" : "Acknowledge urgent demands for reform and discern weak signals of change" }
+        {
+         "name": "by acknowladging",
+         "size": 1, 
+         "text" : "Acknowledge urgent demands for reform and discern weak signals of change",
+         "tools" : [
+            {"name":"eye" , "fit": 10},
+             {"name":"notebook", "fit":3}
+         ]
+      }
      ]
     },
     {
@@ -30,9 +54,34 @@
      "size": 2,
      "text" : 	"Record of human and nonhuman latent desires, expressed in flexible ways", 
      "children": [
-        {"name": "by whitnessing" , "size": 1, "text" : "Witness the everyday lives of individuals and communities"},
-        {"name": "by feeling", "size": 1, "text" :  "Feel for the rules and resources of social institutions"},
-        {"name": "by acknowladging", "size": 1, "text" : "Acknowledge urgent demands for reform and discern weak signals of change"}
+        {
+         "name": "by whitnessing" , 
+         "size": 1, 
+         "text" : "Witness the everyday lives of individuals and communities",
+         "tools" : [
+            {"name":"camera" , "fit": 7},
+             {"name":"eye", "fit":10}
+         ]
+        },
+        {
+         "name": "by feeling", 
+         "size": 1, 
+         "text" :  "Feel for the rules and resources of social institutions",
+         "tools" : [
+            {"name":"notebook" , "fit": 3},
+             {"name":"eye", "fit":10}
+         ]
+        },
+        {
+         "name": "by acknowladging", 
+         "size": 1, 
+         "text" : "Acknowledge urgent demands for reform and discern weak signals of change",
+         "tools" : [
+            {"name":"eye" , "fit": 10},
+             {"name":"notebook", "fit":4}
+         ]
+
+        }
      ]
     },
     {
@@ -40,7 +89,15 @@
      "size": 2,
      "text" : 	"Record of the interdependence of all life forms.", 
      "children": [
-        {"name": "by mapping", "size": 1, "text" : "Map human-environment interdependencies"}
+        {
+         "name": "by mapping", 
+         "size": 1, 
+         "text" : "Map human-environment interdependencies",
+         "tools" : [
+            {"name":"kemu" , "fit": 10},
+             {"name":"notebook", "fit":5}
+         ]
+      }
      ]
     }
    ]
@@ -55,33 +112,106 @@
       "size": 2,
       "text" : "Needs of a given challenge compared to those in other places and times", 
       "children": [
-       {"name": "by collecting" , "size": 1 , "text" : "Collect and cite relevant contextual information"},
-       {"name": "by comparing", "size": 1, "text" : "Compare and cite relevant contextual information"},
-       {"name": "by historizing", "size": 1, "text" : "Historicise and cite relevant contextual information"},
-       {"name": "by recording", "size": 1, "text" : "Record how local issues were articulated, addressed and solved" }
+       {
+         "name": "by collecting" , 
+         "size": 1 , 
+         "text" : "Collect and cite relevant contextual information",
+         "tools" : [
+            {"name":"data conector" , "fit": 10},
+             {"name":"notebook", "fit":4}
+         ]
+      },
+       {
+         "name": "by comparing", 
+         "size": 1, 
+         "text" : "Compare and cite relevant contextual information",
+         "tools" : [
+            {"name":"data conector" , "fit": 10},
+             {"name":"excel", "fit":2}
+         ]
+      },
+       {
+         "name": "by historizing", 
+         "size": 1, 
+         "text" : "Historicise and cite relevant contextual information",
+         "tools" : [
+            {"name":"data conector" , "fit": 10},
+             {"name":"excel", "fit":2}
+         ]
+      },
+       {
+         "name": "by recording", 
+         "size": 1, 
+         "text" : "Record how local issues were articulated, addressed and solved" ,
+         "tools" : [
+            {"name":"voice recorder" , "fit": 5},
+             {"name":"camera", "fit":10}
+         ]
+      }
       ]
      },
      {
       "name": "aspirations",
       "size": 2,
       "children": [
-         {"name": "by recording", "size": 1, "text" : "Record how local aspirations were articulated, addressed and solved" }
+         {
+            "name": "by recording", 
+            "size": 1, 
+            "text" : "Record how local aspirations were articulated, addressed and solved" ,
+            "tools" : [
+               {"name":"voice recorder" , "fit": 6},
+                {"name":"camera", "fit":10}
+            ]
+         }
       ]
      },
      {
       "name": "desires",
       "size": 2,
       "children": [
-         {"name": "by recording", "size": 1, "text" : "Record how local desires were articulated, addressed and solved" }
+         {
+            "name": "by recording", 
+            "size": 1, 
+            "text" : "Record how local desires were articulated, addressed and solved" ,
+            "tools" : [
+               {"name":"notebook" , "fit": 3},
+               {"name":"voice recorder" , "fit": 5},
+                {"name":"camera", "fit":10}
+            ]
+         }
       ]
      },
      {
-      "name": "ceses",
+      "name": "cases",
       "size": 2,
       "children": [
-         {"name": "by developing codes" , "size": 1, "text" : "Develop codes that may be transmissible and adaptable to other settings"},
-         {"name": "by developing rules", "size": 1, "text" : "Develop rules that may be transmissible and adaptable to other settings"},
-         {"name": "by developing typologies", "size": 1, "text" : "Develop typologies that may be transmissible and adaptable to other settings"}
+         {
+            "name": "by developing codes" , 
+            "size": 1, 
+            "text" : "Develop codes that may be transmissible and adaptable to other settings",
+            "tools" : [
+               {"name":"kemu" , "fit": 6},
+                {"name":"notebook", "fit":10}
+            ]
+         },
+         {
+            "name": "by developing rules", 
+            "size": 1, 
+            "text" : "Develop rules that may be transmissible and adaptable to other settings",
+            "tools" : [
+               {"name":"kemu" , "fit": 3},
+                {"name":"notebook", "fit":10}
+            ]
+         },
+         {
+            "name": "by developing typologies", 
+            "size": 1, 
+            "text" : "Develop typologies that may be transmissible and adaptable to other settings",
+            "tools" : [
+               {"name":"cityengine" , "fit": 6},
+                {"name":"notebook", "fit":10}
+            ]
+         }
       ]
      }
     ]
@@ -95,11 +225,50 @@
        "name": "Data",
        "size": 2,
        "children": [
-        {"name": "by assesing quantitative data" , "size": 1},
-        {"name": "by assesing qulitativee data" , "size": 1},
-        {"name": "by clean data", "size": 1},
-        {"name": "by identifing gaps", "size": 1},
-        {"name": "by curate privacy protection", "size": 1}
+        {
+         "name": "by assesing quantitative data" , 
+         "size": 1,
+         "tools" : [
+            {"name":"data conector" , "fit": 10},
+             {"name":"urscape", "fit":5}
+         ]
+        },
+        {
+         "name": "by assesing qulitativee data" , 
+         "size": 1,
+         "tools" : [
+            {"name":"data conector" , "fit": 7},
+             {"name":"urscape", "fit":3}
+         ]
+
+        },
+        {
+         "name": "by clean data", 
+         "size": 1,        
+          "tools" : [
+            {"name":"qgisr" , "fit": 10},
+             {"name":"arcgis", "fit":3}
+         ]
+        },
+        {
+         "name": "by identifing gaps", 
+         "size": 1,
+         "tools" : [
+            {"name":"data conector" , "fit": 10},
+            {"name":"arcgis", "fit":3},
+            {"name":"qgis", "fit":7},
+             {"name":"urscape", "fit":5}
+         ]
+      },
+        {
+         "name": "by curate privacy protection", 
+         "size": 1,
+         "tools" : [
+            {"name":"data conector" , "fit": 10},
+            {"name":"qgis", "fit":7},
+             {"name":"excel", "fit":5}
+         ]
+      }
        ]
       }
      ]
@@ -113,16 +282,39 @@
         "name": "pattern",
         "size": 2,
         "children": [
-         {"name": "by using heuristic aproaches" , "size": 1},
-         {"name": "by using satisficing aproaches" , "size": 1}
-
+         {
+            "name": "by using heuristic aproaches" , 
+            "size": 1,
+            "tools" : [
+               {"name":"qgis" , "fit": 7},
+               {"name":"urscape", "fit":10},
+                {"name":"excel", "fit":2}
+            ]
+         },
+         {
+            "name": "by using satisficing aproaches" , 
+            "size": 1,
+            "tools" : [
+               {"name":"qgis" , "fit": 6},
+               {"name":"urscape", "fit":9},
+                {"name":"excel", "fit":4}
+            ]
+         }
         ]
        },
        {
         "name": "data intersect",
         "size": 2,
         "children": [
-         {"name": "by encouraging rapid iteration" , "size": 1}
+         {
+            "name": "by encouraging rapid iteration" , 
+            "size": 1,
+            "tools" : [
+               {"name":"qgis" , "fit": 1},
+               {"name":"acrgis" , "fit": 2},
+               {"name":"urscape", "fit":10}
+            ]
+         }
 
         ]
        }
@@ -131,16 +323,29 @@
         "name": "identify fragments",
         "size": 2,
         "children": [
-         {"name": " with chontroled experiments" , "size": 1}
-
+         {
+            "name": " with chontroled experiments" , 
+            "size": 1,
+            "tools" : [
+               {"name":"qgis" , "fit": 2},
+               {"name":"acrgis" , "fit": 3},
+               {"name":"urscape", "fit":7}
+            ]
+         }
         ]
        },
        {
         "name": "generate ideas",
         "size": 2,
         "children": [
-         {"name": "with play" , "size": 1}
-
+         {
+            "name": "with play" , 
+            "size": 1,
+            "tools" : [
+               {"name":"grasshoper" , "fit": 3},
+               {"name":"urscape", "fit":8}
+            ]
+         }
         ]
        }
       ]
@@ -151,31 +356,88 @@
       "text": "Ideas flourish in response to specific cultural, economic and environmental situations",
       "children": [
        {
-        "name": "cultural situation",
+        "name": "transmute insights",
         "size": 2,
         "children": [
-         {"name": "by checking for feasibility" , "size": 1},
-         {"name": "validate results" , "size": 1}
+         {
+            "name": "in spatial way" , 
+            "size": 1,
+            "tools" : [
+               {"name":"physical model" , "fit": 8},
+               {"name":"virtual reality", "fit":5}
+            ]
+         },
+         {
+            "name": "in tangible way" , 
+            "size": 1,
+            "tools" : [
+               {"name":"virtual reality", "fit":2}
+            ]
 
+         },
+         {
+            "name": "in functional way" , 
+            "size": 1,
+            "tools" : [
+               {"name":"unity" , "fit": 8}
+            ]
+         }
         ]
        },
        {
-        "name": "economic situation",
+        "name": "transmute ideas",
         "size": 2,
         "children": [
-         {"name": "by defining stepping stones" , "size": 1}
-
+         
+            {
+               "name": "in spatial way" , 
+               "size": 1,
+               "tools" : [
+                  {"name":"physical model" , "fit": 8},
+                  {"name":"virtual reality", "fit":5}
+               ]
+            },
+            {
+               "name": "in tangible way" , 
+               "size": 1,
+               "tools" : [
+                  {"name":"virtual reality", "fit":2}
+               ]
+            },
+            {
+               "name": "in functional way" , 
+               "size": 1,
+               "tools" : [
+                  {"name":"unity" , "fit": 8}
+               ]
+            }
+         
         ]
        }
        ,
        {
-        "name": "enviromental situation",
-        "size": 2,
-        "children": [
-         {"name": "with prototype" , "size": 1}
-
-        ]
-       }
+         "name": "solutions",
+         "size": 2,
+         "children": [
+          
+             {
+                "name": "by refinig " , 
+                "size": 1,
+                "tools" : [
+                  {"name":"unity" , "fit": 8}
+               ]
+             },
+             {
+                "name": "by staging" , 
+                "size": 1,
+                "tools" : [
+                  {"name":"workshop" , "fit": 8}
+               ]
+             }
+          
+         ]
+        }
+        
       ]
   },
   {
@@ -184,28 +446,83 @@
       "text": "People and institutions are diverse. They have distinctive motivations, world views and ways of working. If they are to be involved in crafting solutions they must be engaged to do so",
       "children": [
        {
-        "name": "people ",
+        "name": "Stakeholders",
         "size": 2,
         "children": [
-         {"name": "with build concensus" , "size": 1},
-         {"name": "by defining possible solution spaces" , "size": 1}
-
-        ]
-       },
-       {
-        "name": "Institutions",
-        "size": 2,
-        "children": [
-         {"name": "by exhibiting data openly" , "size": 1},
-         {"name": "by illustrating possobilities" , "size": 1},
-         {"name": "by working with multyple mediums" , "size": 1},
-         {"name": "by making prototypes" , "size": 1},
-         {"name": "by making pilots" , "size": 1},
-         {"name": "by making instalations" , "size": 1}
-
+         {
+            "name": "by diagrams" , 
+            "size": 1,
+            "tools" : [
+               {"name":"powerpoint" , "fit": 8},
+               {"name":"ilustrator" , "fit": 8}
+            ]
+         },
+         {
+            "name": "by 3D models" , 
+            "size": 1,
+            "tools" : [
+               {"name":"grasshopper" , "fit": 1},
+               {"name":"Rhino" , "fit": 8}
+            ]
+         },
+         {
+            "name": "by film" , 
+            "size": 1,
+            "tools" : [
+               {"name":"imovie" , "fit": 9},
+               {"name":"mobile phone" , "fit": 5}
+            ]
+         },
+         {
+            "name": "by photography" , 
+            "size": 1,
+            "tools" : [
+               {"name":"mobile phone" , "fit": 9},
+               {"name":"camera" , "fit": 5}
+            ]
+         },
+         {
+            "name": "by theatre" , 
+            "size": 1,
+            "tools" : [
+               {"name":"dance classes" , "fit": 9}
+            ]
+         },
+         {
+            "name": "by music" , 
+            "size": 1,
+            "tools" : [
+               {"name":"guitar" , "fit": 3},
+               {"name":"piano" , "fit": 5}
+            ]
+         },
+         {
+            "name": "by food" , 
+            "size": 1,
+            "tools" : [
+               {"name":"pot" , "fit": 3},
+               {"name":"grill" , "fit": 5}
+            ]
+         },
+         {
+            "name": "by instalations" , 
+            "size": 1,
+            "tools" : [
+               {"name":"hand work" , "fit": 3},
+               {"name":"workshop" , "fit": 5}
+            ]
+         },
+         {
+            "name": "by prototypes" , 
+            "size": 1,
+            "tools" : [
+               {"name":"hand work" , "fit": 3},
+               {"name":"workshop" , "fit": 5}
+            ]
+         }
         ]
        }
-      
+
       ]
   }
  ]
