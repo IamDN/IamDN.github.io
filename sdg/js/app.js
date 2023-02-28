@@ -30,8 +30,7 @@ var simulation = d3.forceSimulation()
 .force("link", d3.forceLink().id(function(d) { return d.id; }))
 .force("charge", d3.forceManyBody().strength(-400))
 .force("center", d3.forceCenter(width/2 , height/1.2))
-.force("x", d3.forceX())
-.force("y", d3.forceY());
+;
 ;
 fetch(link)
     .then((response) => response.json())
@@ -59,7 +58,7 @@ function load( graph, simulation) {
               .selectAll("image")
               .data(graph.nodes).enter()
               .append("svg:image")   
-               .attr("xlink:href", function(d){if (d.name.includes("Goal")) return "resources/images bw/e-web-goal-"+d.name.split(" ")[1]+"-min.png"})
+               .attr("xlink:href", function(d){if (d.name.includes("Goal")) return "resources/images/e-web-goal-"+d.name.split(" ")[1]+"-min.png"})
                .on("click", function(d){ alert("click on " + d.name); })  ;
 
   var node = svg.append("g")
@@ -113,8 +112,8 @@ function load( graph, simulation) {
   
   simulation.force("link").links(graph.links);
   simulation.force("charge",d3.forceManyBody());
-  simulation.force('x', d3.forceX().x(function(d) {return 100;}))
-  simulation.force('y', d3.forceY().y(function(d) { return 100;}))
+  simulation.force('x', d3.forceX(10))
+  simulation.force('y', d3.forceY(height/2).strength(1))
   function ticked() {
 
     link

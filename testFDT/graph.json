@@ -19,7 +19,7 @@
          "text" : "Witness the everyday lives of individuals and communities",
          "tools" : [
             {"name":"camera" , "fit": 7},
-             {"name":"notebook", "fit":10}
+             {"name":"speak to people", "fit":10}
          ]
       },
       {
@@ -68,7 +68,7 @@
          "size": 1, 
          "text" :  "Feel for the rules and resources of social institutions",
          "tools" : [
-            {"name":"notebook" , "fit": 3},
+            {"name":"speak with people" , "fit": 3},
              {"name":"eye", "fit":10}
          ]
         },
@@ -94,7 +94,7 @@
          "size": 1, 
          "text" : "Map human-environment interdependencies",
          "tools" : [
-            {"name":"kemu" , "fit": 10},
+            {"name":"voice recorder" , "fit": 10},
              {"name":"notebook", "fit":5}
          ]
       }
@@ -117,7 +117,7 @@
          "size": 1 , 
          "text" : "Collect and cite relevant contextual information",
          "tools" : [
-            {"name":"data conector" , "fit": 10},
+            {"name":"internet search" , "fit": 10},
              {"name":"notebook", "fit":4}
          ]
       },
@@ -126,8 +126,8 @@
          "size": 1, 
          "text" : "Compare and cite relevant contextual information",
          "tools" : [
-            {"name":"data conector" , "fit": 10},
-             {"name":"excel", "fit":2}
+            {"name":"internet search" , "fit": 6},
+             {"name":"excel", "fit":10}
          ]
       },
        {
@@ -135,7 +135,7 @@
          "size": 1, 
          "text" : "Historicise and cite relevant contextual information",
          "tools" : [
-            {"name":"data conector" , "fit": 10},
+            {"name":"visit archiv" , "fit": 10},
              {"name":"excel", "fit":2}
          ]
       },
@@ -190,7 +190,7 @@
             "size": 1, 
             "text" : "Develop codes that may be transmissible and adaptable to other settings",
             "tools" : [
-               {"name":"kemu" , "fit": 6},
+               {"name":"excel" , "fit": 6},
                 {"name":"notebook", "fit":10}
             ]
          },
@@ -199,7 +199,7 @@
             "size": 1, 
             "text" : "Develop rules that may be transmissible and adaptable to other settings",
             "tools" : [
-               {"name":"kemu" , "fit": 3},
+               {"name":"excel" , "fit": 3},
                 {"name":"notebook", "fit":10}
             ]
          },
@@ -208,8 +208,8 @@
             "size": 1, 
             "text" : "Develop typologies that may be transmissible and adaptable to other settings",
             "tools" : [
-               {"name":"cityengine" , "fit": 6},
-                {"name":"notebook", "fit":10}
+               {"name":"notebook" , "fit": 6},
+                {"name":"excel", "fit":10}
             ]
          }
       ]
@@ -229,16 +229,16 @@
          "name": "by assesing quantitative data" , 
          "size": 1,
          "tools" : [
-            {"name":"data conector" , "fit": 10},
-             {"name":"urscape", "fit":5}
+            {"name":"qgis" , "fit": 5},
+             {"name":"urscape", "fit":10}
          ]
         },
         {
-         "name": "by assesing qulitativee data" , 
+         "name": "by assesing qualitative data" , 
          "size": 1,
          "tools" : [
-            {"name":"data conector" , "fit": 7},
-             {"name":"urscape", "fit":3}
+            {"name":"qgis" , "fit": 2},
+             {"name":"urscape", "fit":10}
          ]
 
         },
@@ -246,7 +246,7 @@
          "name": "by clean data", 
          "size": 1,        
           "tools" : [
-            {"name":"qgisr" , "fit": 10},
+            {"name":"qgis" , "fit": 10},
              {"name":"arcgis", "fit":3}
          ]
         },
@@ -254,17 +254,16 @@
          "name": "by identifing gaps", 
          "size": 1,
          "tools" : [
-            {"name":"data conector" , "fit": 10},
             {"name":"arcgis", "fit":3},
             {"name":"qgis", "fit":7},
-             {"name":"urscape", "fit":5}
+             {"name":"urscape", "fit":10}
          ]
       },
         {
          "name": "by curate privacy protection", 
          "size": 1,
          "tools" : [
-            {"name":"data conector" , "fit": 10},
+            {"name":"urscape" , "fit": 10},
             {"name":"qgis", "fit":7},
              {"name":"excel", "fit":5}
          ]
@@ -286,18 +285,18 @@
             "name": "by using heuristic aproaches" , 
             "size": 1,
             "tools" : [
+               {"name":"acrgis" , "fit": 1},
                {"name":"qgis" , "fit": 7},
-               {"name":"urscape", "fit":10},
-                {"name":"excel", "fit":2}
+               {"name":"urscape", "fit":10}
             ]
          },
          {
             "name": "by using satisficing aproaches" , 
             "size": 1,
             "tools" : [
-               {"name":"qgis" , "fit": 6},
-               {"name":"urscape", "fit":9},
-                {"name":"excel", "fit":4}
+               {"name":"qgis" , "fit": 4},
+               {"name":"acrgis" , "fit": 2},
+               {"name":"urscape", "fit":10}
             ]
          }
         ]
@@ -329,7 +328,7 @@
             "tools" : [
                {"name":"qgis" , "fit": 2},
                {"name":"acrgis" , "fit": 3},
-               {"name":"urscape", "fit":7}
+               {"name":"urscape", "fit":10}
             ]
          }
         ]
@@ -342,8 +341,8 @@
             "name": "with play" , 
             "size": 1,
             "tools" : [
-               {"name":"grasshoper" , "fit": 3},
-               {"name":"urscape", "fit":8}
+               {"name":"notebook" , "fit": 3},
+               {"name":"urscape", "fit":10}
             ]
          }
         ]
@@ -363,15 +362,15 @@
             "name": "in spatial way" , 
             "size": 1,
             "tools" : [
-               {"name":"physical model" , "fit": 8},
-               {"name":"virtual reality", "fit":5}
+               {"name":"workshop" , "fit": 2},
+               {"name":"virtual reality", "fit":9}
             ]
          },
          {
             "name": "in tangible way" , 
             "size": 1,
             "tools" : [
-               {"name":"virtual reality", "fit":2}
+               {"name":"workshop", "fit":4}
             ]
 
          },
@@ -379,7 +378,7 @@
             "name": "in functional way" , 
             "size": 1,
             "tools" : [
-               {"name":"unity" , "fit": 8}
+               {"name":"Physical model" , "fit": 8}
             ]
          }
         ]
@@ -453,71 +452,71 @@
             "name": "by diagrams" , 
             "size": 1,
             "tools" : [
-               {"name":"powerpoint" , "fit": 8},
-               {"name":"ilustrator" , "fit": 8}
+               {"name":"Rhino3D" , "fit": 5},
+               {"name":"Adobe Suit" , "fit": 10}
             ]
          },
          {
             "name": "by 3D models" , 
             "size": 1,
             "tools" : [
-               {"name":"grasshopper" , "fit": 1},
-               {"name":"Rhino" , "fit": 8}
+               {"name":"workshop" , "fit": 1},
+               {"name":"Rhino3D" , "fit": 8}
             ]
          },
          {
             "name": "by film" , 
             "size": 1,
             "tools" : [
-               {"name":"imovie" , "fit": 9},
-               {"name":"mobile phone" , "fit": 5}
+               {"name":"Adobe Suit" , "fit": 10},
+               {"name":"workshop" , "fit": 5}
             ]
          },
          {
             "name": "by photography" , 
             "size": 1,
             "tools" : [
-               {"name":"mobile phone" , "fit": 9},
-               {"name":"camera" , "fit": 5}
+               {"name":"mobile phone" , "fit": 10},
+               {"name":"workshop" , "fit": 2}
             ]
          },
          {
             "name": "by theatre" , 
             "size": 1,
             "tools" : [
-               {"name":"dance classes" , "fit": 9}
+               {"name":"workshop" , "fit": 10}
             ]
          },
          {
             "name": "by music" , 
             "size": 1,
             "tools" : [
-               {"name":"guitar" , "fit": 3},
-               {"name":"piano" , "fit": 5}
+               {"name":"Adobe Suit" , "fit": 3},
+               {"name":"workshop" , "fit": 10}
             ]
          },
          {
             "name": "by food" , 
             "size": 1,
             "tools" : [
-               {"name":"pot" , "fit": 3},
-               {"name":"grill" , "fit": 5}
+               {"name":"mobile phone" , "fit": 3},
+               {"name":"workshop" , "fit": 10}
             ]
          },
          {
             "name": "by instalations" , 
             "size": 1,
             "tools" : [
-               {"name":"hand work" , "fit": 3},
-               {"name":"workshop" , "fit": 5}
+               {"name":"Adobe Suit" , "fit": 4},
+               {"name":"Exhibition" , "fit": 10}
             ]
          },
          {
             "name": "by prototypes" , 
             "size": 1,
             "tools" : [
-               {"name":"hand work" , "fit": 3},
-               {"name":"workshop" , "fit": 5}
+               {"name":"Adobe Suit" , "fit": 5},
+               {"name":"workshop" , "fit": 10}
             ]
          }
         ]

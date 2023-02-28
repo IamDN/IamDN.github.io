@@ -9,12 +9,10 @@ var  i = 0;
 var test =0;
 var force = d3.layout.force()
     .linkDistance(100)
-    .charge(-300)
+    .charge(-370)
     .gravity(.05)
     .size([width, height])
     .on("tick", tick);
-
-
 
 var svg = d3.select("#svg")
     .attr("width", width)
@@ -34,7 +32,7 @@ let zoom = d3.behavior.zoom()
     .on('zoom', handleZoom);
 
 function handleZoom(e) {
-  console.log("LOLO")
+
       svg.attr('transform', "translate(" + d3.event.translate + ") scale("+  d3.event.scale + ")");
     }
     var ha = d3.select("#svg")
@@ -94,11 +92,13 @@ function update() {
       .on("mouseout", function (d) {ha.call(zoom);description.text ( "");})
       .call(force.drag);
 
+ force.drag().on("dragend", dragend);    
+
   nodeEnter.append("circle")
       .attr("opacity", function(d) { 
        if (d.size ===4) return  test
        else return 1})
-       .style("stroke","#ffffff")
+       .style("stroke",colorStroke)
        ;
 
   nodeEnter.append("text")
@@ -118,6 +118,32 @@ function update() {
       node.selectAll("circle").attr("r", function(d) { 
         return 20 + d.sum * 2;}); 
 
+        function dragend(d) {
+      
+          d3.selectAll('circle').each(function(e, i) {
+          var distance = Math.sqrt(Math.pow(e.x - d.x, 2) + Math.pow(e.y- d.y, 2));
+          var inside = distance < 40 + d.sum * 2;
+          if(inside && distance >0)
+          {
+             links.push({"source": d , "target": e})
+             console.log("yes");
+             link = link.data(links, function(f) { return f.target.id; });
+             link.exit().remove();
+             link.enter().insert("line", ".node")
+                 .attr("class", "link")
+                 .attr("opacity", 1);
+
+                 
+                
+
+             force
+                 .nodes(nodes)
+                 .links(links)
+                 .start();
+          }
+        });
+        }
+
 }
 
 function tick() {
@@ -132,14 +158,21 @@ function tick() {
   updateGroupSelection();
 }
 
+
+
+
 function color(d) {
   return d.selected && d.size ===4 ? "#5EBF71"
       :d.selected && d.size ===3 ? "#83DF78"
       : d.selected && d.size ===2 ? "#B0F578"
       : d.selected && d.size ===1 ? "#D2EB73"
-      : d._children && d.size ===3 ? "919191"
-      : d._children && d.size ===2 ? "c6c6c6"
-      : "d8d6d6" ; // leaf node
+      : d._children && d.size ===3 ? "#ffffff"
+      : d._children && d.size ===2 ? "#ffffff"
+      : "#ffffff" ; // leaf node
+}
+function colorStroke(d) {
+  return d.selected ? "#999999"
+      : "#999999" ; // leaf node
 }
 
 // Toggle children on click.
@@ -224,7 +257,10 @@ function inser(object) {
         _children : null,
         size:1, 
         index: object.index, 
-        selected: true}
+        selected: true,
+        tools: object.tools
+      }
+       
        node.children.push(clone);
       }
     else  
@@ -271,7 +307,7 @@ slider.oninput = function() {
 
 function updateGroupSelection()
 {
-  console.log(slider.value)
+
   if(slider.value ==0)
        return;
     // Fill dictionary with tools and hows points
@@ -318,10 +354,10 @@ function updateGroupSelection()
          poly.setAttribute ("stroke-opacity" ,.3);
          groupsLayer.append(poly);
          var bbox = poly.getBoundingClientRect();
-         console.log(  bbox.x + bbox.width / 2);
 
-         textX =  bbox.x < width/2 ? bbox.x -50:  bbox.x + bbox.width + 50;
-         textY =  bbox.y + index *50;
+
+         textX =  bbox.x < width/2 ? 20:  width - 150;
+         textY =  bbox.y + bbox.height/2 - (index  % 3)*25;
          ++index;
          let text= document.createElementNS(svgns ,'text');
          text.id = key;
