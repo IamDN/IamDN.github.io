@@ -1,0 +1,134 @@
+{
+  "nodes": [
+    {
+      "color": "#4b4b4bff",
+      "radius": 20,
+      "id": 1,
+      "overcolor": "#666666ff",
+      "name": "How do rapidly growing cities reduce their ecological footprint?"
+    },
+    {
+      "color": "#4b4b4bff",
+      "radius": 20,
+      "id": 2,
+      "overcolor": "#666666ff",
+      "name": "How can densification be a driver for sustainable urban development?"
+    },
+    {
+      "color": "#4b4b4bff",
+      "radius": 20,
+      "id": 3,
+      "overcolor": "#666666ff",
+      "name": "How can settlement systems become more resilient?"
+    },
+    {
+      "color": "#4b4b4bff",
+      "radius": 20,
+      "id": 4,
+      "overcolor": "#666666ff",
+      "name": "How can cities contribute to climate mitigation and adaptation?"
+    },
+    {
+      "color": "#4b4b4bff",
+      "radius": 20,
+      "id": 5,
+      "overcolor": "#666666ff",
+      "name": "How does high-density urbanisation influence psychological comfort?"
+    },
+    {
+      "color": "#4b4b4bff",
+      "radius": 20,
+      "id": 6,
+      "overcolor": "#666666ff",
+      "name": "How is the energy transition impacting our cities and their hinterlands?"
+    },
+    {
+      "color": "#4b4b4bff",
+      "radius": 20,
+      "id": 7,
+      "overcolor": "#666666ff",
+      "name": "How can data be leveraged to develop sustainable cyber-physical urban environments?"
+    },
+    {
+      "color": "#4b4b4bff",
+      "radius": 20,
+      "id": 8,
+      "overcolor": "#666666ff",
+      "name": "What is the future of food production and supply in growing cities?"
+    },
+    {
+      "color": "#ff0000ff",
+      "radius": 10.0,
+      "id": 9,
+      "overcolor": "#ff0000ff",
+      "name": "Goverment"
+    },
+    {
+      "color": "#c68c00ff",
+      "radius": 10,
+      "id": 10,
+      "overcolor": "#c68c00ff",
+      "name": "Science"
+    },
+    {
+      "color": "#ff9b00ff",
+      "radius": 10,
+      "id": 11,
+      "overcolor": "#ff9b00ff",
+      "name": "Engineering"
+    },
+    {
+      "color": "#af003cff",
+      "radius": 10,
+      "id": 12,
+      "overcolor": "#af003cff",
+      "name": "Design"
+    }
+  ],
+  "links": [
+    {
+      "source_id": 1,
+      "target_id": 9
+    },
+    {
+      "source_id": 2,
+      "target_id": 12
+    },
+    {
+      "source_id": 3,
+      "target_id": 10
+    },
+    {
+      "source_id": 4,
+      "target_id": 11
+    },
+    {
+      "source_id": 5,
+      "target_id": 12
+    },
+    {
+      "source_id": 5,
+      "target_id": 10
+    },
+    {
+      "source_id": 6,
+      "target_id": 11
+    },
+    {
+      "source_id": 7,
+      "target_id": 11
+    },
+    {
+      "source_id": 7,
+      "target_id": 10
+    },
+    {
+      "source_id": 8,
+      "target_id": 12
+    },
+    {
+      "source_id": 8,
+      "target_id": 11
+    }
+  ]
+}
