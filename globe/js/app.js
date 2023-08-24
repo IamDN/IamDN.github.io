@@ -168,11 +168,7 @@ var globe = svg.append("g")
 
 function start( link) {
 
-var simulation = d3.forceSimulation()
-.force("link", d3.forceLink().id(function(d) { return d.id; }))
-.force("charge", d3.forceManyBody().strength(-10))
-.force("center", d3.forceCenter(0 , 0))
-;
+  var simulation = d3.forceSimulation();
 ;
 fetch(link)
     .then((response) => response.json())
@@ -183,8 +179,8 @@ fetch(link)
 function load( graph, simulation) {
 
   //split graph nodes in two arrays with radius 10 and 20
-var nodes1 = graph.nodes.filter(function(d){return d.radius === 10});
-var nodes2 = graph.nodes.filter(function(d){return d.radius === 20});
+  var nodes1 = graph.nodes.filter(d=> d.radius === 10);
+  var nodes2 = graph.nodes.filter(d=>  d.radius === 50);
 
   graph.links.forEach(function(d){
   d.source = d.source_id;    
@@ -206,85 +202,59 @@ var nodes2 = graph.nodes.filter(function(d){return d.radius === 20});
           .enter().append("g");
           
        
-   node.append("rect")
-          .attr("width", function (d) { return 100; })
-          .attr("height", function (d) { return 45; })
-          .style("fill", function (d) {   return  d.color  })
-          .attr("x", function (d) { return -50; })
-          .attr("y", function (d) { return -20; })
-          .style("stroke", "#969696")
-          .style("stroke-width", "0px")
-          .attr("justify-content", "center")
-          .on("click", function(d){ alert("click on " + d.name); })
+  node.append("rect")
+       .attr("width", d=>d.radius*2)
+       .attr("height", d=>d.radius)
+       .attr("x", d=>-d.radius)
+       .attr("y", d=>-d.radius/2)
+       .attr("class", "globe-rect")
+       .on("click", d=> alert("click on " + d.name))
          // .on("mouseenter", mouseenter)
          // .on("mouseleave", mouseleave)
           ;
 
   node.append("foreignObject")
-          .attr("width", function(d) { return 90})
-          .attr("height", function(d) { return 40})
-          .attr("x", function(d) { return -45;})
-          .attr("y", function(d) { return -15;})
-          .append("xhtml:div")
-          .on("click", d=>{ alert("click on " + d.name); })
-          .attr("class", "node-label")
-          .html(function(d) { return d.name; })
-          .style("text-align", "left")
-          .style("font-size",  "7.0px")
-          .style("font-family", "Helvetica")
-          .style("display", "block")
-          .style("text-align", "left")
-          .style("text-overflow", "ellipsis")
-          .style("line-height", "1.2em")
-          .style("padding", "3px")
-          .style("color", "lightgrey")
-          .style("vertical-align", "top" )
-          .style("word-wrap", "break-word")
-          ;
+      .attr("width", d=>d.radius*2)
+      .attr("height", d=>d.radius)
+      .attr("x", d=>-d.radius)
+      .attr("y", d=>-d.radius/2)
+      .append("xhtml:div")
+      .on("click", d=>{ alert("click on " + d.name); })
+      .attr("class", "node-label")
+      .html(d=>d.name)
+      ;
 
   var circle = svg.append("g")
-           .attr("class", "nodes")
-           .selectAll("circle")
-           .data(nodes1)
-           .enter().append("circle")
-           .attr("justify-content", "center")
-           .attr("r", function (d) { return 10; })
-           .style("fill", function (d) {  return "white" ; })
-           .style("stroke", "#444")
-           .style("stroke-width", "2px")
-           .on("click", function(d){ alert("click on " + d.name); })
- // .on("mouseenter", mouseenter)
- // .on("mouseleave", mouseleave)
-;
+       .attr("class", "nodes")
+       .selectAll("circle")
+       .data(nodes1)
+       .enter().append("circle")
+       .attr("class", "globe-circle")
+       .attr("r", d=>d.radius)
+       .on("click", d=>alert("click on " + d.name))
+       // .on("mouseenter", mouseenter)
+       // .on("mouseleave", mouseleave)
+       ;
   
   var label = svg.append("g")
     .selectAll("text")
-    .attr("class", "labels")
     .data(nodes1).enter().append("text")
-    .text(function(d) { return d.name; })
-    .style("font-size",  "7.0px")
-    .style("font-weight", "bold")
-    .style("font-family", "Helvetica")
-    .style("display", "block")
-    .style("text-align", "left")
-    .style("text-overflow", "ellipsis")
-    .style("line-height", "1.2em")
-    .style("color", "#444")
-    .style("padding", "3px")
-;
+    .attr("class", "globe-label")
+    .text(d=>d.name)   
+    ;
 
-
-
-
+ 
+  simulation.force("link", d3.forceLink().id(d=>d.id));
+  simulation.force("center", d3.forceCenter(0, 0));
   simulation.nodes(graph.nodes)
-    .force('collision', d3.forceCollide().radius(function(d) {
-      return 55 })).on("tick", ticked);
-  
+    .force('collision', d3.forceCollide(d=>d.radius+20))
+    .on("tick", ticked)
+    ;
   simulation.force("link").links(graph.links);
-  simulation.force("charge",d3.forceManyBody());
-  simulation.force('x', d3.forceX(1))
-  simulation.force('y', d3.forceY(1))
-
+  simulation.force("charge",d3.forceManyBody().strength(-10));
+  simulation.force('x', d3.forceX(0))
+  simulation.force('y', d3.forceY(0))
+  
   function ticked() {
 
     link

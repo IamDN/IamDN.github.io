@@ -2,56 +2,56 @@
   "nodes": [
     {
       "color": "#4b4b4bff",
-      "radius": 20,
+      "radius": 50,
       "id": 1,
       "overcolor": "#666666ff",
       "name": "How do rapidly growing cities reduce their ecological footprint?"
     },
     {
       "color": "#4b4b4bff",
-      "radius": 20,
+      "radius": 50,
       "id": 2,
       "overcolor": "#666666ff",
       "name": "How can densification be a driver for sustainable urban development?"
     },
     {
       "color": "#4b4b4bff",
-      "radius": 20,
+      "radius": 50,
       "id": 3,
       "overcolor": "#666666ff",
       "name": "How can settlement systems become more resilient?"
     },
     {
       "color": "#4b4b4bff",
-      "radius": 20,
+      "radius": 50,
       "id": 4,
       "overcolor": "#666666ff",
       "name": "How can cities contribute to climate mitigation and adaptation?"
     },
     {
       "color": "#4b4b4bff",
-      "radius": 20,
+      "radius": 50,
       "id": 5,
       "overcolor": "#666666ff",
       "name": "How does high-density urbanisation influence psychological comfort?"
     },
     {
       "color": "#4b4b4bff",
-      "radius": 20,
+      "radius": 50,
       "id": 6,
       "overcolor": "#666666ff",
       "name": "How is the energy transition impacting our cities and their hinterlands?"
     },
     {
       "color": "#4b4b4bff",
-      "radius": 20,
+      "radius": 50,
       "id": 7,
       "overcolor": "#666666ff",
       "name": "How can data be leveraged to develop sustainable cyber-physical urban environments?"
     },
     {
       "color": "#4b4b4bff",
-      "radius": 20,
+      "radius": 50,
       "id": 8,
       "overcolor": "#666666ff",
       "name": "What is the future of food production and supply in growing cities?"

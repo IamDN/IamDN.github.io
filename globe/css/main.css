@@ -5,6 +5,39 @@
   padding: 0;
   background-color: #fff;
 }
+.globe-rect {
+  stroke: none;
+  fill: rgb(80, 80, 80);
+  stroke-width: 0;
+  justify-content: center;
+}
+
+.node-label {
+  font-size: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  text-overflow: ellipsis;
+  line-height: 1.2em;
+  vertical-align: top;
+  padding: 7px;
+  word-wrap: break-word;
+  color: #dedede;
+}
+
+.globe-circle {
+  stroke: rgb(80, 80, 80);
+  fill: rgb(255, 255, 255);
+  stroke-width: 2px;
+  justify-content: center;
+}
+
+.globe-label {
+  font-size: 9px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: left;
+  color: rgb(80, 80, 80);
+}
 
 #container {
   min-width: 320px;
