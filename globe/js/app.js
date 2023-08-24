@@ -8,23 +8,26 @@ width = window.innerWidth
 height = window.innerHeight
 || document.documentElement.clientHeight
 || document.body.clientHeight;
-
 s = height/600;
 w =width/2;
 h =height/2;
+var svgRoot = d3.select("svg");
 
+svgRoot.attr("width", width)
+       .attr("height", height)
+       ;
+
+var svg  =  svgRoot.append("svg:g")
 var zoom = d3.zoom().on("zoom", function(){
   svg.attr("transform", d3.event.transform);
 });
 
+svgRoot.call(zoom) 
+     .call(zoom.transform, d3.zoomIdentity.translate(w, h).scale(s));
 
-svg = d3.select("svg")
-    .attr("width", width)
-    .attr("height", height)
-   .call(zoom) // here
-   .call(zoom.transform, d3.zoomIdentity.translate(w, h).scale(s))
-   .append("svg:g")
-   .attr("transform","translate("+w+","+h+") scale("+s+","+s+")"); 
+svg.attr("transform","translate("+w+","+h+") scale("+s+","+s+")")
+   ; 
+
 
 var svgns = "http://www.w3.org/2000/svg";
 start('./globe.json')
