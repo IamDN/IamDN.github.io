@@ -1,23 +1,30 @@
 
 var svg = d3.select("svg");
 
+//get screen width and height
+width = window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+height = window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight;
 
-width = +svg.attr("width"),
-height = +svg.attr("height")
-var sw = screen.width;
-var sh = screen.height;
+s = height/600;
+w =width/2;
+h =height/2;
 
 var zoom = d3.zoom().on("zoom", function(){
   svg.attr("transform", d3.event.transform);
 });
 
+
 svg = d3.select("svg")
     .attr("width", width)
     .attr("height", height)
    .call(zoom) // here
-   .call(zoom.transform, d3.zoomIdentity.translate(-width/4, -height/3).scale(1.2))
+   .call(zoom.transform, d3.zoomIdentity.translate(w, h).scale(s))
    .append("svg:g")
-   .attr("transform","translate("+(-width/4)+","+(-height/3)+") scale(1.2,1.2)"); 
+   .attr("transform","translate("+w+","+h+") scale("+s+","+s+")"); 
 
 var svgns = "http://www.w3.org/2000/svg";
 start('./globe.json')
@@ -32,7 +39,7 @@ var orbit1 = svg.append("ellipse")
   .attr("transform", "rotate(45)")
   .attr("cx", 0)
   .attr("cy", 0)
-  .attr("transform", "translate(" + (width/2-200) + "," + (height/2+120) + "),rotate(-25)")
+  .attr("transform", "translate(" + -200 + "," +120 + "),rotate(-25)")
   ;
 
   var orbit2 = svg.append("ellipse")
@@ -44,7 +51,7 @@ var orbit1 = svg.append("ellipse")
   .attr("transform", "rotate(45)")
   .attr("cx", 0)
   .attr("cy", 0)
-  .attr("transform", "translate(" + (width/2-200) + "," + (height/2+180) + "),rotate(-25)")
+  .attr("transform", "translate(" + -200 + "," + +180 + "),rotate(-25)")
   ;
 
   var orbit32 = svg.append("ellipse")
@@ -56,7 +63,7 @@ var orbit1 = svg.append("ellipse")
   .attr("transform", "rotate(45)")
   .attr("cx", 0)
   .attr("cy", 0)
-  .attr("transform", "translate(" + (width/2-200) + "," + (height/2+240) + "),rotate(-25)")
+  .attr("transform", "translate(" + -200 + "," + +240 + "),rotate(-25)")
   ;
 
   var circle1 = svg.append("circle")
@@ -64,9 +71,9 @@ var orbit1 = svg.append("ellipse")
   .attr("stroke", "black")
   .attr("stroke-width", "2px")
   .attr("fill", "white")
-  .attr("cx", 300)
-  .attr("cy", -150)
-  .attr("transform", "translate(" + (width/2) + "," + (height/2) + "),rotate(-25)")
+  .attr("cx", 320)
+  .attr("cy", -130)
+  .attr("transform", "translate(" + 0 + "," + 0+ "),rotate(-25)")
   .on("click", function(d){ alert("click on teams"); })
 
   var circle2 = svg.append("circle")
@@ -74,9 +81,9 @@ var orbit1 = svg.append("ellipse")
   .attr("stroke", "black")
   .attr("stroke-width", "2px")
   .attr("fill", "white")
-  .attr("cx", 400)
-  .attr("cy", -100)
-  .attr("transform", "translate(" + (width/2) + "," + (height/2) + "),rotate(-25)")
+  .attr("cx", 410)
+  .attr("cy", -70)
+  .attr("transform", "translate(" + 0 + "," + 0 + "),rotate(-25)")
   .on("click", function(d){ alert("click on events"); })
 
   var circle3 = svg.append("circle")
@@ -86,14 +93,14 @@ var orbit1 = svg.append("ellipse")
   .attr("fill", "white")
   .attr("cx", 500)
   .attr("cy", 0)
-  .attr("transform", "translate(" + (width/2) + "," + (height/2) + "),rotate(-25)")
+  .attr("transform", "translate(" + 0 + "," + 0 + "),rotate(-25)")
   .on("click", function(d){ alert("click on about"); })
 
 // label
 var label1 = svg.append("text")
-.attr("x", 290)
-.attr("y", -150)
-.attr("transform", "translate(" + (width/2) + "," + (height/2) + "),rotate(-25)")
+.attr("x", 310)
+.attr("y", -130)
+.attr("transform", "translate(" + 0 + "," + 0+ "),rotate(-25)")
 .text("Teams")
 .style("font-size",  "7.0px")
 .style("font-weight", "bold")
@@ -103,9 +110,9 @@ var label1 = svg.append("text")
 ;
 
 var label2 = svg.append("text")
-.attr("x", 390)
-.attr("y", -100)
-.attr("transform", "translate(" + (width/2) + "," + (height/2) + "),rotate(-25)")
+.attr("x", 400)
+.attr("y", -70)
+.attr("transform", "translate(" + 0 + "," + 0 + "),rotate(-25)")
 .text("Events")
 .style("font-size",  "7.0px")
 .style("font-weight", "bold")
@@ -117,7 +124,7 @@ var label2 = svg.append("text")
 var label3 = svg.append("text")
 .attr("x", 490)
 .attr("y", 0)
-.attr("transform", "translate(" + (width/2) + "," + (height/2) + "),rotate(-25)")
+.attr("transform", "translate(" + 0 + "," +0 + "),rotate(-25)")
 .text("About")
 .style("font-size",  "7.0px")
 .style("font-weight", "bold")
@@ -135,8 +142,8 @@ var filter = svg.append("defs")
 var globe = svg.append("g")
 
  globe.append("ellipse")
-  .attr("cx", width/2)
-  .attr("cy", height/2)
+  .attr("cx", 0)
+  .attr("cy", 0)
   .attr("rx", 220)
   .attr("ry", 220)
   .style("fill", "#444")
@@ -145,8 +152,8 @@ var globe = svg.append("g")
   .style("filter", "url(#blur)")
   ;
   globe.append("ellipse")
-  .attr("cx", width/2)
-  .attr("cy", height/2)
+  .attr("cx", 0)
+  .attr("cy", 0)
   .attr("rx", 220)
   .attr("ry", 220)
   .style("fill", "white")
@@ -161,7 +168,7 @@ function start( link) {
 var simulation = d3.forceSimulation()
 .force("link", d3.forceLink().id(function(d) { return d.id; }))
 .force("charge", d3.forceManyBody().strength(-10))
-.force("center", d3.forceCenter(width/2 , height/2))
+.force("center", d3.forceCenter(0 , 0))
 ;
 ;
 fetch(link)
