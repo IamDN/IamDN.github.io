@@ -1,4 +1,8 @@
+localStorage.setItem('theme', "theme-light");
+document.documentElement.className = "theme-light";
 
+var sizeX = 100;
+var sizeY = 50;
 var svg = d3.select("svg");
 
 //get screen width and height
@@ -8,6 +12,7 @@ width = window.innerWidth
 height = window.innerHeight
 || document.documentElement.clientHeight
 || document.body.clientHeight;
+
 s = height/600;
 w =width/2;
 h =height/2;
@@ -32,109 +37,7 @@ svg.attr("transform","translate("+w+","+h+") scale("+s+","+s+")")
 var svgns = "http://www.w3.org/2000/svg";
 start('./globe.json')
 
-// Add orbits as curves
-var orbit1 = svg.append("ellipse")
-  .attr("rx", "600")
-  .attr("ry", "400")
-  .attr("stroke", "#444")
-  .attr("stroke-width", "1px")
-  .attr("fill", "none")
-  .attr("transform", "rotate(45)")
-  .attr("cx", 0)
-  .attr("cy", 0)
-  .attr("transform", "translate(" + -200 + "," +120 + "),rotate(-25)")
-  ;
-
-  var orbit2 = svg.append("ellipse")
-  .attr("rx", "700")
-  .attr("ry", "500")
-  .attr("stroke", "#444")
-  .attr("stroke-width", "1px")
-  .attr("fill", "none")
-  .attr("transform", "rotate(45)")
-  .attr("cx", 0)
-  .attr("cy", 0)
-  .attr("transform", "translate(" + -200 + "," + +180 + "),rotate(-25)")
-  ;
-
-  var orbit32 = svg.append("ellipse")
-  .attr("rx", "800")
-  .attr("ry", "600")
-  .attr("stroke", "#444")
-  .attr("stroke-width", "1px")
-  .attr("fill", "none")
-  .attr("transform", "rotate(45)")
-  .attr("cx", 0)
-  .attr("cy", 0)
-  .attr("transform", "translate(" + -200 + "," + +240 + "),rotate(-25)")
-  ;
-
-  var circle1 = svg.append("circle")
-  .attr("r", "40")
-  .attr("stroke", "black")
-  .attr("stroke-width", "2px")
-  .attr("fill", "white")
-  .attr("cx", 320)
-  .attr("cy", -130)
-  .attr("transform", "translate(" + 0 + "," + 0+ "),rotate(-25)")
-  .on("click", function(d){ alert("click on teams"); })
-
-  var circle2 = svg.append("circle")
-  .attr("r", "30")
-  .attr("stroke", "black")
-  .attr("stroke-width", "2px")
-  .attr("fill", "white")
-  .attr("cx", 410)
-  .attr("cy", -70)
-  .attr("transform", "translate(" + 0 + "," + 0 + "),rotate(-25)")
-  .on("click", function(d){ alert("click on events"); })
-
-  var circle3 = svg.append("circle")
-  .attr("r", "20")
-  .attr("stroke", "black")
-  .attr("stroke-width", "2px")
-  .attr("fill", "white")
-  .attr("cx", 500)
-  .attr("cy", 0)
-  .attr("transform", "translate(" + 0 + "," + 0 + "),rotate(-25)")
-  .on("click", function(d){ alert("click on about"); })
-
-// label
-var label1 = svg.append("text")
-.attr("x", 310)
-.attr("y", -130)
-.attr("transform", "translate(" + 0 + "," + 0+ "),rotate(-25)")
-.text("Teams")
-.style("font-size",  "7.0px")
-.style("font-weight", "bold")
-.style("font-family", "Helvetica")
-.style("display", "block")
-.style("text-align", "left")
-;
-
-var label2 = svg.append("text")
-.attr("x", 400)
-.attr("y", -70)
-.attr("transform", "translate(" + 0 + "," + 0 + "),rotate(-25)")
-.text("Events")
-.style("font-size",  "7.0px")
-.style("font-weight", "bold")
-.style("font-family", "Helvetica")
-.style("display", "block")
-.style("text-align", "left")
-;
-
-var label3 = svg.append("text")
-.attr("x", 490)
-.attr("y", 0)
-.attr("transform", "translate(" + 0 + "," +0 + "),rotate(-25)")
-.text("About")
-.style("font-size",  "7.0px")
-.style("font-weight", "bold")
-.style("font-family", "Helvetica")
-.style("display", "block")
-.style("text-align", "left")
-;
+function drawSpace(orbits){
 
 //Add big ball ellipse to d3 svg as globe with blur filter
 var filter = svg.append("defs")
@@ -145,24 +48,54 @@ var filter = svg.append("defs")
 var globe = svg.append("g")
 
  globe.append("ellipse")
+  .attr("class", "globe-outer")
   .attr("cx", 0)
   .attr("cy", 0)
-  .attr("rx", 220)
-  .attr("ry", 220)
-  .style("fill", "#444")
-  .style("stroke", "#444")
-  .style("stroke-width", "2px")
+  .attr("rx", 225)
+  .attr("ry", 225)
   .style("filter", "url(#blur)")
   ;
   globe.append("ellipse")
+  .attr("class", "globe-inner")
   .attr("cx", 0)
   .attr("cy", 0)
   .attr("rx", 220)
   .attr("ry", 220)
-  .style("fill", "white")
-  .style("stroke", "#444")
-  .style("stroke-width", "2px")
   ;
+
+  //Add orbits
+  for(var i=0;i<orbits.length;i++){
+    //draw orbit
+    svg.append("ellipse")
+    .attr("class", "orbit")
+    .attr("rx", orbits[i].rx)
+    .attr("ry", orbits[i].ry)
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("transform", "translate(" + orbits[i].tx + "," +orbits[i].ty+ "),rotate(-25)")
+    ;
+
+    //draw circle
+    svg.append("circle")
+    .attr("class", "orbit-circle")
+    .attr("r", orbits[i].r)
+    .attr("cx", orbits[i].cx)
+    .attr("cy", orbits[i].cy)
+    .attr("transform", "translate(" + 0 + "," + 0+ "),rotate(-25)")
+    .on("click", function(d){ alert("click on" + orbits[i].name); })
+
+    // label
+    svg.append("text")
+    .attr("class", "orbit-label")
+    .attr("x", orbits[i].cx-orbits[i].name.length*2)
+    .attr("y", orbits[i].cy+2)
+    .attr("transform", "translate(" + 0 + "," + 0+ "),rotate(-25)")
+    .text(orbits[i].name)
+    ;
+  }
+}
+
+
 
 
 
@@ -172,15 +105,13 @@ function start( link) {
 ;
 fetch(link)
     .then((response) => response.json())
-    .then((json) => load( json,simulation  ));
+    .then((json) => onLoad( json,simulation  ));
 
 }
 
-function load( graph, simulation) {
-
-  //split graph nodes in two arrays with radius 10 and 20
-  var nodes1 = graph.nodes.filter(d=> d.radius === 10);
-  var nodes2 = graph.nodes.filter(d=>  d.radius === 50);
+function onLoad( graph, simulation) {
+  
+  drawSpace( graph.orbits);
 
   graph.links.forEach(function(d){
   d.source = d.source_id;    
@@ -188,205 +119,84 @@ function load( graph, simulation) {
   });           
   
   var link = svg.append("g")
-         .style("stroke", "#444")
          .selectAll("line")
          .data(graph.links)
-         .enter().append("line");
-
-              
-            
+         .enter().append("line")
+         .attr("class", "node-link");
+   
+  // Create groups for each node          
   var node = svg.append("g")
           .attr("class", "nodes")
           .selectAll("rect")
-          .data(nodes2)
+          .data(graph.nodes)
           .enter().append("g");
           
-       
+  // Add background rectangle for each node     
   node.append("rect")
-       .attr("width", d=>d.radius*2)
-       .attr("height", d=>d.radius)
-       .attr("x", d=>-d.radius)
-       .attr("y", d=>-d.radius/2)
-       .attr("class", "globe-rect")
+       .attr("width", sizeX)
+       .attr("height", d=>d.isQuestion?sizeY/1.5:sizeY/2)
+       .attr("x", -sizeX/2)
+       .attr("y", d=>d.isQuestion?-sizeY/2:-sizeY/4)
+      //  .attr("rx", d=>d.isQuestion?0:sizeY/4)
+      //  .attr("ry", d=>d.isQuestion?0:sizeY/4)
+       .attr("class", d=>d.isQuestion?"globe-rect":"globe-tag")
        .on("click", d=> alert("click on " + d.name))
-         // .on("mouseenter", mouseenter)
-         // .on("mouseleave", mouseleave)
-          ;
-
+        ;
+ // Text for each node
   node.append("foreignObject")
-      .attr("width", d=>d.radius*2)
-      .attr("height", d=>d.radius)
-      .attr("x", d=>-d.radius)
-      .attr("y", d=>-d.radius/2)
+      .attr("width", sizeX)
+      .attr("height", d=>d.isQuestion?sizeY:sizeY/2)
+      .attr("x", -sizeX/2)
+      .attr("y", d=>d.isQuestion?-sizeY/2:-sizeY/8)
       .append("xhtml:div")
       .on("click", d=>{ alert("click on " + d.name); })
-      .attr("class", "node-label")
-      .html(d=>d.name)
+      .attr("class", d=>d.isQuestion?"node-label":"globe-label")
+      .html(d=>d.keyName)
       ;
 
-  var circle = svg.append("g")
-       .attr("class", "nodes")
-       .selectAll("circle")
-       .data(nodes1)
-       .enter().append("circle")
-       .attr("class", "globe-circle")
-       .attr("r", d=>d.radius)
-       .on("click", d=>alert("click on " + d.name))
-       // .on("mouseenter", mouseenter)
-       // .on("mouseleave", mouseleave)
-       ;
-  
-  var label = svg.append("g")
-    .selectAll("text")
-    .data(nodes1).enter().append("text")
-    .attr("class", "globe-label")
-    .text(d=>d.name)   
-    ;
-
- 
-  simulation.force("link", d3.forceLink().id(d=>d.id));
+  simulation.force("link", d3.forceLink().id(d=>d.id).strength(0.1));
   simulation.force("center", d3.forceCenter(0, 0));
-  simulation.nodes(graph.nodes)
-    .force('collision', d3.forceCollide(d=>d.radius+20))
-    .on("tick", ticked)
-    ;
+  simulation.nodes(graph.nodes).force('collision', d3.forceCollide(sizeX/2 + 10))
   simulation.force("link").links(graph.links);
-  simulation.force("charge",d3.forceManyBody().strength(-10));
-  simulation.force('x', d3.forceX(0))
-  simulation.force('y', d3.forceY(0))
+  simulation.force("charge",d3.forceManyBody().strength(0.1));
+  simulation.force('x', d3.forceX(0).strength(d=>(d.isQuestion)?0.1:1))
+  simulation.force('y', d3.forceY(0).strength(d=>(d.isQuestion)?0.1:1))
+  simulation.on("tick", ticked);
+    // do all tick from simulation till end
+  for (var i = 0; i < 100; i++) {
+    simulation.tick();
+  }
+
   
+  // ticked();
+
   function ticked() {
 
     link
-        .attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+        .attr("x1", d=> d.source.x)
+        .attr("y1", d=> d.source.y)
+        .attr("x2", d=> d.target.x)
+        .attr("y2", d=> d.target.y);
     
     node
-
-         .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-         .attr("id", function (d) { return d.id; });
-
-    circle
-         .attr("cx", function (d) { return d.x; })
-         .attr("cy", function(d) { return d.y ; })
-         .attr("id", function (d) { return d.id; });
-    
-    label
-         .attr("x", function (d) { return d.x +13; })
-         .attr("y", function(d) { return d.y ; })
-         .attr("id", function (d) { return  "label" +d.id; });
-
-
-drag = simulation => {
-  
-  function dragstarted(event, d) {
-    // if (!event.active) simulation.alphaTarget(0.3).restart();
+        // .attr("transform",d=> d.isQuestion? "translate(" + d.x + "," + d.y + ")":"translate(0,0") TODO
+         .attr("transform",d=>"translate(" + d.x + "," + d.y + ")" )
+         .attr("id", d=> d.id);
   }
-  
-  function dragged(event, d) {
-  }
-  
-  function dragended(event, d) {
-    // if (!event.active) simulation.alphaTarget(0);
-    // d.fx = null;
-    // d.fy = null;
-  }
-  
-  return d3.drag()
-      .on("start", dragstarted)
-      .on("drag", dragged)
-      .on("end", dragended);
+
 }
 
-function click(d) 
-{
-    alert(d.name); //considering dot has a title attribute
-}
+// listen to keydown events on the document
+d3.select(document).on("keydown", function() {
+  //if d key pressed
+  if (d3.event.keyCode === 68) {
+    localStorage.setItem('theme', "theme-dark");
+    document.documentElement.className = "theme-dark";
+  }
+  // if l key pressed
+  if (d3.event.keyCode === 76) {
+    localStorage.setItem('theme', "theme-light");
+    document.documentElement.className = "theme-light";
 
   }
-function mouseenter(d) 
-{
-  d3.select(this).attr("r",function (d) { return 70;});
-  var label = document.getElementById("label" + d.id);
-  var arr=d.name.split(" ");
-  if (arr.length === 1)
-     label.style.fontSize =  (150 / arr[0].length) + "px";
-  else 
-  {
-     label.style.fontSize =   (150 / Math.max ( arr[0].length, arr[1].length))+ "px";
-     label.childNodes[0].setAttribute("dy", 7 + d.radius/2+ "px");
-     label.childNodes[1].setAttribute("dy", -4-d.radius/4 + "px");
-  }
-
-  var pathes =document.querySelectorAll('line');
-  for (i = 0; i < pathes.length; i++) 
-  {
-        if (pathes[i].x2.baseVal.value.toPrecision(4) === d.x.toPrecision(4) 
-        ||  pathes[i].x1.baseVal.value.toPrecision(4) === d.x.toPrecision(4))
-        {
-          pathes[i].setAttribute("stroke-width", 4);
-          pathes[i].setAttribute("stroke",d.color);
-        }  
-  }
-  if (d.name.includes("Goal")) 
-  {
-    var img = document.getElementById("img" + d.id);
-    img.setAttributeNS('http://www.w3.org/1999/xlink', "href",  "resources/images/e-web-goal-"+d.name.split(" ")[1]+"-min.png")
-  }
-}
-function mouseleave(d) 
-{
-  d3.select(this).attr("r",function (d) { return 20 + d.radius/2;});
-  //var circle = document.getElementById(d.id);
-  var pathes =document.querySelectorAll('line');
-  for (i = 0; i < pathes.length; i++) {
-     pathes[i].setAttribute("stroke-width", 1);
-     pathes[i].setAttribute("stroke", "#444");
-  }
-  var label = document.getElementById("label" + d.id);
-  var arr=d.name.split(" ");
-  if (arr.length === 1)
-     label.style.fontSize =   5 + (d.radius / arr[0].length) + "px";
-  else
-  {
-     label.style.fontSize =   5 + (d.radius / Math.max ( arr[0].length, arr[1].length))+ "px";
-     label.childNodes[0].setAttribute("dy", 2.5 + d.radius/4+ "px");
-     label.childNodes[1].setAttribute("dy", -1-d.radius/6 + "px");
-  }
-
-  if (d.name.includes("Goal")) 
-  {
-    var img = document.getElementById("img" + d.id);
-    img.setAttributeNS('http://www.w3.org/1999/xlink', "href",  "resources/images bw/e-web-goal-"+d.name.split(" ")[1]+"-min.png")
-  }
-}
-
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-
-function switchData(link) {
-  svg.selectAll("*").remove();
-  start(link);
-}
-
-
-}
+} );

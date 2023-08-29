@@ -1,106 +1,122 @@
 {
   "nodes": [
     {
-      "color": "#4b4b4bff",
-      "radius": 50,
+      "keyName": "Ecological Footprint",
       "id": 1,
-      "overcolor": "#666666ff",
+      "isQuestion": true,
       "name": "How do rapidly growing cities reduce their ecological footprint?"
     },
     {
-      "color": "#4b4b4bff",
-      "radius": 50,
+      "keyName": "Densification",
       "id": 2,
-      "overcolor": "#666666ff",
+      "isQuestion": true,
       "name": "How can densification be a driver for sustainable urban development?"
     },
     {
-      "color": "#4b4b4bff",
-      "radius": 50,
+      "keyName": "Resilient Settlement Systems",
       "id": 3,
-      "overcolor": "#666666ff",
+      "isQuestion": true,
       "name": "How can settlement systems become more resilient?"
     },
     {
-      "color": "#4b4b4bff",
-      "radius": 50,
+      "keyName": "Climate Mitigation and Adaptation",
       "id": 4,
-      "overcolor": "#666666ff",
+      "isQuestion": true,
       "name": "How can cities contribute to climate mitigation and adaptation?"
     },
     {
-      "color": "#4b4b4bff",
-      "radius": 50,
+      "keyName": "Well-being",
       "id": 5,
-      "overcolor": "#666666ff",
+      "isQuestion": true,
       "name": "How does high-density urbanisation influence psychological comfort?"
     },
     {
-      "color": "#4b4b4bff",
-      "radius": 50,
+      "keyName": "Renewable Energy Transition",
       "id": 6,
-      "overcolor": "#666666ff",
+      "isQuestion": true,
       "name": "How is the energy transition impacting our cities and their hinterlands?"
     },
     {
-      "color": "#4b4b4bff",
-      "radius": 50,
+      "keyName": "Digitalisation",
       "id": 7,
-      "overcolor": "#666666ff",
+      "isQuestion": true,
       "name": "How can data be leveraged to develop sustainable cyber-physical urban environments?"
     },
     {
-      "color": "#4b4b4bff",
-      "radius": 50,
+      "keyName": "Food Production and Supply",
       "id": 8,
-      "overcolor": "#666666ff",
+      "isQuestion": true,
       "name": "What is the future of food production and supply in growing cities?"
     },
     {
-      "color": "#ff0000ff",
-      "radius": 10.0,
+      "keyName": "Governance",
       "id": 9,
-      "overcolor": "#ff0000ff",
+      "isQuestion": false,
       "name": "Governance"
     },
     {
-      "color": "#c68c00ff",
-      "radius": 10,
+      "keyName": "Science",
       "id": 10,
-      "overcolor": "#c68c00ff",
+      "isQuestion": false,
       "name": "Science"
     },
     {
-      "color": "#ff9b00ff",
-      "radius": 10,
+      "keyName": "Engineering",
       "id": 11,
-      "overcolor": "#ff9b00ff",
+      "isQuestion": false,
       "name": "Engineering"
     },
     {
-      "color": "#af003cff",
-      "radius": 10,
+      "keyName": "Design",
       "id": 12,
-      "overcolor": "#af003cff",
+      "isQuestion": false,
       "name": "Design"
     }
   ],
   "links": [
     {
       "source_id": 1,
-      "target_id": 9
+      "target_id": 10
+    },
+    {
+      "source_id": 1,
+      "target_id": 11
+    },
+    {
+      "source_id": 1,
+      "target_id": 12
     },
     {
       "source_id": 2,
       "target_id": 12
     },
     {
+      "source_id": 2,
+      "target_id": 9
+    },
+    {
       "source_id": 3,
       "target_id": 10
     },
     {
+      "source_id": 3,
+      "target_id": 9
+    },
+    {
       "source_id": 4,
-      "target_id": 11
+      "target_id": 10
+    },
+    {
+      "source_id": 4,
+      "target_id": 12
+    },
+    {
+      "source_id": 4,
+      "target_id": 9
+    },
+    {
+      "source_id": 5,
+      "target_id": 10
     },
     {
       "source_id": 5,
@@ -108,27 +124,82 @@
     },
     {
       "source_id": 5,
-      "target_id": 10
+      "target_id": 9
     },
     {
       "source_id": 6,
       "target_id": 11
     },
     {
-      "source_id": 7,
-      "target_id": 11
+      "source_id": 6,
+      "target_id": 12
+    },
+    {
+      "source_id": 6,
+      "target_id": 9
     },
     {
       "source_id": 7,
       "target_id": 10
     },
     {
-      "source_id": 8,
-      "target_id": 12
+      "source_id": 7,
+      "target_id": 11
     },
     {
       "source_id": 8,
-      "target_id": 11
+      "target_id": 10
+    },
+    {
+      "source_id": 8,
+      "target_id": 9
+    },
+    {
+      "source_id": 8,
+      "target_id": 12
+    }
+  ],
+  "orbits":
+  [
+    {
+      "name": "Research",
+      "rx": 600,
+      "ry": 400,
+      "tx":-200,
+      "ty":120,
+      "r":40,
+      "cx":320,
+      "cy":-130
+    },
+    {
+      "name": "Community",
+      "rx": 700,
+      "ry": 500,
+      "tx":-200,
+      "ty":180,
+      "r":30,
+      "cx":410,
+      "cy":-70
+    },
+    {
+      "name": "Outreach",
+      "rx": 800,
+      "ry": 600,
+      "tx":-200,
+      "ty":240,
+      "r":25,
+      "cx":490,
+      "cy":-20
+    },
+    {
+      "name": "About",
+      "rx": 900,
+      "ry": 700,
+      "tx":-200,
+      "ty":300,
+      "r":20,
+      "cx":565,
+      "cy":25
     }
   ]
 }
