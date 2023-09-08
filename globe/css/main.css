@@ -8,50 +8,68 @@
 
 .theme-light {
   --color-primary: #000000;
-  --color-secondary:  grey;
+  --color-secondary:  rgb(193, 176, 87);
   --color-accent: rgb(246, 239, 215);
   --color-background: #ffffff;
   --font-color: #000000;
-  --color-blur: rgb(193, 176, 87);
+  --color-blur: grey;
 }
 .theme-dark {
-  --color-primary: #ffffff;
-  --color-secondary: grey;
-  --color-accent:rgb(246, 239, 215);
+  --color-primary: rgb(193, 176, 87);
+  --color-secondary: rgb(100, 100, 100);
+  --color-accent:rgb(193, 176, 87);
   --color-background: #000000;
   --font-color: #ffffff;
-  --color-blur: rgb(193, 176, 87);
+  --color-blur: grey;
 }
 
 .node-link {
-  stroke: var(  --color-blur);
-  stroke-width: 1px;
+  stroke: var(  --color-accent);
+  stroke-width: 0.5px;
   fill: none;
 }
 
-.node-label {
-  font-size: 9px;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  text-overflow: ellipsis;
-  line-height: 1.2em;
-  vertical-align: middle;
-  padding: 7px;
-  word-wrap: break-word;
-  color: var(  --font-color);
-}
-
 .globe-rect {
-  stroke: none;
+  stroke: var(--color-secondary);
   fill: var(--color-secondary);
   stroke-width: 0;
   justify-content: center;
 }
+
 .globe-tag {
-  stroke: var(--color-blur);
-  fill: var(--color-background);
-  stroke-width: 1px;
+  stroke: var(--color-accent);
+  fill: var(--color-accent);
+  stroke-width: 0px;
   justify-content: center;
+}
+
+.label-container {
+  display: flex;
+  /* Align Vertically */
+  align-items: center;
+  /* Align Horizontally */
+  justify-content: center;
+}
+
+.node-label {
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  /* text-overflow: ellipsis; */
+  display: flex;
+  vertical-align: middle;
+  line-height:1.3em;
+  display:-webkit-box;
+  -webkit-box-pack:center;
+  -webkit-box-align:center;
+  padding: 7px;
+  /* word-wrap: break-word; */
+  color: var(  --font-color);
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
 }
 
 .globe-label {
@@ -60,7 +78,7 @@
   font-weight: bold;
   text-align: center;
   vertical-align: top;
-  color: var(--color-blur);
+  color: var(--font-color);
 }
 .svg{
   position:fixed;
@@ -69,7 +87,6 @@
   height: 1000%;
   left: 0;
   top: 0;
-  
 }
 
 .globe-inner {
@@ -86,22 +103,33 @@
 }
 
 .orbit-label {
-  font-size: 7px;
+  font-size: 8px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-align: center;
   vertical-align: center;
-  fill: var(--color-primary);
+  fill: var(--font-color);
 }
 
 .orbit-circle {
-  stroke: none;
+  stroke: var(--color-secondary);
   fill: var(--color-secondary);
   stroke-width: 0px;
 }
 
 .orbit {
-  stroke: var(--color-secondary);
+  stroke: var(--color-blur);
   stroke-width: 1px;
   fill:  none;
+}
+
+.about {
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align:  left;
+  vertical-align: top;
+  line-height: 1.3em;
+  padding : 7px;
+  font-weight: normal;
+  color: var( --font-color);
 }

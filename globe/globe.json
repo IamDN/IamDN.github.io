@@ -52,25 +52,29 @@
       "keyName": "Governance",
       "id": 9,
       "isQuestion": false,
-      "name": "Governance"
+      "name": "Governance",
+      "fixed": true
     },
     {
       "keyName": "Science",
       "id": 10,
       "isQuestion": false,
-      "name": "Science"
+      "name": "Science",
+      "fixed": true
     },
     {
       "keyName": "Engineering",
       "id": 11,
       "isQuestion": false,
-      "name": "Engineering"
+      "name": "Engineering",
+      "fixed": true
     },
     {
       "keyName": "Design",
       "id": 12,
       "isQuestion": false,
-      "name": "Design"
+      "name": "Design",
+      "fixed": true
     }
   ],
   "links": [
@@ -165,41 +169,104 @@
       "name": "Research",
       "rx": 600,
       "ry": 400,
-      "tx":-200,
-      "ty":120,
-      "r":40,
-      "cx":320,
-      "cy":-130
+      "tx":240,
+      "ty":160,
+      "r":33,
+      "cx":300,
+      "cy":-250,
+      "a": 30
     },
     {
       "name": "Community",
       "rx": 700,
       "ry": 500,
-      "tx":-200,
-      "ty":180,
+      "tx":240,
+      "ty":220,
       "r":30,
       "cx":410,
-      "cy":-70
+      "cy":-250,
+      "a": 30
     },
     {
       "name": "Outreach",
       "rx": 800,
       "ry": 600,
-      "tx":-200,
-      "ty":240,
-      "r":25,
-      "cx":490,
-      "cy":-20
+      "tx":240,
+      "ty":280,
+      "r":27,
+      "cx":520,
+      "cy":-250,
+      "a": 30
     },
     {
       "name": "About",
       "rx": 900,
       "ry": 700,
-      "tx":-200,
-      "ty":300,
-      "r":20,
-      "cx":565,
-      "cy":25
+      "tx":240,
+      "ty":340,
+      "r":24,
+      "cx": 620,
+      "cy":-250,
+      "a": 30
+
     }
-  ]
+  ],
+
+  "map2":
+  {
+    "Design": {
+      "x": -260,
+      "y": 120,
+      "a": 0
+    },
+    "Engineering": {
+      "x": -290,
+      "y": 40,
+      "a": 0
+    },
+    "Science": {
+      "x": -290,
+      "y": -40,
+      "a": 0
+    },
+    "Governance": {
+      "x": -260,
+      "y": -120,
+      "a": 0
+    }
+
+  },
+
+  "map":
+  {
+    "Design": {
+      "x": -170,
+      "y": -170,
+      "a": 0
+    },
+    "Engineering": {
+      "x": 170,
+      "y": -170,
+      "a": 0
+    },
+    "Science": {
+      "x":-170,
+      "y":170,
+      "a": 0
+    },
+    "Governance": {
+      "x": 170,
+      "y": 170,
+      "a": 0
+    }
+
+  },
+
+  "about":
+  {
+    "x": 330,
+    "y": -150,
+    "text": "When Halman reported that the Monolith was receiving messages with increasing frequency, there seemed little doubt that something was going to happen. Poole was not the only one who found it hard to sleep in those days, even with the help of the Braincap's anti-insomnia programs. Before he finally did get to sleep, he often wondered if he would wake up again. But at last all the components of the weapon were assembled - a weapon invisible, untouchable and unimaginable to almost all the warriors who had ever lived. Nothing could have looked more harmless and innocent than the perfectly standard terabyte memory tablet, used with millions of Braincaps every day. But the fact that it was encased in a massive block of crystalline material, criss-crossed with metal bands, indicated that it was something quite out of the ordinary. Poole received it with reluctance; he wondered if the courier who had been given the awesome task of carrying the Hiroshima atom bomb's core to the Pacific airbase from which it was launched had felt the same way. And yet, if all their fears were justified, his responsibility might be even greater."
+   
+  }
 }
