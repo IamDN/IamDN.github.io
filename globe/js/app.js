@@ -85,12 +85,11 @@ function drawSpace(orbits, about)
       .on("click", function(d){ console.log(d) })
       ;
 
-
     // label
     svg
       .append("text")
       .attr("class", "orbit-label")
-      .attr("x", orbits[i].cx-orbits[i].name.length*2.3)
+      .attr("x", orbits[i].cx-orbits[i].name.length*3)
       .attr("y", orbits[i].cy+2)
       .attr("transform", "translate(" + 0 + "," + 0+ "),rotate(0)")
       .text(orbits[i].name)
