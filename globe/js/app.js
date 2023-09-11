@@ -13,6 +13,7 @@ height = window.innerHeight
 // set basic disposition
 var sizeX = 90;
 var sizeY = 50;
+var padding = 7;
 var s = height/600;
 var w =width/3.5;
 var h =height/2;
@@ -89,8 +90,8 @@ function drawSpace(orbits, about)
     svg
       .append("text")
       .attr("class", "orbit-label")
-      .attr("x", orbits[i].cx-orbits[i].name.length*3)
-      .attr("y", orbits[i].cy+2)
+      .style("width", orbits[i].r + "px")
+      .style("height", orbits[i].r + "px")
       .attr("transform", "translate(" + 0 + "," + 0+ "),rotate(0)")
       .text(orbits[i].name)
       .on("click", function(d){ console.log(d) })
@@ -161,6 +162,8 @@ function onLoad( graph, simulation) {
        .on("mouseenter", hoverIn)
        .on("mouseleave", hoverOut)
        ;
+
+  console.log(sizeX*0.6);
  // Text for each node
    node.append("foreignObject")
       .attr("class", "label-container")
@@ -172,7 +175,8 @@ function onLoad( graph, simulation) {
       .append("xhtml:div")
       .on("click", d=>{ alert("click on " + d.name); })
       .attr("class", d=>d.isQuestion?"node-label":"globe-label")
-      .attr("height", d=>d.isQuestion?"54px":sizeY/2)
+      .style("padding", d=>d.isQuestion?padding + "px":"0px")
+      .style("height", d=>d.isQuestion?(sizeX*0.6 - 2*padding) +"px":sizeY/2)
       .html(d=>d.keyName)
       .on("mouseenter", hoverIn)
       .on("mouseleave", hoverOut)

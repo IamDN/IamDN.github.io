@@ -45,9 +45,7 @@
 
 .label-container {
   display: block;
-  /* Align Vertically */
   align-items: center;
-  /* Align Horizontally */
   justify-content: center;
 }
 
@@ -60,7 +58,7 @@
   vertical-align: middle;
   justify-content: center;
   align-items: center;
-  padding: 7px;
+  line-height: 1.4em;
   /* word-wrap: break-word; */
   color: var(  --font-color);
 }
