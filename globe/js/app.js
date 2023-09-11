@@ -141,7 +141,9 @@ function onLoad( graph, simulation) {
           .selectAll("rect")
           .data(graph.nodes)
           .enter().append("g")
-          .attr("transform",d=> d.isQuestion? "translate(0,0)":"translate("+graph.map[d.name].x+","+graph.map[d.name].y+")")
+          .attr("transform",d=> d.isQuestion? 
+                "translate(0,0)":
+                "translate("+graph.map[d.name].x+","+graph.map[d.name].y+")")
 
           
   // Add background rectangle for each node     
@@ -162,19 +164,15 @@ function onLoad( graph, simulation) {
  // Text for each node
    node.append("foreignObject")
       .attr("class", "label-container")
-      .attr("width", sizeX)
-      .attr("height", d=>d.isQuestion?sizeY+10:sizeY/2)
+      .attr("width", d=>d.isQuestion? sizeX: sizeX)
+      .attr("height", d=>d.isQuestion?"54px":sizeY/2)
       .attr("x", -sizeX/2)
-      .attr("y",function(d){
-        if(d.isQuestion) 
-        return d.keyName.split(" ").length >1 ? -sizeY/2: -sizeY/2 + 12;
-        else 
-        return -sizeY/8;
-      })
+      .attr("y", d=>d.isQuestion?"-25px":-sizeY/8)
       .attr("transform",d=> d.isQuestion? "rotate(0)":"rotate("+ graph.map[d.name].a+")")
       .append("xhtml:div")
       .on("click", d=>{ alert("click on " + d.name); })
       .attr("class", d=>d.isQuestion?"node-label":"globe-label")
+      .attr("height", d=>d.isQuestion?"54px":sizeY/2)
       .html(d=>d.keyName)
       .on("mouseenter", hoverIn)
       .on("mouseleave", hoverOut)
