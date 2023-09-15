@@ -81,8 +81,8 @@ function drawSpace(orbits, about)
       .attr("cx", orbits[i].cx)
       .attr("cy", orbits[i].cy)
       .attr("transform", "translate(" + 0 + "," + 0+ "),rotate(0)")
-      .on("mouseenter", function(d){ d3.select(this).style("stroke-width", "5px"); })
-      .on("mouseleave", function(d){ d3.select(this).style("stroke-width", "0px"); })
+      .on("mouseenter", function(d){ d3.select(this).classed("hover" , true); })
+      .on("mouseleave", function(d){ d3.select(this).classed("hover" , false); })
       .on("click", function(d){ console.log(d) })
       ;
 
@@ -144,10 +144,11 @@ function onLoad( graph, simulation) {
           .selectAll("rect")
           .data(graph.nodes)
           .enter().append("g")
+          .on("mouseenter", hoverIn)
+          .on("mouseleave", hoverOut)
           .attr("transform",d=> d.isQuestion? 
                 "translate(0,0)":
                 "translate("+graph.map[d.name].x+","+graph.map[d.name].y+")")
-
           
   // Add background rectangle for each node     
    node.append("rect")
@@ -161,11 +162,14 @@ function onLoad( graph, simulation) {
        .attr("class", d=>d.isQuestion?"globe-rect":"globe-tag")
        .classed( d=>d.keyName, true)
        .on("click", d=> alert("click on " + d.name))
-       .on("mouseenter", hoverIn)
-       .on("mouseleave", hoverOut)
+       .attr("fill", function(d){
+         var ori = d3.select(this).style("fill");
+         var oriSub = ori.substring(4,ori.length-1);
+         d.rgb = ori;
+         d.hls = RGBToHSL(oriSub.split(",")[0],oriSub.split(",")[1],oriSub.split(",")[2]);
+       })
        ;
 
-  console.log(sizeX*0.6);
  // Text for each node
    node.append("foreignObject")
       .attr("class", "label-container")
@@ -180,8 +184,6 @@ function onLoad( graph, simulation) {
       .style("padding", d=>d.isQuestion?padding + "px":"0px")
       .style("height", d=>d.isQuestion?(sizeX*0.6 - 2*padding) +"px":sizeY/2)
       .html(d=>d.keyName)
-      .on("mouseenter", hoverIn)
-      .on("mouseleave", hoverOut)
       ;
 
   // setup simulation forces    
@@ -246,14 +248,23 @@ d3.select(document).on("keydown", function() {
 } );
 
 function hoverIn (d){
+  //Reset all rects and lines
+  clearInterval(timer);
+  d3.selectAll("rect").style("fill",d=>d.rgb);
+  d3.selectAll("path").style("stroke-width", "0.5px");
   // select all lines with the same source or target
+
    d3.selectAll("path")
      .filter(l=> l.source.keyName === d.keyName || l.target.keyName === d.keyName)
      .style("stroke-width", "2px")
      .attr("hack", function(l){ 
          d3.selectAll("rect")
          .filter(r=>r.keyName == l.source.keyName || r.keyName==l.target.keyName)
-         .style("stroke-width","5px")
+         .style("fill", function(r){
+          var factor = r.isQuestion? 1:0.5;
+          var ca = HSLToRGB (r.hls[0], r.hls[1], r.hls[2]+30*factor);
+          return "rgb("+ca[0]+","+ca[1]+","+ca[2]+")";
+        });
          ;
         })
      ;
@@ -261,15 +272,85 @@ function hoverIn (d){
     //get html from about div
     d3.select(".about").html(d.name  + " - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 }
+var timer;
 function hoverOut (d){
   // select all lines with the same source or target
-  d3.selectAll("path")
+  var op = 30;
+  timer = setInterval(function () {
+    if (op <= 0){
+        clearInterval(timer);
+    }
+    op -= 0.5;
+     d3.selectAll("path")
     .filter(l=>l.source.keyName === d.keyName|| l.target.keyName === d.keyName)
-    .style("stroke-width", "0.5px")
-    .attr("hack", function(l){ 
-      d3.selectAll("rect")
-      .filter(r=>r.keyName == l.source.keyName || r.keyName==l.target.keyName)
-      .style("stroke-width","0px")
-     })
-  ;
+    .style("stroke-width", (op /15 + 0.5) + "px")
+    .style("fill", function(l){ // fade out for rects
+          //Select all rects with r
+          d3.selectAll("rect")
+          .filter(r=>r.keyName == l.source.keyName || r.keyName==l.target.keyName)
+          .style("fill", function(r){
+            var factor = r.isQuestion? 1:0.5;
+            var ca = HSLToRGB (r.hls[0], r.hls[1], r.hls[2]+op*factor );
+            return "rgb("+ca[0]+","+ca[1]+","+ca[2]+")";
+          });
+          return op + "px";
+      });
+    }
+    , 60);
+}
+
+
+const HSLToRGB = (h, s, l) => {
+  s /= 100;
+  l /= 100;
+  const k = n => (n + h / 30) % 12;
+  const a = s * Math.min(l, 1 - l);
+  const f = n =>
+    l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  return [255 * f(0), 255 * f(8), 255 * f(4)];
+};
+
+function RGBToHSL(r,g,b) {
+    // Make r, g, and b fractions of 1
+    r /= 255;
+    g /= 255;
+    b /= 255;
+  
+    // Find greatest and smallest channel values
+    let cmin = Math.min(r,g,b),
+        cmax = Math.max(r,g,b),
+        delta = cmax - cmin,
+        h = 0,
+        s = 0,
+        l = 0;
+    // Calculate hue
+  // No difference
+  if (delta == 0)
+    h = 0;
+  // Red is max
+  else if (cmax == r)
+    h = ((g - b) / delta) % 6;
+  // Green is max
+  else if (cmax == g)
+    h = (b - r) / delta + 2;
+  // Blue is max
+  else
+    h = (r - g) / delta + 4;
+
+  h = Math.round(h * 60);
+    
+  // Make negative hues positive behind 360°
+  if (h < 0)
+      h += 360;
+  // Calculate lightness
+  l = (cmax + cmin) / 2;
+
+  // Calculate saturation
+  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+    
+  // Multiply l and s by 100
+  s = +(s * 100).toFixed(1);
+  l = +(l * 100).toFixed(1);
+
+  return [ h ,  s , + l ];
 }

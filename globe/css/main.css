@@ -8,15 +8,17 @@
 
 .theme-light {
   --color-primary: #000000;
-  --color-secondary:  rgb(193, 176, 87);
-  --color-accent: rgb(246, 239, 215);
+  --color-secondary: hsl(0, 0%, 39%);
+  --color-hover: hsl(0, 0%, 54%);
+  --color-accent:rgb(193, 176, 87);
   --color-background: #ffffff;
   --font-color: #000000;
   --color-blur: grey;
 }
 .theme-dark {
   --color-primary: rgb(193, 176, 87);
-  --color-secondary: rgb(100, 100, 100);
+  --color-secondary: hsl(0, 0%, 39%);
+  --color-hover: hsl(0, 0%, 54%);
   --color-accent:rgb(193, 176, 87);
   --color-background: #000000;
   --font-color: #ffffff;
@@ -34,6 +36,9 @@
   fill: var(--color-secondary);
   stroke-width: 0;
   justify-content: center;
+  z-index: 100;
+  stroke: var(--color-background);
+  stroke-width: 0.5px;
 }
 
 .globe-tag {
@@ -41,6 +46,9 @@
   fill: var(--color-accent);
   stroke-width: 0px;
   justify-content: center;
+  z-index: 100;
+  stroke: var(--color-background);
+  stroke-width: 0.5px;
 }
 
 .label-container {
@@ -61,6 +69,7 @@
   line-height: 1.4em;
   /* word-wrap: break-word; */
   color: var(  --font-color);
+  z-index: 10;
 }
 
 .globe-label {
@@ -70,6 +79,7 @@
   text-align: center;
   vertical-align: top;
   color: var(--font-color);
+  z-index: 10;
 }
 .svg{
   position:fixed;
@@ -123,4 +133,7 @@
   padding : 7px;
   font-weight: normal;
   color: var( --font-color);
+}
+.hover {
+    fill: var(--color-hover);
 }
