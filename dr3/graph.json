@@ -22,7 +22,7 @@
       {
          "name": "Case A 1" , 
          "level": 3, 
-         "text" : "Case A1<img src='data/img2.jpg'> </img>"
+         "text" : "Maybe not only image"
       },
       {
          "name": "Case A 2" , 
@@ -39,7 +39,7 @@
        {
           "name": "Case B 1" , 
           "level": 3, 
-          "text" : "Case B1<img src='data/img5.jpg'> </img>"
+          "text" : "Some text here"
        },
        {
           "name": "Case B 2" , 
