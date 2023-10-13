@@ -71,7 +71,7 @@
       {
          "name": "Case A 1" , 
          "level": 3, 
-         "text" : "<img src='data/img9.jpg'> </img>",
+         "text" : "This has more<img src='data/img9.jpg'> </img>",
          "children": [
             {
                "name": "Case A 1" , 
