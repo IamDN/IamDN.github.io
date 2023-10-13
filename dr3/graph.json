@@ -627,7 +627,7 @@
     {
      "name": "Case A",
      "level": 2,
-     "text" : "Something <img src='data/img1.jpg'> </img>", 
+     "text" : "Projects <img src='data/img1.jpg'> </img>", 
      "children": [
       {
          "name": "Case A 2", 
