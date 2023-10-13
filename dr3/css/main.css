@@ -1,0 +1,56 @@
+.actionNodes {
+  cursor: pointer;
+  stroke: #000000;
+  stroke-width: 1px;
+  fill : #ffffff;
+}
+
+.actionNodes:hover {
+  stroke: #000000;
+  stroke-width: 2px;
+  fill : #ffffff;
+}
+
+.actionLabel {
+  font: 12px helvetica;
+  pointer-events: none;
+  text-anchor: middle;
+  padding: 2px;
+  height: 24px;
+  width: 24px;
+  font-size: 10px;
+  text-align: center;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.node text {
+  font: 12px sans-serif;
+  pointer-events: none;
+  text-anchor: middle;
+}
+
+.description {
+  font: 12px sans-serif;
+  pointer-events: none;
+  text-anchor: middle;
+}
+
+.linkTemp{
+  fill: none;
+  stroke: #777575;
+  stroke-width: 1px;
+  mix-blend-mode: darken;
+}
+
+.link{
+  fill: none;
+  stroke: #777575;
+  stroke-width: 1px;
+  mix-blend-mode: darken;
+}
+
+
+
