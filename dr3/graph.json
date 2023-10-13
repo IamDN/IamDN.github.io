@@ -1,464 +1,642 @@
 {
- "name": "start",
- "size": 0,
- "text" :  "start",
+ "name": "root",
+ "level": 0,
+ "fixed": true,
+ "x": 2,
+ "y": 3,
+ "text" :  "root",
  "children": [
   {
    "name": "sence",
-   "size": 1,
-   "color": "#f45f5f",
+   "level": 1,
+   "fixed": true,
+   "x": 0,
+   "y": 0,
    "text" :  "Sense",
    "children": [
     {
-     "name": "Prompt",
-     "size": 2,
-     "color": "#ff7f7f",
-     "text" : 	"Sense human and nonhuman needs to articulate challenges", 
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"Sence Case A <img src='data/img1.jpg'> </img>", 
      "children": [
       {
-         "name": "Why" , 
-         "size": 3, 
-         "color": "#ff9999",
-         "text" : "The needs and aspirations of people are not always voiced nor heard. The structuring power of institutions is often overlooked. Natural environments and their nonhuman inhabitants are routinely marginalised.",
-         "children": [
-            {
-               "name": "What" , 
-               "size": 4, 
-               "color": "#ff9999",
-               "text" : "Human and nonhuman needs have different shapes, scales, and densities. Aspirations have distinct patterns and textures. People, institutions, and their environments are interconnected in dynamic ways.",
-               "children": [
-                  {
-                     "name": "How" , 
-                     "size": 5, 
-                     "color": "#ff9999",
-                     "text" : "Witness the everyday lives of individuals and communities. Feel for the rules and resources of social institutions. Map human-environment interdependencies across scales and durations. Acknowledge urgent demands for reform and intuit weak signals of change.",
-                     "children": [
-                        {
-                           "name": "Tools" , 
-                           "size": 6, 
-                           "color": "#ff9999",
-                           "text" : "Links"
-                        },
-                        {
-                           "name": "Tools" , 
-                           "size": 6, 
-                           "color": "#ff9999",
-                           "text" : "Links"
-                        },
-                        {
-                           "name": "Tools" , 
-                           "size": 6, 
-                           "color": "#ff9999",
-                           "text" : "Links"
-                        }
-                        ,
-                        {
-                           "name": "Tools" , 
-                           "size": 6, 
-                           "color": "#ff9999",
-                           "text" : "Links"
-                        },
-                        {
-                           "name": "Tools" , 
-                           "size": 6, 
-                           "color": "#ff9999",
-                           "text" : "Links"
-                        },
-                        {
-                           "name": "Tools" , 
-                           "size": 6, 
-                           "color": "#ff9999",
-                           "text" : "Links"
-                        }
-                     ]
-                  }
-               ]
-            }
-         ]
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "Case A1<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2" , 
+         "level": 3, 
+         "text" : "Case A2<img src='data/img3.jpg'> </img>"
+      }
+     ]
+    },
+    {
+      "name": "Case B",
+      "level": 2,
+      "text" : 	"Sence B <img src='data/img4.jpg'> </img>", 
+      "children": [
+       {
+          "name": "Case B 1" , 
+          "level": 3, 
+          "text" : "Case B1<img src='data/img5.jpg'> </img>"
+       },
+       {
+          "name": "Case B 2" , 
+          "level": 3, 
+          "text" : "CaseB2 <img src='data/img6.jpg'> </img>"
+       },
+       {
+          "name": "Case B 3" , 
+          "level": 3, 
+          "text" : "CaseB3 <img src='data/img7.jpg'> </img>"
+       }
+      ]
+     }
+   ]
+  },
+  {
+   "name": "lifeworlds",
+   "level": 1,
+   "fixed": true,
+   "x": 1,
+   "y": 0,
+   "text" :  "Lifeworlds",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"Lifeworld A <img src='data/img8.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "<img src='data/img9.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2" , 
+         "level": 3, 
+         "text" : "<img src='data/img10.jpg'> </img>"
       }
      ]
     }
    ]
   },
   {
-    "name": "lifeworlds",
-    "size": 1,
-    "color": "#ffe566",
-    "text" :  "Theorise",
-    "children": [
-     {
-      "name": "Prompt",
-      "size": 2,
-      "color": "ffee99",
-      "text" : "Theorise challenges to thicken context", 
-      "children": [
-       {
-         "name": "Why" , 
-         "size": 3 , 
-         "color": "fff2b2",
-         "text" : "Theory provides conceptual and comparative context for complex challenges.",
-         "children": [
-            {
-              "name": "What" , 
-              "size": 4 , 
-              "color": "fff2b2",
-              "text" : "Context is both specific and general. It provides a local setting for needs and aspirations, as well as a thick medium in which broader concepts, principles, and possibilities can emerge.",
-              "children": [
-               {
-                 "name": "How" , 
-                 "size": 5, 
-                 "color": "fff2b2",
-                 "text" : "Collect and compare relevant contextual information to theorise the specific circumstances of a given challenge. Historicise and cite the information appropriately. Record how local issues were articulated,and addressed. Develop codes, rules and typologies that may be transmissible and adaptable to other settings and scales.",
-                 "children": [
-                  {
-                    "name": "Tools" , 
-                    "size": 6, 
-                    "color": "fff2b2",
-                    "text" : "Links"
-                 },
-                   {
-                     "name": "Tools" , 
-                     "size": 6, 
-                     "color": "fff2b2",
-                     "text" : "Links"
-                   },
-                   {
-                     "name": "Tools" , 
-                     "size": 6, 
-                     "color": "fff2b2",
-                     "text" : "Links"
-                   },
-                     {
-                        "name": "Tools" , 
-                        "size": 6, 
-                        "color": "fff2b2",
-                        "text" : "Links"
-                     },
-                     {
-                        "name": "Tools" , 
-                        "size": 6, 
-                        "color": "fff2b2",
-                        "text" : "Links"
-                     },
-                     {
-                        "name": "Tools" , 
-                        "size": 6, 
-                        "color": "fff2b2",
-                        "text" : "Links"
-                     }
-                 ]
-              }
-              ]
-           }
-        ]
-      }
-      ]
-     }
-    ]
-  },
-  {
-     "name": "to describe",
-     "size": 1,
-     "color": "daf925",
-     "text" :  "Gather",
+   "name": "to describe",
+   "level": 1,
+   "fixed": true,
+   "x": 2,
+   "y": 0,
+   "text" :  "To describe",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"Describe <img src='data/img11.jpg'> </img>", 
      "children": [
       {
-       "name": "Prompt",
-       "size": 2,
-       "color": "e5fc64",
-       "text" : "Gather best available data to shape solution spaces",
-       "children": [
-        {
-         "name": "Why" , 
-         "size": 3,
-         "color": "#eefc9f",
-         "text": "Complex challenges generate vast and diverse data trails. Gathering this data can help shape spaces conducive to generating credible solutions.",
-         "children": [
-          {
-           "name": "What" , 
-           "size": 4,
-           "color": "#eefc9f",
-           "text": "Solution spaces set boundaries for critical experimentation, but are never neutral. They are shaped by diverse, partial and often conflicting kinds of data, by the contexts in which they are gathered, and by different agencies responsible for managing those data. Solution spaces are necessarily hybrid, provisional, and flexible.",
-           "children": [
-            {
-             "name": "How" , 
-             "size": 5,
-             "color": "#eefc9f",
-             "text": "Critically evaluate available quantitative and qualitative data for coherence, currency, and compatibility. Clean, structure and curate data with appropriate privacy and sovereignty protections. Preserve the incommensurability of non-translatable data types, such as text, numbers, images, and audio. Identify gaps and limitations in the data and consider complementary sources.",
-             "children": [
-              {
-               "name": "Tools" , 
-               "size": 6,
-               "color": "#eefc9f",
-               "text": "Links"
-              },
-              {
-               "name": "Tools" , 
-               "size": 6,
-               "color": "#eefc9f",
-               "text": "Links"
-              },
-              {
-               "name": "Tools" , 
-               "size": 6,
-               "color": "#eefc9f",
-               "text": "Links"
-               },
-               {
-                  "name": "Tools" , 
-                  "size": 6,
-                  "color": "#eefc9f",
-                  "text": "Links"
-               },
-               {
-                  "name": "Tools" , 
-                  "size": 6,
-                  "color": "#eefc9f",
-                  "text": "Links"
-               },
-               {
-                  "name": "Tools" , 
-                  "size": 6,
-                  "color": "#eefc9f",
-                  "text": "Links"
-               }
-             ]
-            }
-           ]
-          }
-         ]
-        }
-       ]
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "What<img src='data/img12.jpg'> </img>"
       }
      ]
+    }
+   ]
   },
   {
-      "name": "needs & aspirations",
-      "size": 1,
-      "color": "c8c9b1",
-      "text": "Experiment",
-      "children": [
-       {
-        "name": "Prompt",
-        "size": 2,
-         "color": "ddddd4",
-         "text": "Experiment across solution spaces to create viable ideas",
-        "children": [
-         {
-            "name": "Why" , 
-            "size": 3,
-            "color": "#ecede6",
-            "text": "Experimentation generates and evaluates a variety of ideas and possibilities, from which viable ideas can emerge.", 
-            "children": [
-             {
-                "name": "What" , 
-                "size": 4,
-                "color": "#ecede6",
-                "text": "Viable ideas bring possibilities to life. They are fostered by experimentation and fuelled by imagination. They transform perceptions into meaningful representations that can inform and guide potential courses of action in the world.", 
-                "children": [
-                 {
-                    "name": "How" , 
-                    "size": 5,
-                    "color": "#ecede6",
-                    "text": "Make safe physical and social settings to foster creative risk-taking, openness and critical inquiry. Use heuristic or ‘satisficing’ approaches, especially where the solution space is broad and uneven, to encourage rapid iteration and evaluation of ideas. Combine with more controlled experimentation in scientific, social scientific and creative research traditions.", 
-                    "children": [
-                     {
-                        "name": "Tools" , 
-                        "size": 6,
-                        "color": "#ecede6",
-                        "text": "Links"
-                     },
-                     {
-                        "name": "Tools" , 
-                        "size": 6,
-                        "color": "#ecede6",
-                        "text": "Links"
-                     },
-                     {
-                        "name": "Tools" , 
-                        "size": 6,
-                        "color": "#ecede6",
-                        "text": "Links"
-                     },
-                     {
-                        "name": "Tools" , 
-                        "size": 6,
-                        "color": "#ecede6",
-                        "text": "Links"
-                     },
-                     {
-                        "name": "Tools" , 
-                        "size": 6,
-                        "color": "#ecede6",
-                        "text": "Links"
-                     },
-                     {
-                        "name": "Tools" , 
-                        "size": 6,
-                        "color": "#ecede6",
-                        "text": "Links"
-                     }
-                    ]
-                 }
-                ]
-             }
-            ]
-         }
-        ]
-       }
-    ]
+   "name": "needs & aspirations",
+   "level": 1,
+   "fixed": true,
+   "x": 3,
+   "y": 0,
+   "text" :  "Needs & aspirations",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"<img src='data/img13.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "<img src='data/img14.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2" , 
+         "level": 3, 
+         "text" : "<img src='data/img15.jpg'> </img>"
+      }
+     ]
+    }
+   ]
   },
   {
-      "name": "formulate",
-      "size": 1,
-      "color": "757da5",
-      "text": "Situate",
-      "children": [
-       {
-        "name": "Prompt",
-        "size": 2,   
-        "color": "848bb2",
-        "text":"Situate ideas to craft enabling solutions",
+   "name": "formulate",
+   "level": 1,
+   "fixed": true,
+   "x": 0,
+   "y": 1,
+   "text" :  "Formulate",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"<img src='data/img16.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "<img src='data/img17.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "concepts",
+   "level": 1,
+   "fixed": true,
+   "x": 1,
+   "y": 1,
+   "text" :  "Concepts",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"<img src='data/img4.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2" , 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "to frame",
+   "level": 1,
+   "fixed": true,
+   "x": 2,
+   "y": 1,
+   "text" :  "To frame",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"<img src='data/img8.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2" , 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "problems",
+   "level": 1,
+   "fixed": true,
+   "x": 3,
+   "y": 1,
+   "text" :  "Problems",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"<img src='data/img9.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "analyse",
+   "level": 1,
+   "fixed": true,
+   "x": 0,
+   "y": 2,
+   "text" :  "Analyse",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "<img src='data/img10.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "data",
+   "level": 1,
+   "fixed": true,
+   "x": 1,
+   "y": 2,
+   "text" :  "Data",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "<img src='data/img18.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "to test",
+   "level": 1,
+   "fixed": true,
+   "x": 2,
+   "y": 2,
+   "text" :  "To test",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "<img src='data/img11.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "limits",
+   "level": 1,
+   "fixed": true,
+   "x": 3,
+   "y": 2,
+   "text" :  "Limits",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "<img src='data/img12.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "imagine",
+   "level": 1,
+   "fixed": true,
+   "x": 0,
+   "y": 3,
+   "text" :  "Imagine",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img1.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "potentials",
+   "level": 1,
+   "fixed": true,
+   "x": 1,
+   "y": 3,
+   "text" :  "Potentials",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "<img src='data/img9.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "to create",
+   "level": 1,
+   "fixed": true,
+   "x": 2,
+   "y": 3,
+   "text" :  "To create",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img10.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      },
+      {
+         "name": "Case A 3", 
+         "level": 3, 
+         "text" : "<img src='data/img4.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "ideas",
+   "level": 1,
+   "fixed": true,
+   "x": 3,
+   "y": 3,
+   "text" :  "Ideas",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img2.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "craft",
+   "level": 1,
+   "fixed": true,
+   "x": 0,
+   "y": 4,
+   "text" :  "Craft",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img3.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "cases",
+   "level": 1,
+   "fixed": true,
+   "x": 1,
+   "y": 4,
+   "text" :  "Cases",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img4.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "to adapt",
+   "level": 1,
+   "fixed": true,
+   "x": 2,
+   "y": 4,
+   "text" :  "To adapt",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img6.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "solutions",
+   "level": 1,
+   "fixed": true,
+   "x": 3,
+   "y": 4,
+   "text" :  "Solutions",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img8.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "empower",
+   "level": 1,
+   "fixed": true,
+   "x": 0,
+   "y": 5,
+   "text" :  "Empower",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img10.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>",
          "children": [
           {
-               "name": "Why" , 
-               "size": 3,
-               "color": "#a1a8c4",
-               "text":"Crafting ideas in specific contexts and in diverse mediums helps enabling solutions to evolve.",
-               "children": [
-                {
-                  "name": "What" , 
-                  "size": 4,
-                  "color": "#a1a8c4",
-                  "text":"Enabling solutions engage individuals and communities in the solution development process. They are crafted in diverse cyber-physical media, through materialising, digitalisation, and scaling processes. They evolve through real-world and virtual simulations, validating ideas and building capacity.",
-                  "children": [
-                   {
-                     "name": "How" , 
-                     "size": 5,
-                     "color": "#a1a8c4",
-                     "text":"Transform insights and ideas in spatial, tangible, and functional forms. Collaborate iteratively with stakeholders to scaffold solutions for real-world implementation. Create prototypes and pilots in different media to refine, scale, and stage solutions. Calibrate solutions to resources, steppingstones, and development phases.",
-                     "children": [
-                      {
-                           "name": "Tools" , 
-                           "size": 6,
-                           "color": "#a1a8c4",
-                           "text": "Links"
-                      },
-                      {
-                           "name": "Tools" , 
-                           "size": 6,
-                           "color": "#a1a8c4",
-                           "text": "Links"
-                      },
-                      {
-                           "name": "Tools" , 
-                           "size": 6,
-                           "color": "#a1a8c4",
-                           "text": "Links"
-                      },
-                        {
-                              "name": "Tools" , 
-                              "size": 6,
-                              "color": "#a1a8c4",
-                              "text": "Links"
-                        },
-                        {
-                              "name": "Tools" , 
-                              "size": 6,
-                              "color": "#a1a8c4",
-                              "text": "Links"
-                        },
-                        {
-                              "name": "Tools" , 
-                              "size": 6,
-                              "color": "#a1a8c4",
-                              "text": "Links"
-                        }
-                     ]
-                   }
-                  ]
-                }
-               ]
+           "name": "Case A 1", 
+           "level": 4, 
+           "text" : "<img src='data/img3.jpg'> </img>"
           }
          ]
       }
-      ]
+     ]
+   }
+   ]
   },
   {
-      "name": "concepts",
-      "size": 1,
-      "color": "#896f84",
-      "text": "Empower",
-      "children": [
-       {
-        "name": "Prompt",
-        "size": 2,
-         "color": "#a88fa2",
-         "text":"Empower stakeholders to devise pathways to action.",
-         "children": [
-          {
-               "name": "Why" , 
-               "size": 3,
-               "color": "#c6b3c4",
-               "text":"Individuals, communities, and institutions have the necessary knowledge, energy, and resources to devise sustainable pathways to action.",
-               "children": [
-                {
-                  "name": "What" , 
-                  "size": 4,
-                  "color": "#c6b3c4",
-                  "text":"Pathways to action translate concepts, insights, and ideas to practical solutions in short, medium, and long terms. They are actionable steps that involve building consensus among stakeholders, identifying resources and potential obstacles, and devising plans for implementation and evaluation.",
-                  "children": [
-                   {
-                     "name": "How" , 
-                     "size": 5,
-                     "color": "#c6b3c4",
-                     "text":"Recognise and accommodate the diverse motivations, worldviews, and work methods of stakeholders. Exhibit data openly, narrate context generously, and illustrate possibilities creatively. Develop scenarios, prototypes, and pilots. Create diagrams, drawings, three-dimensional models, installations, simulations, and analytical tools.",
-                     "children": [
-                      {
-                           "name": "Tools" , 
-                           "size": 6,
-                           "color": "#c6b3c4",
-                           "text": "Links"
-                      },
-                      {
-                           "name": "Tools" , 
-                           "size": 6,
-                           "color": "#c6b3c4",
-                           "text": "Links"
-                      },
-                      {
-                           "name": "Tools" , 
-                           "size": 6,
-                           "color": "#c6b3c4",
-                           "text": "Links"
-                      },
-                        {
-                              "name": "Tools" , 
-                              "size": 6,
-                              "color": "#c6b3c4",
-                              "text": "Links"
-                        },
-                        {
-                              "name": "Tools" , 
-                              "size": 6,
-                              "color": "#c6b3c4",
-                              "text": "Links"
-                        },
-                        {
-                              "name": "Tools" , 
-                              "size": 6,
-                              "color": "#c6b3c4",
-                              "text": "Links"
-                        }
-                     ]
-                   }
-                  ]
-                }
-            ]
-          }
-        ]
+   "name": "participants",
+   "level": 1,
+   "fixed": true,
+   "x": 1,
+   "y": 5,
+   "text" :  "Participants",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img17.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
       }
-    ]
+     ]
+   }
+   ]
+  },
+   {
+   "name": "to negotiate",
+   "level": 1,
+   "fixed": true,
+   "x": 2,
+   "y": 5,
+   "text" :  "To negotiate",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img16.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+   {
+   "name": "projects",
+   "level": 1,
+   "fixed": true,
+   "x": 3,
+   "y": 5,
+   "text" :  "Projects",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img1.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
   }
- ]
+ ]  
 }

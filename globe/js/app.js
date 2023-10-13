@@ -11,8 +11,8 @@ height = window.innerHeight
 || document.body.clientHeight;
 
 // set basic disposition
-var sizeX = 90;
-var sizeY = 50;
+var levelX = 90;
+var levelY = 50;
 var padding = 7;
 var s = height/600;
 var w =width/3.5;
@@ -152,12 +152,12 @@ function onLoad( graph, simulation) {
           
   // Add background rectangle for each node     
    node.append("rect")
-       .attr("width", d=>d.isQuestion? sizeX: sizeX)
-       .attr("height", d=>d.isQuestion?sizeX*0.6:sizeY/2)
-       .attr("x",d=>d.isQuestion? -sizeX/2:-sizeX/2)
-       .attr("y", d=>d.isQuestion?-sizeY/2:-sizeY/4)
-       .attr("rx", d=>d.isQuestion?4:sizeY/4)
-       .attr("ry", d=>d.isQuestion?4:sizeY/4)
+       .attr("width", d=>d.isQuestion? levelX: levelX)
+       .attr("height", d=>d.isQuestion?levelX*0.6:levelY/2)
+       .attr("x",d=>d.isQuestion? -levelX/2:-levelX/2)
+       .attr("y", d=>d.isQuestion?-levelY/2:-levelY/4)
+       .attr("rx", d=>d.isQuestion?4:levelY/4)
+       .attr("ry", d=>d.isQuestion?4:levelY/4)
        .attr("transform",d=> d.isQuestion? "rotate(0)":"rotate("+ graph.map[d.name].a+")")
        .attr("class", d=>d.isQuestion?"globe-rect":"globe-tag")
        .classed( d=>d.keyName, true)
@@ -173,23 +173,23 @@ function onLoad( graph, simulation) {
  // Text for each node
    node.append("foreignObject")
       .attr("class", "label-container")
-      .attr("width", d=>d.isQuestion? sizeX: sizeX)
-      .attr("height", d=>d.isQuestion?"54px":sizeY/2)
-      .attr("x", -sizeX/2)
-      .attr("y", d=>d.isQuestion?"-25px":-sizeY/8)
+      .attr("width", d=>d.isQuestion? levelX: levelX)
+      .attr("height", d=>d.isQuestion?"54px":levelY/2)
+      .attr("x", -levelX/2)
+      .attr("y", d=>d.isQuestion?"-25px":-levelY/8)
       .attr("transform",d=> d.isQuestion? "rotate(0)":"rotate("+ graph.map[d.name].a+")")
       .append("xhtml:div")
       .on("click", d=>{ alert("click on " + d.name); })
       .attr("class", d=>d.isQuestion?"node-label":"globe-label")
       .style("padding", d=>d.isQuestion?padding + "px":"0px")
-      .style("height", d=>d.isQuestion?(sizeX*0.6 - 2*padding) +"px":sizeY/2)
+      .style("height", d=>d.isQuestion?(levelX*0.6 - 2*padding) +"px":levelY/2)
       .html(d=>d.keyName)
       ;
 
   // setup simulation forces    
   simulation.force("link", d3.forceLink().id(d=>d.id).strength(0.0));
   simulation.force("center", d3.forceCenter(0, 0));
-  simulation.nodes(graph.nodes).force('collision', d3.forceCollide(d=>d.isQuestion?sizeX/2+10:0))
+  simulation.nodes(graph.nodes).force('collision', d3.forceCollide(d=>d.isQuestion?levelX/2+10:0))
   simulation.force("link").links(graph.links);
   simulation.force("charge",d3.forceManyBody().strength(0.1));
   simulation.force('x', d3.forceX(0).strength(d=>(d.isQuestion)?0.6:1))

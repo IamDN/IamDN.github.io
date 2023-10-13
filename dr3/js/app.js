@@ -1,7 +1,7 @@
 const svgns = "http://www.w3.org/2000/svg";
 
 
-// get real size of svg element
+// get real level of svg element
 var width = document.documentElement.clientWidth,
     height = document.documentElement.clientHeight;
  var content;
@@ -15,15 +15,15 @@ holdingX = false;
 
 
 var force = d3.layout.force()
-    .linkDistance(d=> d.source.size === 0 ? 300 : 100)
-    .charge(d => d.size === 0 ? -970 : -970)
-    .gravity(-0.001)
+    .linkDistance(d=>d.level >= 1 ? 20 : 50)
+    .charge(-400)
+    .gravity(0.001)
     .friction(0.7)
-    .linkStrength(0.3)
-    .theta(0.1)
+    .linkStrength(0.4)
+    .theta(0.2)
     .alpha(0.1)
     .size([width, height])
-    .on("tick", tick);
+    .on("tick", onTick);
 
 
 var svg = d3.select("#svg")
@@ -42,8 +42,11 @@ let zoom = d3.behavior.zoom().on('zoom', handleZoom);
 function handleZoom(e) {
       svg.attr('transform', "translate(" + d3.event.translate + ") scale("+  d3.event.scale + ")");
     }
+    d3.behavior.zoom().scaleExtent([1, 10]);
 var ha = d3.select("#svg")
 ha.call(zoom);    
+
+
 
 var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
@@ -83,58 +86,13 @@ setTimeout(function() {
   collapsed(root);
   update();
 
-  drawActions();
-
-   root.children = [];
 }, 100);
 
-function drawActions()
-{
-  // draw circle for each element in content
-  actionNodes = svg.append("g")
-    .selectAll("circle")
-    .data(content.proms)
-    .enter().append("g")
-    .attr("class", "actionNodes")
-    .on("click", d=>onActionClick(d));
 
-  actionNodes
-    .append("circle")
-    .attr("cx", d=> width/ 2 +  (d.column-2)*90 + 45)
-    .attr("cy",  d=>  height/2 + (d.action-3)*60 + 30)
-    .attr("r", 25)
-    ;
 
-  actionNodes.append("foreignObject")
-    .attr("class", "actionLabel")
-    .attr("width", 50)
-    .attr("height", 50)
-    .attr("x", d=> width/ 2 +  (d.column-2)*90 + 20)
-    .attr("y",  d=>  height/2 + (d.action-3)*60 + 15)
-    .append("xhtml:div")
-    .html(d=>d.name)
-    ;
-
-}
-
-// Handle creation of the link between nodes
-function createLink (d) {
-  // get current mouse position
-  console.log(height/2 + (d.action-3)*60 + 30);
-  linkTemp = linkTempGroup.append("line")
-  .attr("class", "linkTemp")
-  .attr("x1", x=> width/ 2 +  (d.column-2)*90 + 45)
-  .attr("y1", x=>  height/2 + (d.action-3)*60 + 30)
-  .attr("x2", x=> width/ 2 +  (d.column-2)*90 + 45)
-  .attr("y2", x=>  height/2 + (d.action-3)*60 + 30)
-  ;
-}
 
 function update() {
-  //TODO find better place for defoult setup
- root.fixed = true;
- root.x = width/2;
-  root.y = height/2;
+
  nodes = flatten(root);
   var links = d3.layout.tree().links(nodes);
 
@@ -144,7 +102,7 @@ function update() {
   link.enter().insert("line", ".node")
       .attr("id", function(d) { return "link"+ d.target.id;})
       .attr("class", "link")
-      .attr("opacity",d=> d.source.size === 0 ? 0 : 1)
+      .attr("opacity",d=> d.source.level > 1 ? 1 : 0)
      ;
 
   // Restart the force layout.
@@ -154,101 +112,59 @@ function update() {
       .start();
 
   // Update nodes.
-  node = node.data(nodes, function(d) { 
-
-    return d.id; });
-
- 
+  node = node.data(nodes, function(d) { return d.id; });
   node.exit().remove();
 
-  var nodeEnter = node.enter().append("g")
+  var nodeEnter = node
+      .enter().append("g")
       .attr("class", "node")
       .attr("id", function(d) { return "node"+ d.id;})
-      .on("mouseover", function (d) {
-        ha.on('.zoom', null);
-        //get pin image and set display to flex
-        if(d.size>0)
-        {        
-            d3.select("#pin"+d.id).style("display", "flex");
-            d3.select("#x"+d.id).style("display", "flex");
-            //d3.select("#thumb"+d.id).style("display", "flex");
-        }
-        const light = shadeColor(  d.color ,50);
-        d3.select("#rect"+d.id).style("fill",light);
-        //change opacity of the rect
+      .attr("opacity",d=> d.level > 0 ? 1 : 0)
+      .on("mouseover",  onMouseOver)
+      .on("mouseout", onMouseOut)
+      .call(force.drag)
 
-    })
-      .on("mouseout", function (d) {
-        ha.call(zoom);
-        //get pin image and set display to none if image is not unpin.png
-        if(d3.select("#pin"+d.id).attr("xlink:href") === "pin.png")
-        {
-            d3.select("#pin"+d.id).style("display", "none");
-        }
-        if(d3.select("#x"+d.id).attr("xlink:href") === "x.png")
-        {
-            d3.select("#x"+d.id).style("display", "none");
-        }
-        // if(d3.select("#thumb"+d.id).attr("xlink:href") === "thump.png")
-        //     d3.select("#thumb"+d.id).style("display", "none");
+      ;
+      force.drag().on("dragend", dragend);    
+      force.drag().on("dragstart", dragstart);
 
-        if(d.children|| (d.selected && d.size>0))
-        {
-          d3.select("#rect"+d.id).style("fill",d.color);
-            
-        } else
-        {
-          d3.select("#rect"+d.id).style("fill", "white");
-        }
-      })
-      .call(force.drag);
+nodeEnter.append("rect")
 
- force.drag().on("dragend", dragend);    
- force.drag().on("dragstart", dragstart);
-
-  nodeEnter.append("rect")
-      .on("click",d=> d.size === 0 ? null: click)
-      .attr("opacity",d=> d.size === 0 ? 0 : 1)
-       .style("stroke",colorStroke)
-       .on("click", click)
-       ;
-
+      .attr("id", function(d) { return "rect"+ d.id;})
+      .attr("width", d=> d.level > 1 ? 100 : 30)
+      .attr("height", d=> d.level > 1 ? 66 : 30)
+      .attr("x", d=> d.level > 1 ? -50 : -15)
+      .attr("y", d=> d.level > 1 ? -33 : -15)
+      .attr("rx", d=> d.level > 1 ? 0 : 15)
+      .attr("ry", d=> d.level > 1 ? 0 : 15)
+      .style("fill", "white")
+      .style("stroke", "black")
+      .style("stroke-width", 1)
+      .on("click",onNodeClick)
+ 
+      ;
 
 // create node with div as child text label
   nodeEnter.append("foreignObject")
-      .attr("width", function(d) { return getRectWidth(d) -10})
-      .attr("height",  getRectHeight )
-      .attr("x", function(d) { return -getRectWidth(d)/2 +5;})
-      .attr("y", function(d) { if (d.text) return -getRectHeight(d)/2-5; else return 0; })
+      .attr("width", d=> d.level > 1 ? 100 : 30)
+      .attr("height", d=> d.level > 1 ? 70 : 30)
+      .attr("x", d=> d.level > 1 ? -50 : -15)
+      .attr("y", d=> d.level > 1 ? -33 : -15)
       .append("xhtml:div")
-      .attr("class", "node-label")
-      .html(function(d) { if (d.size === 1 || d.size === 6)  return "<br><br>"  +d.text; 
-                          else if  (d.size === 2) return d.text;
-                          else return "<b>" + d.name + "</b><br>"  +d.text; })
-      .style("text-align", "left")
-      .style("font-size", function(d) { if ( d.text.split(" ").length < 4) return "11.5px"; else return "11.5px"; })
-      .style("font-family", "Helvetica")
-      .style("display", function(d) { if (d.size ===0 ) return  "none"; else return "block";})
-      // aligh text to center if count of words is less than 3
-      .style("text-align", function(d) { if (d.text.split(" ").length < 4) return "center"; else return "left";})
-      .style("width", function(d) { return getRectWidth(d) -10})
-      .style("height",  getRectHeight )
-      .style("text-overflow", "ellipsis")
-      .style("line-height",function(d) { if (d.text.split(" ").length < 4)  return  "1.0em"; else return "1.2em";})
-      .style("padding", "3px")
-      .style("color", "black")
-      // allign text vertically to center if count of words is less than 3
-      .style("vertical-align", function(d) { if (d.text.split(" ").length < 4) return "middle"; else return "top";} )
-      .style("word-wrap", "break-word")
+      .style("stroke", "black")
+      .html(d=>d.text)
+      .on("click", onNodeClick)
+
       ;
+
 
 
      // apped pin to node
   nodeEnter.append("image")
       .attr("xlink:href", "pin.png")
       .attr("id",function(d) { return "pin"+ d.id;})
-      .attr("x", function(d) { if(d.size ===6)return -getRectWidth(d)/2 +2 ;return -getRectWidth(d)/2 -11;;})
-      .attr("y", function(d) {if(d.size ===6)return  -getRectHeight(d)/2 -10 ; else return -getRectHeight(d)/2-22; })
+      .attr("x", d=> d.level > 1 ? -50 : -25)
+      .attr("y", d=> d.level > 1 ? -45 : -25)
       .attr("width", 15)
       .attr("height", 15)
       .style("display", "none")
@@ -269,8 +185,8 @@ function update() {
      nodeEnter.append("image")
       .attr("xlink:href", "x.png")
       .attr("id",function(d) { return "x"+ d.id;})
-      .attr("x", function(d) { if(d.size ===6)return getRectWidth(d)/2 -20; else return getRectWidth(d)/2 -10;})
-      .attr("y", function(d) { if(d.size ===6)return  -getRectHeight(d)/2 -10;return -getRectHeight(d)/2-25;})
+      .attr("x", 40)
+      .attr("y", d=> d.level > 1 ? -45 : -25)
       .attr("width", 15)
       .attr("height", 15)
       .style("display", "none")
@@ -292,146 +208,9 @@ function update() {
      
            })
       ;
-
-
-      //add image to node
-      // nodeEnter.append("image")
-      // .attr("xlink:href", "thump.png")
-      // .attr("id",function(d) { return "thumb"+ d.id;})
-      // .attr("opacity", function(d) {if (d.size ===0) return  0; else return 1})
-      // .attr("x", function(d) { return getRectWidth(d)/2 -16;})
-      // .attr("y", function(d) { if (d.text) return getRectHeight(d)-26; else return 0; })
-      // .attr("width", function(d) { if (d.children === undefined) return 30; else return 0;})
-      // .attr("height", function(d) { if (d.children === undefined) return 30; else return 0;})
-      // .style("display", function(d) {  return  "none";})
-      // .on("click", test)
-      // ;
-
-      // // add text to node on position of image
-      // nodeEnter.append("text")
-      // .attr("id",function(d) { return "text"+ d.id;})
-      // .attr("x", function(d) { return getRectWidth(d)/2 -1;;})
-      // .attr("y", function(d) { if (d.text) return getRectHeight(d)-8; else return 50; })
-      // .attr("width", function(d) { if (d.children === undefined) return 20; else return 0;})
-      // .attr("height", function(d) { if (d.children === undefined) return 20; else return 0;})
-      // .style("font-size", "12px")
-      // .style("fill", "white")
-      // .attr("opacity", 0)
-      // .text(function(d) { return d.likes; })
-      // ;
-
-      function test (d)
-      {
-        //select the button and update test value
-        if(d.children === undefined)
-        {
-        d.likes += 1;
-        d3.select(this).html(d.likes);
-        var text = document.getElementById( "text" + d.id);
-        text.textContent = d.likes;
-        text.setAttribute("opacity", 1);
-        document.getElementById( "thumb" + d.id).setAttribute("href", "thumpup.png")
-        updateSize(nodes);
-        }
-      }
-
-
-
-    
-  node.selectAll("rect")
-       .attr("id",function(d) { return "rect"+ d.id;})
-       .attr("width", getRectWidth)
-       .attr("height", getRectHeight )
-       .style("fill", color)
-       .attr("x", function(d) { return -getRectWidth(d)/2;})
-       .attr("y", function(d) {if (d.text) return -getRectHeight(d)/2-10; else return 0;})
-        .attr("rx", function(d) {if (d.size ===6) return 70; else return 0;})
-        .attr("ry", function(d) {if (d.size ===6) return 70; else return 0;})
-       ;
-       
-
-       // add rectangle to node 
-
-    function dragstart(d) {
-      testX = d.x;
-    }
-
-    // get rect height
-    function getRectHeight(d)
-    { 
-      if(d.text) 
-         return d.text.split(" ").length > 8 ? 200 : 70;
-      else 
-        return 0;
-    }
-    function getRectWidth(d)
-    { 
-      if(d.text) 
-      {
-        if( Math.sqrt(d.text.split(" ").length <9) )return 140;
-        else return 200;
-         
-      } else return 0;
-    }
-
-  function dragend(d) {
-      
-    if (testX === d.x)
-        {
-           return;
-        }
-    d3.selectAll('rect').each(function(e, i) {
-    var distance = Math.sqrt(Math.pow(e.x - d.x, 2) + Math.pow(e.y- d.y, 2));
-
-
-    if(distance < 50 && e.id !== d.id )
-    {
-      links.push({"source": d , "target": e})
-   
-      link = link.data(links, function(f) { return f.target.id; });
-      link.exit().remove();
-      link.enter().insert("line", ".node")
-                 .attr("class", "link")
-                 .attr("opacity", 1);
-
-      force
-           .nodes(nodes)
-          .links(links)
-           .start();
-       
-      if(d.groupID)
-             e.groupID = d.groupID;
-     else if (e.groupID)
-              d.groupID = e.groupID; 
-      else
-        {
-          d.groupID = gi;
-          e.groupID = gi;
-                     ++gi;
-        }    
-         updateGroups();
-        }
-
-      });
-      if (d.fixed)
-      {
-        d.x = d.px = Math.round(d.x / 50) * 50;
-        d.y = d.py = Math.round(d.y / 50) * 50;
-      }
-      }
- 
 }
 
-function tick() {
-  link.attr("x1", function(d) { return d.source.x; })
-      .attr("y1", function(d) { return d.source.y; })
-      .attr("x2", function(d) { return d.target.x; })
-      .attr("y2", function(d) { return d.target.y; })
-      ;
 
-  node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-  updateGroups();
-}
 // document.onkeydown = function (e) {
   
 //   force.charge(0)   
@@ -457,30 +236,6 @@ function colorStroke(d) {
       : "#999999" ; // leaf node
 }
 
-// Toggle children on click.
-function click(d) {
-  if(d3.event !=null)
-  if (d3.event.defaultPrevented) return; // ignore drag
-
-  console.log(d);
-  if(d.children === undefined && d.selected)
-  {
-    inser(d);
-    d.selected = true;
-    update();
-    return;
-  } 
-
-  else if (d.children) {
-    d._children = d.children;
-    d.children = null;
-  } else {
-    d.children = d._children;
-    d._children = null;
-  }
-  d.selected = true;
-  update();
-}
 
 // Returns a list of all nodes under the root.
 function flatten(root) {
@@ -502,7 +257,9 @@ function init(root) {
     node.likes = 0;
     node.pin = false;
     node.parrentIdx = pi;
-   
+    node.x = node.x !=null? width/2 + (node.x -2) *50: width/2;
+    node.y = node.y !=null? height/2 +(node.y-2) *35: height/2;
+
 	  if(node.children) {
       node.children.forEach(function(item, index){
         initChildren(item,node.id );
@@ -510,7 +267,7 @@ function init(root) {
 	  }
   }
   initChildren(root,0);
-
+  
 }
 
 function collapsed(root) {
@@ -524,7 +281,7 @@ function collapsed(root) {
 	  }
   }
   root.children.forEach(hideChildren);
-  hideChildren(root);
+ // hideChildren(root); // hide children of root
 }
 // Duplicate the node
 function inser(object) {
@@ -539,7 +296,7 @@ function inser(object) {
         children : undefined,
         id : ++i, 
         _children : null,
-        size:object.size, 
+        level:object.level, 
         index: object.index, 
         selected: true,
         tools: object.tools,
@@ -560,7 +317,7 @@ function inser(object) {
   check(root);
 }
 
-function updateSize(nodes) {
+function updatelevel(nodes) {
 
   function sum(node) {
     if(node.children)
@@ -693,7 +450,7 @@ function updateGroups()
 
 function shadeColor(color, amount) {
 
-  return '#' + color.replace(/^#/, '').replace(/../g, color => ('0'+Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+  //return '#' + color.replace(/^#/, '').replace(/../g, color => ('0'+Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
 
 }
 
@@ -708,3 +465,16 @@ document.body.addEventListener('keyup', (event) => {
   holdingX = false;
   force.start();
 });
+
+function onTick() {
+  link.attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; })
+      ;
+
+  node.attr("transform", function(d) { 
+       return "translate(" + d.x + "," + d.y + ")";
+  } );
+  updateGroups();
+}
