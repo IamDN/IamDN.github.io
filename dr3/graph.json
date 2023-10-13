@@ -71,7 +71,19 @@
       {
          "name": "Case A 1" , 
          "level": 3, 
-         "text" : "<img src='data/img9.jpg'> </img>"
+         "text" : "<img src='data/img9.jpg'> </img>",
+         "children": [
+            {
+               "name": "Case A 1" , 
+               "level": 4, 
+               "text" : "Some detailed text"
+            },
+            {
+               "name": "Case A 2" , 
+               "level": 4, 
+               "text" : "Very down to sensing"
+            }
+           ]
       },
       {
          "name": "Case A 2" , 
