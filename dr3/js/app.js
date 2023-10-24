@@ -11,11 +11,15 @@ var  i = 0;
 var testX =0;
 var gi =1;
 var test =0;
+var nodeSize = 50;
+var isBeginerMode = true;
+var current =-1;
+var links =[];
+
 holdingX = false;
 
-
 var force = d3.layout.force()
-    .linkDistance(d=>d.level >= 1 ? 20 : 50)
+    .linkDistance(d=>d.level >= 1 ? nodeSize/2 : nodeSize)
     .charge(-400)
     .gravity(0.001)
     .friction(0.7)
@@ -36,7 +40,7 @@ svg.append("g")
     .attr("id", "groups");
 
 const groupsLayer = document.getElementById("groups");
-
+var linkGroup = svg.append("g");
 let zoom = d3.behavior.zoom().on('zoom', handleZoom);
 
 function handleZoom(e) {
@@ -45,8 +49,6 @@ function handleZoom(e) {
     d3.behavior.zoom().scaleExtent([1, 10]);
 var ha = d3.select("#svg")
 ha.call(zoom);    
-
-
 
 var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
@@ -78,17 +80,17 @@ d3.json("graph.json", function(error, json) {
   root = json;
 });
 
+const history = new History(svg);
 //run function 3 seconds after start
 setTimeout(function() {
-
   init(root);
   update(); // HACK to avoid starting tick from 0 position on default
   collapsed(root);
   update();
 
+  history.dotsGroup = svg.append("g").attr("class", "dotsGroup"); //HAck
+
 }, 100);
-
-
 
 
 function update() {
@@ -118,46 +120,42 @@ function update() {
   var nodeEnter = node
       .enter().append("g")
       .attr("class", "node")
+      .classed("active", d=> (d.row != null && d.row ==0) || d.level > 1)
       .attr("id", function(d) { return "node"+ d.id;})
-      .attr("opacity",d=> d.level > 0 ? 1 : 0)
+      .attr("opacity",d=> d.level > 0 ? 1 : 0) // hide root node
       .on("mouseover",  onMouseOver)
       .on("mouseout", onMouseOut)
       .call(force.drag)
-
       ;
-      force.drag().on("dragend", dragend);    
-      force.drag().on("dragstart", dragstart);
+      //donť drag root and action 
+      force.drag().on("dragend", dragend);  
+      force.drag().on("dragstart",dragstart);
 
 nodeEnter.append("rect")
-
       .attr("id", function(d) { return "rect"+ d.id;})
-      .attr("width", d=> d.level > 1 ? 100 : 30)
-      .attr("height", d=> d.level > 1 ? 66 : 30)
-      .attr("x", d=> d.level > 1 ? -50 : -15)
-      .attr("y", d=> d.level > 1 ? -33 : -15)
-      .attr("rx", d=> d.level > 1 ? 0 : 15)
-      .attr("ry", d=> d.level > 1 ? 0 : 15)
-      .style("fill", "white")
-      .style("stroke", "black")
-      .style("stroke-width", 1)
+      .attr("width", d=> d.level > 1 ? 100 : nodeSize)
+      .attr("height", d=> d.level > 1 ? 66 : nodeSize)
+      .attr("x", d=> d.level > 1 ? -50 : -nodeSize/2)
+      .attr("y", d=> d.level > 1 ? -33 : -nodeSize/2)
+      .attr("rx", d=> d.level > 1 ? 0 : nodeSize/2)
+      .attr("ry", d=> d.level > 1 ? 0 : nodeSize/2)
+      .style("z-index", 1000)
       .on("click",onNodeClick)
- 
       ;
 
 // create node with div as child text label
   nodeEnter.append("foreignObject")
-      .attr("width", d=> d.level > 1 ? 100 : 30)
-      .attr("height", d=> d.level > 1 ? 70 : 30)
-      .attr("x", d=> d.level > 1 ? -50 : -15)
-      .attr("y", d=> d.level > 1 ? -33 : -15)
+      .attr("width", d=> d.level > 1 ? 100 : nodeSize)
+      .attr("height", d=> d.level > 1 ? 70 : nodeSize)
+      .attr("x", d=> d.level > 1 ? -50 : -nodeSize/2)
+      .attr("y", d=> d.level > 1 ? -33 : -nodeSize/2)
       .append("xhtml:div")
-      .style("stroke", "black")
+      .attr("class",d=> d.level>1? "toolLabel" : "actionLabel" )
+      .style("width", d=> d.level > 1 ? 100 : nodeSize)
+      .style("height", d=> d.level > 1 ? 70 : nodeSize)
       .html(d=>d.text)
       .on("click", onNodeClick)
-
       ;
-
-
 
      // apped pin to node
   nodeEnter.append("image")
@@ -177,7 +175,8 @@ nodeEnter.append("rect")
               {
                 d.fixed = true;
                 d3.select(this).attr("xlink:href", "unpin.png")
-         }})
+              }
+        })
       ;
 
 
@@ -257,8 +256,8 @@ function init(root) {
     node.likes = 0;
     node.pin = false;
     node.parrentIdx = pi;
-    node.x = node.x !=null? width/2 + (node.x -2) *50: width/2;
-    node.y = node.y !=null? height/2 +(node.y-2) *35: height/2;
+    node.x = node.row !=null? width/2 + (node.row -2) *nodeSize*2: width/2;
+    node.y = node.col !=null? height/2 +(node.col-2) *nodeSize*1.5  : height/2;
 
 	  if(node.children) {
       node.children.forEach(function(item, index){
@@ -466,15 +465,13 @@ document.body.addEventListener('keyup', (event) => {
   force.start();
 });
 
-function onTick() {
+function onTick() { 
   link.attr("x1", function(d) { return d.source.x; })
       .attr("y1", function(d) { return d.source.y; })
       .attr("x2", function(d) { return d.target.x; })
       .attr("y2", function(d) { return d.target.y; })
       ;
 
-  node.attr("transform", function(d) { 
-       return "translate(" + d.x + "," + d.y + ")";
-  } );
+ node.attr("transform", d=> "translate(" + d.x + "," + d.y + ")" );
   updateGroups();
 }

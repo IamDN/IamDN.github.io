@@ -1,20 +1,41 @@
+.container {  
+  background-color: #ffffff00;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .node {
-  cursor: pointer;
-  stroke: #000000;
+  cursor: none;
+  stroke: #999999;
+  color: #999999;
   stroke-width: 1px;
   fill : white;
 }
 
-.actionLabel {
-  font: 12px helvetica;
+.active {
+  cursor: pointer;
+  stroke: #000000;
+  color: #000000;
+  fill : white;
+}
+
+
+.toolLabel {
+  font: 9px helvetica;
+}
+
+.actionLabel {  
+  font: 9px helvetica;
   pointer-events: none;
   text-anchor: middle;
-  padding: 2px;
-  height: 24px;
-  width: 24px;
-  font-size: 10px;
+  height: 50px;
+  width: 50px;
   text-align: center;
-  color: #000000;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,6 +69,149 @@ div {
   font-size: 10px;
 
 }
+
+header {
+  float: left;
+  clear: none; 
+  overflow: hidden;
+  height : 50px;
+  display: flex;
+}
+
+/* Dropdown Button */
+.dropbtn {
+background-color: #f90202;
+color: white;
+padding: 0px;
+border: none;
+cursor: pointer;
+border-radius: 25px;
+}
+/* Button */
+.button {
+  background-color: #000000;
+  color: white;
+  padding: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  }
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  opacity: 0.5;
+
+}
+
+.button:hover, .dropbtn:focus {
+  opacity: 0.7;
+
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+position: absolute;
+/* display: inline-block; */
+right : 0;
+top : 20px;
+padding-top: 10px;
+padding-right: 10px;
+}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 120px;
+right: 10px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+color: black;
+font-family: Arial, Helvetica, sans-serif;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.history {
+position: absolute;
+top: 30px;
+right: 80px;
+}
+
+.pro {
+  position: absolute;
+  top: 30px;
+  right: 190px;
+  }
+
+.logo {
+ width : 325px;
+ height : 42px;
+ padding:   30px; 
+
+}
+
+.hover-div 
+{
+  height: 100%;
+  width: 300px;
+  position: absolute;
+  right: 0;
+  top: 80px;
+  padding-top: 30px;
+  background-color: rgb(0, 0, 0);
+}
+
+   .hover-content
+   {
+    top : 20;
+    padding: 8px;
+    display: block;
+    max-height: 85vh;
+    margin: 5px;
+    overflow-y: auto;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 15px;
+    color: rgb(255, 255, 255);
+   }
+
+   .block
+    {
+      display: block;
+    }
+    .none
+    {
+      display: none;
+    }
+
+    .group-link
+    {
+      stroke:lightgray;
+      stroke-width:150;
+      stroke-linejoin:round;
+      stroke-linecap:round;
+      stroke-opacity:1
+    }
+    .hidden
+    {
+      display: none;
+    }
+
+
 
 
 

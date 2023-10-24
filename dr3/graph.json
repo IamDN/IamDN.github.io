@@ -2,16 +2,16 @@
  "name": "root",
  "level": 0,
  "fixed": true,
- "x": 2,
- "y": 3,
+ "row": 2,
+ "col": 3,
  "text" :  "root",
  "children": [
   {
-   "name": "sence",
+   "name": "sence", 
    "level": 1,
    "fixed": true,
-   "x": 0,
-   "y": 0,
+   "row": 0,
+   "col": 0,
    "text" :  "Sense",
    "children": [
     {
@@ -59,8 +59,8 @@
    "name": "lifeworlds",
    "level": 1,
    "fixed": true,
-   "x": 1,
-   "y": 0,
+   "row": 1,
+   "col": 0,
    "text" :  "Lifeworlds",
    "children": [
     {
@@ -98,8 +98,8 @@
    "name": "to describe",
    "level": 1,
    "fixed": true,
-   "x": 2,
-   "y": 0,
+   "row": 2,
+   "col": 0,
    "text" :  "To describe",
    "children": [
     {
@@ -120,8 +120,8 @@
    "name": "needs & aspirations",
    "level": 1,
    "fixed": true,
-   "x": 3,
-   "y": 0,
+   "row": 3,
+   "col": 0,
    "text" :  "Needs & aspirations",
    "children": [
     {
@@ -147,8 +147,8 @@
    "name": "formulate",
    "level": 1,
    "fixed": true,
-   "x": 0,
-   "y": 1,
+   "row": 0,
+   "col": 1,
    "text" :  "Formulate",
    "children": [
     {
@@ -174,8 +174,8 @@
    "name": "concepts",
    "level": 1,
    "fixed": true,
-   "x": 1,
-   "y": 1,
+   "row": 1,
+   "col": 1,
    "text" :  "Concepts",
    "children": [
     {
@@ -201,8 +201,8 @@
    "name": "to frame",
    "level": 1,
    "fixed": true,
-   "x": 2,
-   "y": 1,
+   "row": 2,
+   "col": 1,
    "text" :  "To frame",
    "children": [
     {
@@ -228,8 +228,8 @@
    "name": "problems",
    "level": 1,
    "fixed": true,
-   "x": 3,
-   "y": 1,
+   "row": 3,
+   "col": 1,
    "text" :  "Problems",
    "children": [
     {
@@ -255,8 +255,8 @@
    "name": "analyse",
    "level": 1,
    "fixed": true,
-   "x": 0,
-   "y": 2,
+   "row": 0,
+   "col": 2,
    "text" :  "Analyse",
    "children": [
     {
@@ -282,8 +282,8 @@
    "name": "data",
    "level": 1,
    "fixed": true,
-   "x": 1,
-   "y": 2,
+   "row": 1,
+   "col": 2,
    "text" :  "Data",
    "children": [
     {
@@ -309,8 +309,8 @@
    "name": "to test",
    "level": 1,
    "fixed": true,
-   "x": 2,
-   "y": 2,
+   "row": 2,
+   "col": 2,
    "text" :  "To test",
    "children": [
     {
@@ -336,8 +336,8 @@
    "name": "limits",
    "level": 1,
    "fixed": true,
-   "x": 3,
-   "y": 2,
+   "row": 3,
+   "col": 2,
    "text" :  "Limits",
    "children": [
     {
@@ -363,8 +363,8 @@
    "name": "imagine",
    "level": 1,
    "fixed": true,
-   "x": 0,
-   "y": 3,
+   "row": 0,
+   "col": 3,
    "text" :  "Imagine",
    "children": [
     {
@@ -390,8 +390,8 @@
    "name": "potentials",
    "level": 1,
    "fixed": true,
-   "x": 1,
-   "y": 3,
+   "row": 1,
+   "col": 3,
    "text" :  "Potentials",
    "children": [
     {
@@ -417,8 +417,8 @@
    "name": "to create",
    "level": 1,
    "fixed": true,
-   "x": 2,
-   "y": 3,
+   "row": 2,
+   "col": 3,
    "text" :  "To create",
    "children": [
     {
@@ -449,8 +449,8 @@
    "name": "ideas",
    "level": 1,
    "fixed": true,
-   "x": 3,
-   "y": 3,
+   "row": 3,
+   "col": 3,
    "text" :  "Ideas",
    "children": [
     {
@@ -471,8 +471,8 @@
    "name": "craft",
    "level": 1,
    "fixed": true,
-   "x": 0,
-   "y": 4,
+   "row": 0,
+   "col": 4,
    "text" :  "Craft",
    "children": [
     {
@@ -493,8 +493,8 @@
    "name": "cases",
    "level": 1,
    "fixed": true,
-   "x": 1,
-   "y": 4,
+   "row": 1,
+   "col": 4,
    "text" :  "Cases",
    "children": [
     {
@@ -515,8 +515,8 @@
    "name": "to adapt",
    "level": 1,
    "fixed": true,
-   "x": 2,
-   "y": 4,
+   "row": 2,
+   "col": 4,
    "text" :  "To adapt",
    "children": [
     {
@@ -537,8 +537,8 @@
    "name": "solutions",
    "level": 1,
    "fixed": true,
-   "x": 3,
-   "y": 4,
+   "row": 3,
+   "col": 4,
    "text" :  "Solutions",
    "children": [
     {
@@ -559,8 +559,8 @@
    "name": "empower",
    "level": 1,
    "fixed": true,
-   "x": 0,
-   "y": 5,
+   "row": 0,
+   "col": 5,
    "text" :  "Empower",
    "children": [
     {
@@ -588,8 +588,8 @@
    "name": "participants",
    "level": 1,
    "fixed": true,
-   "x": 1,
-   "y": 5,
+   "row": 1,
+   "col": 5,
    "text" :  "Participants",
    "children": [
     {
@@ -610,8 +610,8 @@
    "name": "to negotiate",
    "level": 1,
    "fixed": true,
-   "x": 2,
-   "y": 5,
+   "row": 2,
+   "col": 5,
    "text" :  "To negotiate",
    "children": [
     {
@@ -632,8 +632,8 @@
    "name": "projects",
    "level": 1,
    "fixed": true,
-   "x": 3,
-   "y": 5,
+   "row": 3,
+   "col": 5,
    "text" :  "Projects",
    "children": [
     {

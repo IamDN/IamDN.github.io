@@ -125,66 +125,66 @@ function onLoad( graph, simulation) {
   // draw space
   drawSpace( graph.orbits, graph.about);
 
-  // init links
-  graph.links.forEach(function(d){
-  d.source = d.source_id;    
-  d.target = d.target_id;
-  });           
+//   // init links
+//   graph.links.forEach(function(d){
+//   d.source = d.source_id;    
+//   d.target = d.target_id;
+//   });           
   
-  var link = svg.append("g")
-         .selectAll("path")
-         .data(graph.links)
-         .enter().append("path")
-         .attr("class", "node-link")
-         ;
+//   var link = svg.append("g")
+//          .selectAll("path")
+//          .data(graph.links)
+//          .enter().append("path")
+//          .attr("class", "node-link")
+//          ;
    
-  // Create groups for each node          
-  var node = svg.append("g")
-          .attr("class", "nodes")
-          .selectAll("rect")
-          .data(graph.nodes)
-          .enter().append("g")
-          .on("mouseenter", hoverIn)
-          .on("mouseleave", hoverOut)
-          .attr("transform",d=> d.isQuestion? 
-                "translate(0,0)":
-                "translate("+graph.map[d.name].x+","+graph.map[d.name].y+")")
+//   // Create groups for each node          
+//   var node = svg.append("g")
+//           .attr("class", "nodes")
+//           .selectAll("rect")
+//           .data(graph.nodes)
+//           .enter().append("g")
+//           .on("mouseenter", hoverIn)
+//           .on("mouseleave", hoverOut)
+//           .attr("transform",d=> d.isQuestion? 
+//                 "translate(0,0)":
+//                 "translate("+graph.map[d.name].x+","+graph.map[d.name].y+")")
           
-  // Add background rectangle for each node     
-   node.append("rect")
-       .attr("width", d=>d.isQuestion? levelX: levelX)
-       .attr("height", d=>d.isQuestion?levelX*0.6:levelY/2)
-       .attr("x",d=>d.isQuestion? -levelX/2:-levelX/2)
-       .attr("y", d=>d.isQuestion?-levelY/2:-levelY/4)
-       .attr("rx", d=>d.isQuestion?4:levelY/4)
-       .attr("ry", d=>d.isQuestion?4:levelY/4)
-       .attr("transform",d=> d.isQuestion? "rotate(0)":"rotate("+ graph.map[d.name].a+")")
-       .attr("class", d=>d.isQuestion?"globe-rect":"globe-tag")
-       .classed( d=>d.keyName, true)
-       .on("click", d=> alert("click on " + d.name))
-       .attr("fill", function(d){
-         var ori = d3.select(this).style("fill");
-         var oriSub = ori.substring(4,ori.length-1);
-         d.rgb = ori;
-         d.hls = RGBToHSL(oriSub.split(",")[0],oriSub.split(",")[1],oriSub.split(",")[2]);
-       })
-       ;
+//   // Add background rectangle for each node     
+//    node.append("rect")
+//        .attr("width", d=>d.isQuestion? levelX: levelX)
+//        .attr("height", d=>d.isQuestion?levelX*0.6:levelY/2)
+//        .attr("x",d=>d.isQuestion? -levelX/2:-levelX/2)
+//        .attr("y", d=>d.isQuestion?-levelY/2:-levelY/4)
+//        .attr("rx", d=>d.isQuestion?4:levelY/4)
+//        .attr("ry", d=>d.isQuestion?4:levelY/4)
+//        .attr("transform",d=> d.isQuestion? "rotate(0)":"rotate("+ graph.map[d.name].a+")")
+//        .attr("class", d=>d.isQuestion?"globe-rect":"globe-tag")
+//        .classed( d=>d.keyName, true)
+//        .on("click", d=> alert("click on " + d.name))
+//        .attr("fill", function(d){
+//          var ori = d3.select(this).style("fill");
+//          var oriSub = ori.substring(4,ori.length-1);
+//          d.rgb = ori;
+//          d.hls = RGBToHSL(oriSub.split(",")[0],oriSub.split(",")[1],oriSub.split(",")[2]);
+//        })
+//        ;
 
- // Text for each node
-   node.append("foreignObject")
-      .attr("class", "label-container")
-      .attr("width", d=>d.isQuestion? levelX: levelX)
-      .attr("height", d=>d.isQuestion?"54px":levelY/2)
-      .attr("x", -levelX/2)
-      .attr("y", d=>d.isQuestion?"-25px":-levelY/8)
-      .attr("transform",d=> d.isQuestion? "rotate(0)":"rotate("+ graph.map[d.name].a+")")
-      .append("xhtml:div")
-      .on("click", d=>{ alert("click on " + d.name); })
-      .attr("class", d=>d.isQuestion?"node-label":"globe-label")
-      .style("padding", d=>d.isQuestion?padding + "px":"0px")
-      .style("height", d=>d.isQuestion?(levelX*0.6 - 2*padding) +"px":levelY/2)
-      .html(d=>d.keyName)
-      ;
+//  // Text for each node
+//    node.append("foreignObject")
+//       .attr("class", "label-container")
+//       .attr("width", d=>d.isQuestion? levelX: levelX)
+//       .attr("height", d=>d.isQuestion?"54px":levelY/2)
+//       .attr("x", -levelX/2)
+//       .attr("y", d=>d.isQuestion?"-25px":-levelY/8)
+//       .attr("transform",d=> d.isQuestion? "rotate(0)":"rotate("+ graph.map[d.name].a+")")
+//       .append("xhtml:div")
+//       .on("click", d=>{ alert("click on " + d.name); })
+//       .attr("class", d=>d.isQuestion?"node-label":"globe-label")
+//       .style("padding", d=>d.isQuestion?padding + "px":"0px")
+//       .style("height", d=>d.isQuestion?(levelX*0.6 - 2*padding) +"px":levelY/2)
+//       .html(d=>d.keyName)
+//       ;
 
   // setup simulation forces    
   simulation.force("link", d3.forceLink().id(d=>d.id).strength(0.0));
