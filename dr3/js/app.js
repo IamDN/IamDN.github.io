@@ -4,10 +4,10 @@ const svgns = "http://www.w3.org/2000/svg";
 // get real level of svg element
 var width = document.documentElement.clientWidth,
     height = document.documentElement.clientHeight;
- var content;
- var   root;
- var nodes;
-var  i = 0;
+var content;
+var root;
+var nodes;
+var i = 0;
 var testX =0;
 var gi =1;
 var test =0;
@@ -140,7 +140,7 @@ nodeEnter.append("rect")
       .attr("rx", d=> d.level > 1 ? 0 : nodeSize/2)
       .attr("ry", d=> d.level > 1 ? 0 : nodeSize/2)
       .style("z-index", 1000)
-      .on("click",onNodeClick)
+      .on("click", onNodeClick) // don't listen to click on root node
       ;
 
 // create node with div as child text label
@@ -154,7 +154,7 @@ nodeEnter.append("rect")
       .style("width", d=> d.level > 1 ? 100 : nodeSize)
       .style("height", d=> d.level > 1 ? 70 : nodeSize)
       .html(d=>d.text)
-      .on("click", onNodeClick)
+      .on("click",onNodeClick) // don't listen to click on root node
       ;
 
      // apped pin to node
@@ -210,32 +210,6 @@ nodeEnter.append("rect")
 }
 
 
-// document.onkeydown = function (e) {
-  
-//   force.charge(0)   
-//   .gravity(.05)
-//   .start();
-
-// };
-
-// document.onkeyup = function (e) {
-//   force.charge(-970)
-//   .gravity(.05)
-//   .start();
-// };
-
-function color(d) {
-  return d.selected  ? d.color
-      : d._children ? "#ffffff"
-      : "#ffffff" ; // leaf node
-}
-
-function colorStroke(d) {
-  return d.selected ? "#999999"
-      : "#999999" ; // leaf node
-}
-
-
 // Returns a list of all nodes under the root.
 function flatten(root) {
   var nodes = [], i = 0;
@@ -282,83 +256,6 @@ function collapsed(root) {
   root.children.forEach(hideChildren);
  // hideChildren(root); // hide children of root
 }
-// Duplicate the node
-function inser(object) {
-
-  function check(node) {
-
-	  if(node.id === object.parrentIdx) {
-
-       clone = {
-        name: object.name, 
-        parrentIdx: object.parrentIdx , 
-        children : undefined,
-        id : ++i, 
-        _children : null,
-        level:object.level, 
-        index: object.index, 
-        selected: true,
-        tools: object.tools,
-        text: object.text,
-        color: object.color,
-        likes: 0,
-      }
-       
-       node.children.push(clone);
-      }
-    else  
-    {
-      if(node.children != null)
-		      node.children.forEach(check);
-    }
-	 
-  }
-  check(root);
-}
-
-function updatelevel(nodes) {
-
-  function sum(node) {
-    if(node.children)
-     { 
-       var count =0;
-       for (var i =0; i<  node.children.length; ++i)
-        {
-            count = count + node.children[i].likes;
-        }
-        node.likes =  count;
-     }
-
-     //update foreiner object  button label of this node
-      var thumb = document.getElementById( "thumb" + node.id);
-      var text = document.getElementById( "text" + node.id);
-
-      if(thumb && node.children != undefined)
-      {
-            // Set width of button
-            thumb.setAttribute("width",  30 )
-            thumb.setAttribute("height",  30)
-            thumb.setAttribute("href", "thumpup.png")
-            d3.select("#thumb" + node.id).style("display", "flex");
-            //set text as likes
-            text.textContent = node.likes;
-          
-           // set text opacity to 1
-            text.setAttribute("opacity", 1);
-
-      }
-
-        
-  }
-  nodes.forEach(function(item, index){sum(item)});
-  console.log(nodes);
-}
-
-//Assign function to listen slider events
-// var slider = document.getElementById("myRange");
-// slider.oninput = function() {
-//   //TODO
-// }
 
 function updateGroups()
 {

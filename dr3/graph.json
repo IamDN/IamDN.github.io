@@ -2,8 +2,8 @@
  "name": "root",
  "level": 0,
  "fixed": true,
- "row": 2,
- "col": 3,
+ "row": 1.5,
+ "col": 2.5,
  "text" :  "root",
  "children": [
   {
@@ -13,11 +13,13 @@
    "row": 0,
    "col": 0,
    "text" :  "Sense",
+   "review": "In our project we tried to sense how people dance",
    "children": [
     {
      "name": "Case A",
      "level": 2,
      "text" : 	"Sence Case A <img src='data/img1.jpg'> </img>", 
+     "review": "This is a review of the sense Case A",
      "children": [
       {
          "name": "Case A 1" , 
@@ -35,6 +37,7 @@
       "name": "Case B",
       "level": 2,
       "text" : 	"Sence B <img src='data/img4.jpg'> </img>", 
+      "review": "This is a review of the sense Case B",
       "children": [
        {
           "name": "Case B 1" , 
@@ -62,6 +65,7 @@
    "row": 1,
    "col": 0,
    "text" :  "Lifeworlds",
+   "review": "This is a review of the lifeworlds",
    "children": [
     {
      "name": "Case A",
@@ -167,7 +171,24 @@
          "text" : "<img src='data/img3.jpg'> </img>"
       }
      ]
-   }
+   },
+   {
+      "name": "Case B",
+      "level": 2,
+      "text" : 	"<img src='data/img16.jpg'> </img>", 
+      "children": [
+       {
+          "name": "Case B 1" , 
+          "level": 3, 
+          "text" : "<img src='data/img17.jpg'> </img>"
+       },
+       {
+          "name": "Case B 2", 
+          "level": 3, 
+          "text" : "<img src='data/img3.jpg'> </img>"
+       }
+      ]
+    }
    ]
   },
   {

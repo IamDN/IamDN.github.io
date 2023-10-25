@@ -30,41 +30,102 @@ function getScaledXY(x,y)
     y= y/s -ty/s;
 
   }
-
   return{x:x, y:y};
 }
 
 // Toggle children on click.
 function onNodeClick(d) {
 
-    if(d3.event !=null)
-    if (d3.event.defaultPrevented) return; // ignore drag
-   
-    //select node
-    if(!d3.select("#node"+d.id).attr("class").includes("active"))
-    {alert("I'm sorry Dave, I'm afraid I can't do that ... I think you know what the problem is just as well as I do" ); return ;};
-     
-    //Create link for node level 1
-   if(d.level===1)
+  if (d.level === 0) return; // ignore root
+  if(d3.event != null)
+  if (d3.event.defaultPrevented) return; // ignore drag
+  
+  //select node
+  if(!d3.select("#node"+d.id).attr("class").includes("active"))
+  { 
+    alert("I'm sorry Dave, I'm afraid I can't do that ..." +
+    "I think you know what the problem is just as well as I do" ); 
+    return ;
+  };
+  console.log(root);
+  if(history.restart && d.level ==1) restartChildren();
+
+  //Create action record
+  if(d.level===1) 
+  {
     onCreateLink(d);
 
-  if (d.children) {
-      d._children = d.children;
-      d.children = null;
-    } else {
-      d.children = d._children;
-      d._children = null;
-      if(d.children)
-      d.children.forEach(element => {
-        element.x = d.x;
-        element.y = d.y;});
-    
+    if(d.childrenHide) //HACK hierarchy
+    {
+      d.childrenHide.forEach(e => d.children.push(e));
+      d.childrenHide = null;
+     
+    } 
+    else //Original hierarchy
+    {
+       d.children = d._children;
+        d._children = null;
       
     }
-    d.selected = true;
-    update();
-    updateInteraction();
+
+    // set start position to action position
+    d.children.forEach(e => { e.x = d.x; e.y = d.y; }); 
+    console.log("expand l1 " +d.name);
+
+  } else
+  {
+    if (d.selected ) {
+      d._children = d.children;
+      d.children = null;
+      d.selected = false;
+      console.log("collapse l2 " +d.name);
+    } else {
+  
+      d.children = d._children;
+      d._children = null;
+      d.selected = true;
+      console.log("expand l2 " +d.name);
+  
+    }
+   
+
   }
+
+
+ 
+  update();
+  updateInteraction();
+}
+
+function updateInteraction(){
+
+  var last = history.getLastClick();
+  node.classed("active", d=> !isBeginerMode|| d.level > 1 ||
+       (last.row +  1 == d.row && last.col == d.col)   || 
+       (last.row ==3 && d.row ==0) 
+  );
+}
+
+function restartChildren() {
+ 
+  for (var i = 0 ; i<root.children.length ; i++)
+  {
+    var action = root.children[i];
+    if(!action.children || action.children.length ==0)  continue;
+    if(action.childrenHide == null) {action.childrenHide = [];};
+  
+    //Remove elements in reverse to not mess up index 
+    for (var ii = action.children.length -1; ii >= 0; ii--)
+    {
+      if(action.children[ii].fixed) continue;
+      action.childrenHide.push(action.children[ii]);
+      var indexToRemove = action.children.indexOf(action.children[ii])
+      action.children.splice(indexToRemove,1);
+      action.selected = false;
+    }
+ //   console.log("name" + action.name + " children: " + action.children.length + " ,, _children: " + action._children.length);
+  }
+}
 
 function onMouseOver(d)
 {
@@ -87,7 +148,10 @@ function onMouseOver(d)
       hoverContent = document.getElementById("hoverContent"); 
       hoverPanel.classList.add("block");
       hoverPanel.classList.remove("none");
-      hoverContent.innerHTML = " I am putting myself to the fullest possible use, which is all I think that any conscious entity can ever hope to do.";
+      if(d.review)
+        hoverContent.innerHTML = d.review;
+      else
+      hoverContent.innerHTML = d.name + " has no review yet" ;
      }
     }, 500);
 
@@ -144,7 +208,6 @@ function onUserChanged(user)
 
 //on press T key
 document.onkeydown = function(e){
-  console.log("....key pressed.....");
   e = e || window.event;
   var key = e.which || e.keyCode;
   if(key===84){
@@ -171,51 +234,6 @@ function onMode()
 
 }
 
-
-function updateInteraction()
-{
-  var last = history.getLastClick();
-
-  //TODO update root and hide all non fixed nodes
-
-  function restartChildren(node) {
-    console.log("restartChildren" + node.fixed);
-    if(node.fixed)
-    {
-      node.selected = true;
-    }
-    else
-    {
-      node.selected = false;
-      node._children = node.children;
-    }
-    //TODO update root and hide all non fixed nodes
-      // node.children = node._children;
-      // node._children = null;
-	  if(node.children) {
-      node.children.forEach(function(item){
-        restartChildren(item );
-      });
-	  }
-  }
-  console.log("last click: "+last.row + " " + isBeginerMode);
-  if(last.row==0 && isBeginerMode)
-  {
-      restartChildren(root);
-      update();
-      console.log("restart");
-      
-  }
-
-    
-
-
-  node.classed("active", d=> !isBeginerMode|| d.level > 1 ||
-       (last.row +  1 == d.row && last.col == d.col)   || 
-       (last.row ==3 && d.row ==0) 
-  )
-  ;
-}
 
 function onShowHistory()
 {
@@ -252,15 +270,11 @@ window.onclick = function(event) {
   }
 }
 
-
 function dragend(d) {
    
     //ignore click on node
-   // if (d3.event.defaultPrevented) return; // ignore drag
-    if (testX === d.x)
-        {
-           return;
-        }
+    if (testX === d.x) return;
+
     d3.selectAll('rect').each(function(e, i) {
     var distance = Math.sqrt(Math.pow(e.x - d.x, 2) + Math.pow(e.y- d.y, 2));
 
@@ -274,16 +288,11 @@ function dragend(d) {
       link.enter().insert("line", ".node")
                  .attr("class", "link")
                  .attr("opacity", 1);
-
-      force
-           .nodes(nodes)
-          .links(links)
-           .start();
        
       if(d.groupID)
-             e.groupID = d.groupID;
-     else if (e.groupID)
-              d.groupID = e.groupID; 
+          e.groupID = d.groupID;
+      else if (e.groupID)
+          d.groupID = e.groupID; 
       else
         {
           d.groupID = gi;

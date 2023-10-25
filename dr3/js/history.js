@@ -4,6 +4,7 @@ class History {
         this.user = 0;
         this.count = 0;
         this.links = svg.append("g").attr("class", "linksGrpup");
+        this.restart = false;
         //this.dotsGroup = svg.append("g").attr("class", "dotsGroup"); //HACK moved to init
 
          this.linkTempGroup = svg.append("g").attr("class", "linkTempGroup") ;
@@ -20,7 +21,7 @@ class History {
        
         var length = this.data.length;
         var lastTarget = length > 0 ? this.data[length - 1].target: d;
-        console.log(lastTarget);
+  
         const item = {
             user: this.user, 
             source: lastTarget,
@@ -29,8 +30,11 @@ class History {
             timeStamp: Date.now()
         };
 
+
+      
         //Handle temp line
         this.count = this.count +1;
+        this.restart = this.count>3;
         if(this.count>3)
         {
             this.count =0;
@@ -81,7 +85,10 @@ class History {
     }
 
     getLastClick() {
+      if(this.data.length > 0)
         return this.data[this.data.length - 1].target;
+      else
+        return null;
     }
 
     updateTemp(i)
@@ -128,6 +135,7 @@ class History {
         .attr("stroke", "transparent")
         .attr("stroke-width", 0)
         .attr("opacity", 0.2)
+        .attr("z-index", 0)
         ;
         // temp to track mouse movement
   
