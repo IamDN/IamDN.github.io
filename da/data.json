@@ -1,0 +1,69 @@
+{
+    "verb": [
+      {
+        "name": "sense",
+        "desc": "Urban planning integrates human experience by observing, analyzing, and adapting designs to cater to residents' needs and preferences."
+      },
+      {
+        "name": "formulate",
+        "desc": "Formulating in urban planning involves discerning community needs through research and engagement to craft policies and designs that address them effectively."
+      },
+      {
+        "name": "analysing",
+        "desc": "Analyzing entails studying data and trends to grasp community needs, vital for informed decisions and effective interventions in urban development."
+      }
+    ],
+    "noun": [
+      {
+        "name": "lifeworlds",
+        "desc": "Lifeworlds in urban planning refer to the diverse experiences, cultures, and lifestyles of people living in a city environment."
+      },
+      {
+        "name": "concepts",
+        "desc": "Conceptualizing involves crafting innovative strategies to address community needs and enhance urban environments effectively in the planning process."
+      },
+      {
+        "name": "problems",
+        "desc": "Urban planning problems encompass challenges such as traffic congestion, housing shortages, and environmental degradation, necessitating innovative solutions for sustainable development."
+      }
+    ],
+    "combos": [
+      {
+        "name": "sense lifeworlds",
+        "desc": "Sensing lifeworlds involves observing human interactions, cultural dynamics, and spatial behaviors, deciphering community needs to shape inclusive and vibrant environments. It's about understanding the pulse of a place and designing accordingly."
+      },
+      {
+        "name": "sense concepts",
+        "desc": "Sensing concepts involves grasping diverse ideas, preferences, and aspirations within a community, guiding urban interventions toward innovative and inclusive solutions that resonate with residents' needs and desires."
+      },
+      {
+        "name": "sense problems",
+        "desc": "Sensing problems involves identifying urban challenges, from traffic congestion to environmental degradation, understanding their complexities, and devising tailored solutions for sustainable and equitable urban development."
+      },
+      {
+        "name": "formulate lifeworlds",
+        "desc": "Formulating lifeworlds entails translating observations of human experiences and cultural dynamics into strategic urban plans that reflect the community's identity and enhance its well-being."
+      },
+      {
+        "name": "formulate concepts",
+        "desc": "Formulating concepts involves synthesizing diverse ideas and perspectives into actionable strategies that drive innovation and address community needs in urban development.."
+      },
+      {
+        "name": "formulate problems",
+        "desc": "Formulating problems entails defining urban challenges, understanding their root causes, and devising comprehensive strategies to address them effectively in urban development planning."
+      },
+      {
+        "name": "analysing lifeworlds",
+        "desc": "Analyzing liveworlds involves studying the dynamic interactions between people and their built environment. It focuses on understanding how urban spaces shape and are shaped by human activities, behaviors, cultures, and lifestyles, informing more responsive and inclusive design approaches."
+      },
+      {
+        "name": "analysing concepts",
+        "desc": "Analyzing concepts entails dissecting abstract ideas like sustainability, equity, and placemaking within the context of built environments. It involves examining their implications, applications, and interrelations to inform more thoughtful and effective urban design strategies."
+      },
+      {
+        "name": "analysing problems",
+        "desc": "Analyzing problems involves identifying and scrutinizing challenges such as traffic congestion, housing affordability, and environmental degradation. It entails understanding their root causes, impacts, and potential solutions to inform targeted interventions and improvements in urban planning and design."
+      }
+    ]
+  }
+  

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Actions</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+<script src="js/app.js"></script>
+<div class="container">
+
+        <div id="verb" class="card one">
+            <div id="verbContent" class="cardContent">
+                <button id="verbLeft" class="btn" onclick="changeWord(this)" value="on">&lt</button>
+               <button id="verbButton" class="btn" onclick="toggleContent(this)" value="on">sense</button>
+               <button id="verbRight" class="btn" onclick="changeWord(this)" value="on">&gt</button>
+            </div>
+        </div>
+        <div id="noun" class="card one">
+            <div id="nounContent" class="cardContent">
+                <button id="nounLeft" class="btn" onclick="changeWord(this)" value="on">&lt</button>
+                <button id="nounButton" class="btn" onclick="toggleContent(this)" value="on">lifeworlds</button>
+                <button id="nounRight" class="btn" onclick="changeWord(this)" value="on">&gt</button>
+            </div>
+        </div>
+
+        <div id="combo" class="card combo">
+            <div id="comboContent" class="cardContent">
+                <button id="comboButton" class="btn" onclick="resetToDefault()" value="on">combo</button>
+            </div>
+        </div>
+
+
+</div>
+
+   
+</body>
+
+</html>
