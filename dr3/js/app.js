@@ -323,18 +323,9 @@ function updateGroups()
           while(elements.length > 0){
               elements[0].parentNode.removeChild(elements[0]);
           }
-
-
-   
-
           //remove group id from node
-      
-         
-
           if(node){
           node.groupID = undefined;
-          
-            
         }
         update();
       }   

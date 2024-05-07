@@ -57,20 +57,36 @@ function onNodeClick(d) {
 
     if(d.childrenHide) //HACK hierarchy
     {
-      d.childrenHide.forEach(e => d.children.push(e));
-      d.childrenHide = null;
+      if(d.childrenHide.length == 0) 
+      {
+        alert("No more actions to show");
+         return;
+
+      };
+      if(!d.children)d.children = [];
+      d.children.push(d.childrenHide.shift())
+
+      //d.childrenHide.forEach(e => d.children.push(e));
+      //d.childrenHide = null;
      
     } 
     else //Original hierarchy
     {
-       d.children = d._children;
-        d._children = null;
+      if(d._children.length == 0) 
+      {
+        alert("No more actions to show");
+         return;
+         
+      };
+       if(!d.children)d.children = [];
+       d.children.push(d._children.shift())
+
+        //d._children = null;
       
     }
 
     // set start position to action position
     d.children.forEach(e => { e.x = d.x; e.y = d.y; }); 
-    console.log("expand l1 " +d.name);
 
   } else
   {
@@ -78,13 +94,11 @@ function onNodeClick(d) {
       d._children = d.children;
       d.children = null;
       d.selected = false;
-      console.log("collapse l2 " +d.name);
     } else {
   
       d.children = d._children;
       d._children = null;
       d.selected = true;
-      console.log("expand l2 " +d.name);
   
     }
    
