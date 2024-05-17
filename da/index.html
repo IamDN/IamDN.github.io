@@ -10,32 +10,67 @@
 
 <body>
 <script src="js/app.js"></script>
-<div class="container">
-
+<script type="module" src="js/ai.js"></script>
+<div id="container" class="container">
+    <div id = "buttonTop" class="buttonPart">
         <div id="verb" class="card one">
-            <div id="verbContent" class="cardContent">
-                <button id="verbLeft" class="btn" onclick="changeWord(this)" value="on">&lt</button>
-               <button id="verbButton" class="btn" onclick="toggleContent(this)" value="on">sense</button>
-               <button id="verbRight" class="btn" onclick="changeWord(this)" value="on">&gt</button>
-            </div>
+            <button id="verbLeft" class="btnTemp" onclick="changeWord(this)" value="on">&lt</button>
         </div>
         <div id="noun" class="card one">
+            <button id="nounLeft" class="btnTemp" onclick="changeWord(this)" value="on">&gt</button>
+        </div>
+    </div>
+    <div id = "verticalTop" class="verticalPart">
+        <div id="verbTopList" class="card2 one top">
+          list top left
+        </div>
+        <div id="nounTopList" class="card2 one top">
+           list top right
+        </div>
+    </div>
+    <div class="centerPart">
+        <div id="verb" class="card2 one">
+            <div id="verbContent" class="cardContent">
+               
+               <button id="verbButton" class="btn" onclick="toggleContent(this)" value="on">Sense</button>
+
+            </div>
+        </div>
+        <div id="noun" class="card2 one">
             <div id="nounContent" class="cardContent">
-                <button id="nounLeft" class="btn" onclick="changeWord(this)" value="on">&lt</button>
-                <button id="nounButton" class="btn" onclick="toggleContent(this)" value="on">lifeworlds</button>
-                <button id="nounRight" class="btn" onclick="changeWord(this)" value="on">&gt</button>
+
+                <button id="nounButton" class="btn" onclick="toggleContent(this)" value="on">Lifeworlds</button>
+
             </div>
         </div>
+    </div>
+    <div id = "verticalBottom" class="verticalPart">
+        <div id="verbBottomList" class="card2 one">
+            list down left
+          </div>
+          <div id="nounBottomList" class="card2 one">
+             list down right
+          </div>
+    </div>
 
-        <div id="combo" class="card combo">
-            <div id="comboContent" class="cardContent">
-                <button id="comboButton" class="btn" onclick="resetToDefault()" value="on">combo</button>
-            </div>
+    <div id = "buttonBottom" class="buttonPart">
+        <div id="verb" class="card2 one">
+            <button id="verbRight" class="btnTemp" onclick="changeWord(this)" value="on">&gt</button>
         </div>
-
-
+        <div id="noun" class="card2 one">
+            <button id="lock" class="btnTemp" onclick="ChangeLock(this)" value="on">Lock</button>
+        </div>
+        <div id="noun" class="card2 one">
+            <button id="nounRight" class="btnTemp" onclick="changeWord(this)" value="on">&gt</button>
+        </div>
+    </div>
 </div>
-
+    <div id="combo" class="card combo">
+        <div id="comboContent" class="cardContent">
+            <button id="comboButton" class="btn" onclick="resetToDefault()" value="on">combo</button>
+        </div>
+    </div>
+</div>
    
 </body>
 

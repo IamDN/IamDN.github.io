@@ -1,68 +1,188 @@
 {
     "verb": [
       {
-        "name": "sense",
+        "name": "Sense",
         "desc": "Urban planning integrates human experience by observing, analyzing, and adapting designs to cater to residents' needs and preferences."
       },
       {
-        "name": "formulate",
-        "desc": "Formulating in urban planning involves discerning community needs through research and engagement to craft policies and designs that address them effectively."
+        "name": "Describe",
+        "desc": "Urban planners can use Describe to visualize and analyze urban layouts, simulate changes, and communicate designs effectively. It aids in creating detailed, data-driven plans, enhancing decision-making, and ensuring sustainable and efficient urban development."
       },
       {
-        "name": "analysing",
+        "name": "Recognise",
+        "desc": "Recognize involves understanding patterns, structures, and elements within urban environments to inform and improve planning decisions. It enhances the ability to make data-driven insights for sustainable and efficient urban development."
+      },
+      {
+        "name": "Analyse",
         "desc": "Analyzing entails studying data and trends to grasp community needs, vital for informed decisions and effective interventions in urban development."
+      },
+      {
+        "name": "Identify",
+        "desc": "Identifying involves understanding urban issues, challenges, and opportunities to inform effective planning decisions."
+      },
+      {
+        "name": "Evaluate",
+        "desc": "Evaluating entails assessingng the impact and effectiveness of urban interventions, policies, and designs to improve decision-making and ensure sustainable development."
+      },
+      {
+        "name": "Imagine",
+        "desc": "Imagining involves envisioning ideal scenarios, innovative solutions, and scenarios to foster creativity and inspire urban development."
+      },
+      {
+        "name": "Generate",
+        "desc": "Generating involves creating diverse plans, designs, and strategies to address community needs and enhance urban environments."
+      },
+      {
+        "name": "Evolve",
+        "desc": "Evolve involves updating and refining designs, plans, and policies to adapt to changing community needs and urban contexts."
+      },
+      {
+        "name": "Craft",
+        "desc": "Crafting involves designing and developing urban policies, programs, and projects effectively, taking into account diverse perspectives and community needs."
+      },
+      {
+        "name": "Assemble",
+        "desc": "Assembling involves bringing together stakeholders, resources, and expertise to form partnerships, coalitions, and collaborations that drive urban development."
+      },
+      {
+        "name": "Create",
+        "desc": "Creating involves developing and implementing innovative initiatives, programs, and projects that enhance urban environments and improve community lives."
+      },
+      {
+        "name": "Empower",
+        "desc": "Empowering involves giving residents, communities, and stakeholders the tools, resources, and opportunities to shape their own futures and develop sustainable urban environments."
+      },
+      {
+        "name": "Inform",
+        "desc": "Informing involves disseminating information, data, and insights to support decision-making, planning, and effective interventions in urban development."
+      },
+      {
+        "name": "Inspire",
+        "desc": "Inspiring involves fostering passion, creativity, and engagement in urban development, empowering residents and stakeholders to contribute to and shape their own environments."
       }
     ],
     "noun": [
       {
-        "name": "lifeworlds",
-        "desc": "Lifeworlds in urban planning refer to the diverse experiences, cultures, and lifestyles of people living in a city environment."
+        "name": "Lifeworlds",
+        "desc": "Lifeworlds explore the social, cultural, and spatial contexts of urban residents and communities, uncovering their experiences, needs, and aspirations to inform urban planning decisions that support their well-being and quality of life."
       },
       {
-        "name": "concepts",
-        "desc": "Conceptualizing involves crafting innovative strategies to address community needs and enhance urban environments effectively in the planning process."
+        "name": "Needs",
+        "desc": "Needs identify the essential requirements of urban residents and communities, from basic services like housing and healthcare to social and cultural needs. By understanding needs, urban planners can design services, programs, and projects that address these requirements and improve community lives."
       },
       {
-        "name": "problems",
-        "desc": "Urban planning problems encompass challenges such as traffic congestion, housing shortages, and environmental degradation, necessitating innovative solutions for sustainable development."
+        "name": "Aspirations",
+        "desc": "Aspirations examine the hopes, dreams, and ambitions of urban residents and communities, analyzing and mapping their aspirations to inform urban planning decisions that support their long-term goals and visions for the future."
+      },
+      {
+        "name": "Data",
+        "desc": "Data provides insights into urban residents, communities, and environments, helping urban planners understand trends, identify patterns, and make informed decisions about urban development. Data can be qualitative, quantitative, or a combination of both."
+      },
+      {
+        "name": "Limits",
+        "desc": "Limits reveal the constraints, barriers, and challenges that urban residents and communities face, analyzing and mapping limitations to inform urban planning decisions that address these obstacles and promote sustainable and equitable urban development."
+      },
+      {
+        "name": "Potentials",
+        "desc": "Potentials highlight the opportunities, possibilities, and assets that urban residents and communities possess, analyzing and mapping potential to inform urban planning decisions that leverage and build on these strengths to promote sustainable and equitable urban development."
+      },
+      {
+        "name": "Scenarios",
+        "desc": "Scenarios explore alternative futures, examining different trajectories and analyzing potential outcomes. By envisioning scenarios, urban planners can design policies, programs, and projects that are resilient, adaptable, and responsive to changing urban contexts."
+      },
+      {
+        "name": "Ideas",
+        "desc": "Ideas generate and explore innovative concepts, solutions, and designs that address urban challenges. By brainstorming, prototyping, and testing ideas, urban planners can inform decisions that promote creativity, inclusivity, and sustainability."
+      },
+      {
+        "name": "Concepts",
+        "desc": "Concepts develop and refine ideas, strategies, and visions for urban development, analyzing and mapping concepts to inform decisions that are informed, forward-thinking, and responsive to community needs."
+      },
+      {
+        "name": "Materials",
+        "desc": "Materials share information, data, and knowledge about urban development, helping urban planners share best practices, lessons learned, and new ideas with stakeholders, fostering collaboration, and informing decisions that are evidence-based and data-driven."
+      },
+      {
+        "name": "Projects",
+        "desc": "Projects design and implement initiatives, programs, and policies that address urban challenges, analyzing and mapping projects to inform decisions that are effective, efficient, and responsive to community needs."
+      },
+      {
+        "name": "Formats",
+        "desc": "Formats design and use tools, methods, and processes to facilitate urban planning and development, helping urban planners develop innovative formats that are inclusive, accessible, and responsive to community needs, fostering collaboration and informing decisions."
+      },
+      {
+        "name": "Participations",
+        "desc": "Participations engage and empower urban residents, communities, and stakeholders in urban planning and development processes, analyzing and mapping participations to inform decisions that are inclusive, equitable, and responsive to community needs and aspirations."
+      },
+      {
+        "name": "Stakeholders",
+        "desc": "Stakeholders understand and work with individuals, groups, and organizations that have a stake in urban development, analyzing and mapping stakeholders to inform decisions that are inclusive, equitable, and responsive to diverse perspectives and interests."
+      },
+      {
+        "name": "Coalitions",
+        "desc": "Coalitions form and sustain partnerships, alliances, and networks among stakeholders to drive urban development, analyzing and mapping coalitions to inform decisions that foster collaboration, leverage resources, and promote sustainable and equitable urban development."
       }
-    ],
+     ],
     "combos": [
       {
         "name": "sense lifeworlds",
-        "desc": "Sensing lifeworlds involves observing human interactions, cultural dynamics, and spatial behaviors, deciphering community needs to shape inclusive and vibrant environments. It's about understanding the pulse of a place and designing accordingly."
+        "desc": "Sensing lifeworlds involves observe human interactions, cultural dynamics, and spatial behaviors, deciphering community needs to shape inclusive and vibrant environments. It's about understanding the pulse of a place and designing accordingly."
       },
       {
-        "name": "sense concepts",
-        "desc": "Sensing concepts involves grasping diverse ideas, preferences, and aspirations within a community, guiding urban interventions toward innovative and inclusive solutions that resonate with residents' needs and desires."
+        "name": "describe needs",
+        "desc": "Describing needs involves understanding the essential requirements of urban residents and communities, from basic services like housing and healthcare to social and cultural needs. By understanding needs, urban planners can design services, programs, and projects that address these requirements and improve community lives."
       },
       {
-        "name": "sense problems",
-        "desc": "Sensing problems involves identifying urban challenges, from traffic congestion to environmental degradation, understanding their complexities, and devising tailored solutions for sustainable and equitable urban development."
+        "name": "recognise aspirations",
+        "desc": "Recognising involves understanding patterns, structures, and elements within urban environments to inform and improve planning decisions. It enhances the ability to make data-driven insights for sustainable and efficient urban development."
       },
       {
-        "name": "formulate lifeworlds",
-        "desc": "Formulating lifeworlds entails translating observations of human experiences and cultural dynamics into strategic urban plans that reflect the community's identity and enhance its well-being."
+        "name": "analyse data",
+        "desc": "Analyzing entails studying data and trends to grasp community needs, vital for informed decisions and effective interventions in urban development."
       },
       {
-        "name": "formulate concepts",
-        "desc": "Formulating concepts involves synthesizing diverse ideas and perspectives into actionable strategies that drive innovation and address community needs in urban development.."
+        "name": "identify limits",
+        "desc": "Identifying involves understanding urban issues, challenges, and opportunities to inform effective planning decisions."
       },
       {
-        "name": "formulate problems",
-        "desc": "Formulating problems entails defining urban challenges, understanding their root causes, and devising comprehensive strategies to address them effectively in urban development planning."
+        "name": "evaluate potentials",
+        "desc": "Evaluating entails assessingng the impact and effectiveness of urban interventions, policies, and designs to improve decision-making and ensure sustainable development."
       },
       {
-        "name": "analysing lifeworlds",
-        "desc": "Analyzing liveworlds involves studying the dynamic interactions between people and their built environment. It focuses on understanding how urban spaces shape and are shaped by human activities, behaviors, cultures, and lifestyles, informing more responsive and inclusive design approaches."
+        "name": "imagine scenarios",
+        "desc": "Imagining involves envisioning ideal scenarios, innovative solutions, and scenarios to foster creativity and inspire urban development."
       },
       {
-        "name": "analysing concepts",
-        "desc": "Analyzing concepts entails dissecting abstract ideas like sustainability, equity, and placemaking within the context of built environments. It involves examining their implications, applications, and interrelations to inform more thoughtful and effective urban design strategies."
+        "name": "generate ideas",
+        "desc": "Generating involves creating diverse plans, designs, and strategies to address community needs and enhance urban environments."
       },
       {
-        "name": "analysing problems",
-        "desc": "Analyzing problems involves identifying and scrutinizing challenges such as traffic congestion, housing affordability, and environmental degradation. It entails understanding their root causes, impacts, and potential solutions to inform targeted interventions and improvements in urban planning and design."
+        "name": "evolve concepts",
+        "desc": "Evolve involves updating and refining designs, plans, and policies to adapt to changing community needs and urban contexts."
+      },
+      {
+        "name": "craft materials",
+        "desc": "Crafting involves designing and developing urban policies, programs, and projects effectively, taking into account diverse perspectives and community needs."
+      },
+      {
+        "name": "assemble projects",
+        "desc": "Assembling projects involves designing and implementing initiatives, programs, and policies that address urban challenges, analyzing and mapping projects to inform decisions that are effective, efficient, and responsive to community needs."
+      },
+      {
+        "name": "create formats",
+        "desc": "Formats design and use tools, methods, and processes to facilitate urban planning and development, helping urban planners develop innovative formats that are inclusive, accessible, and responsive to community needs, fostering collaboration and informing decisions."
+      },
+      {
+        "name": "empower participants",
+        "desc": "Empowering participants involves engaging and empowering urban residents, communities, and stakeholders in urban planning and development processes, analyzing and mapping participations to inform decisions that are inclusive, equitable, and responsive to community needs and aspirations."
+      },
+      {
+        "name": "inform stakeholders",
+        "desc": "Informing stakeholders involves understanding and working with individuals, groups, and organizations that have a stake in urban development, analyzing and mapping stakeholders to inform decisions that are inclusive, equitable, and responsive to diverse perspectives and interests."
+      },
+      {
+        "name": "inspire coalitions",
+        "desc": "Inspiring coalitions forms and sustains partnerships, alliances, and networks among stakeholders to drive urban development, analyzing and mapping coalitions to inform decisions that foster collaboration, leverage resources, and promote sustainable and equitable urban development."
       }
     ]
   }
