@@ -1,4 +1,4 @@
-const lock = true;
+var lock = true;
 function toggleContent(el) {
 
     const elem = document.getElementById(el.id);
@@ -40,7 +40,13 @@ function resetToDefault() {
     document.getElementById("combo").style.display = "none";
 }
 function changeWord(el) {
+    if (lock) ChangeBothSides(el);
+    else ChangeOneSide(el);
 
+   
+}
+
+function ChangeOneSide(el) {
     const elem = document.getElementById(el.id);
    
     var label = el.id.includes("verb") ? "verb" : "noun";
@@ -48,7 +54,7 @@ function changeWord(el) {
     var data = dataset[label];
     var topList = document.getElementById(label+ "TopList");
     var bottomList = document.getElementById(label+ "BottomList");
-    if (elem.id.includes("Left"))
+    if (elem.id.includes("Left") ) // this mean button top
     {
 
         i = data.findIndex(item => item.name === button.innerHTML);
@@ -72,7 +78,8 @@ function changeWord(el) {
             bottomList.innerHTML += data[i+1+j].name + "<br>";
         }
     }
-    if (elem.id.includes("Right"))
+
+    if (elem.id.includes("Right")) // this mean button bottom
     {
         console.log("righ - BOTTOM");
         i= data.findIndex(item => item.name === button.innerHTML);
@@ -96,6 +103,80 @@ function changeWord(el) {
     }
 }
 
+function ChangeBothSides(el) {
+   console.log("ChangeBothSides");
+    const elem = document.getElementById(el.id);
+   
+    var label = el.id.includes("verb") ? "verb" : "noun";
+    button =  document.getElementById(label+ "Button");
+    buttonVerb =  document.getElementById("verbButton");
+    buttonNoun =  document.getElementById("nounButton");
+    var dataVerb = dataset["verb"];
+    var dataNoun = dataset["noun"];
+    var topListVerb = document.getElementById("verbTopList");
+    var bottomListVerb = document.getElementById("verbBottomList");
+    var topListNoun = document.getElementById("nounTopList");
+    var bottomListNoun = document.getElementById("nounBottomList");
+    if (elem.id.includes("Left") ) // this mean button top
+    {
+
+        i = dataset[label].findIndex(item => item.name === button.innerHTML);
+        console.log("left - TOP");
+        if(i === 0) i = dataVerb.length; 
+        buttonVerb.innerHTML = dataVerb[i-1].name;
+        buttonNoun.innerHTML = dataNoun[i-1].name;
+   
+
+        // fill 10 names before current to toList 
+        topListVerb.innerHTML = "";
+        topListNoun.innerHTML = "";
+        for(var j = 1; j < 10; j++)
+        {
+            if(i-1-j < 0) break;
+            //place string to the begiging of the list
+            topListVerb.innerHTML = dataVerb[i-1-j].name + "<br>" + topListVerb.innerHTML;
+            topListNoun.innerHTML = dataNoun[i-1-j].name + "<br>" + topListNoun.innerHTML;
+        }
+        // fill 10 names after current to bottomList
+        bottomListVerb.innerHTML = "";
+        bottomListNoun.innerHTML = "";
+        for(var j = 1; j < 10; j++)
+        {
+            if(i+1+j > dataVerb.length-1) break;
+            bottomListVerb.innerHTML += dataVerb[i+1+j].name + "<br>";
+            bottomListNoun.innerHTML += dataNoun[i+1+j].name + "<br>";
+        }
+    }
+
+    if (elem.id.includes("Right")) // this mean button bottom
+    {
+        console.log("righ - BOTTOM");
+        i= dataset[label].findIndex(item => item.name === button.innerHTML);
+        if(i === dataVerb.length-1) i = -1; 
+        buttonVerb.innerHTML =dataVerb[i+1].name;
+        buttonNoun.innerHTML =dataNoun[i+1].name;
+
+        // fill 10 names before current to toList 
+        topListVerb.innerHTML = "";
+        topListNoun.innerHTML = "";
+        for(var j = 0; j < 10; j++)
+        {
+            if(i-j < 0) break;
+            topListVerb.innerHTML = dataVerb[i-j].name + "<br>" + topListVerb.innerHTML;
+            topListNoun.innerHTML = dataNoun[i-j].name + "<br>" + topListNoun.innerHTML;
+        }
+        // fill 10 names after current to bottomList
+        bottomListVerb.innerHTML = "";
+        bottomListNoun.innerHTML = "";
+        for(var j = 1; j < 11; j++)
+        {
+            if(i+1+j > dataVerb.length-1) break;
+            bottomListVerb.innerHTML += dataVerb[i+1+j].name + "<br>";
+            bottomListNoun.innerHTML += dataNoun[i+1+j].name + "<br>";
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   fetch('./data.json')
     .then(response => response.json())
@@ -105,16 +186,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function loadData(data) {
   dataset = data;
+
+bottomListNoun = document.getElementById("nounBottomList");
+bottomListVerb = document.getElementById("verbBottomList");
+
+
+
+  // fill 10 names after current to bottomList
+  bottomListVerb.innerHTML = "";
+  bottomListNoun.innerHTML = "";
+  for(var j = 1; j < 11; j++)
+  {
+      bottomListVerb.innerHTML += data["verb"][j].name + "<br>";
+      bottomListNoun.innerHTML += data["noun"][j].name + "<br>";
+  }
 }
 
-function changeLock(el) {
+function ChangeLock(el) {
     if (el.value == "on")
     {
       document.getElementById("lock").value = "off";
+      document.getElementById("lock").innerHTML = "Lock";
+      lock = false;
     }
     else
     {
        document.getElementById("lock").value = "on";
+       document.getElementById("lock").innerHTML = "Unlock";
+       lock = true;
     }
 
 }
