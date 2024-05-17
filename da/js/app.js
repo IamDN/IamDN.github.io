@@ -50,18 +50,19 @@ function changeWord(el) {
     var bottomList = document.getElementById(label+ "BottomList");
     if (elem.id.includes("Left"))
     {
+
         i = data.findIndex(item => item.name === button.innerHTML);
-        console.log(button.innerHTML + " - " + i);
+        console.log("left - TOP");
         if(i === 0) i = data.length; 
         button.innerHTML = data[i-1].name;
 
         // fill 10 names before current to toList 
         topList.innerHTML = "";
-        for(var j = 0; j < 10; j++)
+        for(var j = 1; j < 10; j++)
         {
-            if(i-j < 0) break;
+            if(i-1-j < 0) break;
             //place string to the begiging of the list
-            topList.innerHTML = data[i-j].name + "<br>" + topList.innerHTML;
+            topList.innerHTML = data[i-1-j].name + "<br>" + topList.innerHTML;
         }
         // fill 10 names after current to bottomList
         bottomList.innerHTML = "";
@@ -73,7 +74,7 @@ function changeWord(el) {
     }
     if (elem.id.includes("Right"))
     {
-       
+        console.log("righ - BOTTOM");
         i= data.findIndex(item => item.name === button.innerHTML);
         if(i === data.length-1) i = -1; 
         button.innerHTML =data[i+1].name;
