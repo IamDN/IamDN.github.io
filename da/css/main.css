@@ -25,6 +25,16 @@ body {
   align-items: center; 
 
 }
+.comboBth {
+  border: none;
+  background-color: inherit;
+  align-items: top;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  justify-content: left;
+  overflow: auto;
+}
 
 .btn {
   border: none;
@@ -34,6 +44,10 @@ body {
   cursor: pointer;
   display: inline-block;
   color:rgb(0, 0, 0);
+}
+
+.btnCard {
+  color:rgb(255, 255, 255);
 }
 .btnTemp {
   border: none;
@@ -45,11 +59,15 @@ body {
   color:rgb(0, 0, 0);
   width: 120px;
 }
+.img2 {
+  width: 100%;
+}
+
 /* On mouse-over */
 .btn:hover {color: #949494;}
-
+.image:hover {opacity: 0.5;}
 .card {
-  background-color: rgba(255, 255, 255, 0.276);
+  background-color: rgba(37, 37, 37, 0.276);
   display:flex;
   padding:1%;
 }
@@ -83,7 +101,7 @@ body {
   font-size: 32px;
   width: 100%;
   height: 100%;
-  background-color: rgb(105, 105, 105);
+  background-color: rgba(57, 57, 57, 0);
 }
 .verticalPart {
   display: flex;
@@ -95,10 +113,17 @@ body {
 } 
 .buttonPart {
   display: flex;
+  justify-content: center;
   width:100%;
   height: 10%;
   background-color: rgb(255, 255, 255);
 } 
+.lockButton {
+  position: absolute;
+  bottom: 12%;
+  right: -15px;
+
+}
 
 .centerPart {
   display: flex;

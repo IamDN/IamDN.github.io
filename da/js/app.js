@@ -203,16 +203,22 @@ bottomListVerb = document.getElementById("verbBottomList");
 }
 
 function ChangeLock(el) {
+    lockButton =  document.getElementById("lock");
     if (el.value == "on")
     {
-      document.getElementById("lock").value = "off";
-      document.getElementById("lock").innerHTML = "Lock";
+        lockButton.value = "off";
+      // change icon of lockButton
+      lockButton.innerHTML = '<img src="gui/unlock.png" alt="down" width="32" height="32">';
+      document.getElementById("extraTohideDown").style.display = "flex";
+      document.getElementById("extraTohideUp").style.display = "flex";
       lock = false;
     }
     else
     {
-       document.getElementById("lock").value = "on";
-       document.getElementById("lock").innerHTML = "Unlock";
+        lockButton.value = "on";
+        lockButton.innerHTML = '<img src="gui/lock.png" class="image" alt="down" width="32" height="32">';
+        document.getElementById("extraTohideDown").style.display = "none";
+        document.getElementById("extraTohideUp").style.display = "none";
        lock = true;
     }
 

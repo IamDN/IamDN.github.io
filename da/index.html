@@ -14,10 +14,13 @@
 <div id="container" class="container">
     <div id = "buttonTop" class="buttonPart">
         <div id="verb" class="card2 one">
-            <button id="verbLeft" class="btnTemp" onclick="changeWord(this)" value="on">Up</button>
+            <button id="verbLeft" class="btnTemp" onclick="changeWord(this)" value="on">
+                <img src="gui/up.png" class="image"alt="down" width="32" height="32">
+            </button>
         </div>
-        <div id="noun" class="card2 one">
-            <button id="nounLeft" class="btnTemp" onclick="changeWord(this)" value="on">Up</button>
+        <div id="extraTohideUp" class="card2 one" style="display:none">
+            <button id="nounLeft" class="btnTemp" onclick="changeWord(this)" value="on">
+                <img src="gui/up.png" class="image" alt="down" width="32" height="32"></button>
         </div>
     </div>
     <div id = "verticalTop" class="verticalPart">
@@ -32,14 +35,14 @@
         <div id="verb" class="card2 one">
             <div id="verbContent" class="cardContent">
                
-               <button id="verbButton" class="btn" onclick="toggleContent(this)" value="on">Sense</button>
+               <button id="verbButton" class="btn btnCard" onclick="toggleContent(this)" value="on">Sense</button>
 
             </div>
         </div>
         <div id="noun" class="card2 one">
             <div id="nounContent" class="cardContent">
 
-                <button id="nounButton" class="btn" onclick="toggleContent(this)" value="on">Lifeworlds</button>
+                <button id="nounButton" class="btn btnCard" onclick="toggleContent(this)" value="on">Lifeworlds</button>
 
             </div>
         </div>
@@ -55,19 +58,23 @@
 
     <div id = "buttonBottom" class="buttonPart">
         <div id="verb" class="card2 one">
-            <button id="verbRight" class="btnTemp" onclick="changeWord(this)" value="on">Down</button>
+            <button id="verbRight" class="btnTemp" onclick="changeWord(this)" value="on">
+                <img src="gui/down.png" class="image"alt="down" width="32" height="32">
+            </button>
         </div>
-        <div id="noun" class="card2 one">
-            <button id="lock" class="btnTemp" onclick="ChangeLock(this)" value="on">Unlock</button>
+        <div id="noun" class="lockButton">
+            <button id="lock" class="btnTemp" onclick="ChangeLock(this)" value="on">
+                <img src="gui/lock.png"class="image" alt="down" width="32" height="32"></button>
         </div>
-        <div id="noun" class="card2 one">
-            <button id="nounRight" class="btnTemp" onclick="changeWord(this)" value="on">Down</button>
+        <div id="extraTohideDown" class="card2 one" style="display:none">
+            <button id="nounRight" class="btnTemp" onclick="changeWord(this)" value="on">
+                <img src="gui/down.png" class="image" alt="down" width="32" height="32"></button>
         </div>
     </div>
 </div>
     <div id="combo" class="card combo">
         <div id="comboContent" class="cardContent">
-            <button id="comboButton" class="btn" onclick="resetToDefault()" value="on">combo</button>
+            <button id="comboButton" class="btn btnCard comboBth" onclick="resetToDefault()" value="on">combo</button>
         </div>
     </div>
 </div>
