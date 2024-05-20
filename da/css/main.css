@@ -59,26 +59,30 @@ body {
   color:rgb(0, 0, 0);
   width: 120px;
 }
-.img2 {
+.img {
   width: 100%;
 }
 
 /* On mouse-over */
 .btn:hover {color: #949494;}
 .image:hover {opacity: 0.5;}
+
 .card {
-  background-color: rgba(37, 37, 37, 0.276);
   display:flex;
-  padding:1%;
-}
-.card2 {
-  background-color: rgba(255, 255, 255, 0.877);
   padding:0%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 28px;
-  display: flex;
-  justify-content: center;
+  justify-content: left;
 }
+.white {
+  background-color: rgba(255, 255, 255);
+}
+
+.dark {
+  background-color: rgba(37, 37, 37);
+
+}
+
 .top
 {
 
@@ -94,21 +98,19 @@ body {
 }
 
 .combo {
-  height: 98%;
-  width:98%;
   display: none;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 32px;
   width: 100%;
   height: 100%;
-  background-color: rgba(57, 57, 57, 0);
 }
+
 .verticalPart {
   display: flex;
   width:100%;
   height: 30%;
   background-color: rgb(255, 255, 255);
   overflow: hidden;
+  padding-left: 5%;
+  padding-right: 5%;
 
 } 
 .buttonPart {
@@ -118,6 +120,13 @@ body {
   height: 10%;
   background-color: rgb(255, 255, 255);
 } 
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  width:100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+}
 .lockButton {
   position: absolute;
   bottom: 12%;
@@ -142,7 +151,7 @@ body {
 
   .one {
     height: 100%;
-    width:49%;
+    width:50%;
   }
 
  }
@@ -157,7 +166,7 @@ body {
 
   .one {
     height: 100%;
-    width:49%;
+    width:50%;
   }
 
 }

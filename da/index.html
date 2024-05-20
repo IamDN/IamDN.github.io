@@ -13,51 +13,51 @@
 <script type="module" src="js/ai.js"></script>
 <div id="container" class="container">
     <div id = "buttonTop" class="buttonPart">
-        <div id="verb" class="card2 one">
+        <div id="verb" class="buttonContainer">
             <button id="verbLeft" class="btnTemp" onclick="changeWord(this)" value="on">
                 <img src="gui/up.png" class="image"alt="down" width="32" height="32">
             </button>
         </div>
-        <div id="extraTohideUp" class="card2 one" style="display:none">
+        <div id="extraTohideUp" class="buttonContainer" style="display:none">
             <button id="nounLeft" class="btnTemp" onclick="changeWord(this)" value="on">
                 <img src="gui/up.png" class="image" alt="down" width="32" height="32"></button>
         </div>
     </div>
-    <div id = "verticalTop" class="verticalPart">
-        <div id="verbTopList" class="card2 one top">
+    <div id = "verticalTop" class="verticalPart white">
+        <div id="verbTopList" class="card white one top">
           
         </div>
-        <div id="nounTopList" class="card2 one top">
+        <div id="nounTopList" class="card white one top">
            
         </div>
     </div>
     <div class="centerPart">
-        <div id="verb" class="card2 one">
-            <div id="verbContent" class="cardContent">
+        <div id="verb" class="card white one">
+            <div id="verbContent" class="cardContent dark">
                
                <button id="verbButton" class="btn btnCard" onclick="toggleContent(this)" value="on">Sense</button>
 
             </div>
         </div>
-        <div id="noun" class="card2 one">
-            <div id="nounContent" class="cardContent">
+        <div id="noun" class="card white one">
+            <div id="nounContent" class="cardContent dark">
 
                 <button id="nounButton" class="btn btnCard" onclick="toggleContent(this)" value="on">Lifeworlds</button>
 
             </div>
         </div>
     </div>
-    <div id = "verticalBottom" class="verticalPart">
-        <div id="verbBottomList" class="card2 one down">
+    <div id = "verticalBottom" class="verticalPart white">
+        <div id="verbBottomList" class="card white one down">
             list down left
           </div>
-          <div id="nounBottomList" class="card2 one down">
+          <div id="nounBottomList" class="card white one down">
              list down right
           </div>
     </div>
 
     <div id = "buttonBottom" class="buttonPart">
-        <div id="verb" class="card2 one">
+        <div id="verb" class="buttonContainer">
             <button id="verbRight" class="btnTemp" onclick="changeWord(this)" value="on">
                 <img src="gui/down.png" class="image"alt="down" width="32" height="32">
             </button>
@@ -66,14 +66,14 @@
             <button id="lock" class="btnTemp" onclick="ChangeLock(this)" value="on">
                 <img src="gui/lock.png"class="image" alt="down" width="32" height="32"></button>
         </div>
-        <div id="extraTohideDown" class="card2 one" style="display:none">
+        <div id="extraTohideDown" class="buttonContainer" style="display:none">
             <button id="nounRight" class="btnTemp" onclick="changeWord(this)" value="on">
                 <img src="gui/down.png" class="image" alt="down" width="32" height="32"></button>
         </div>
     </div>
 </div>
     <div id="combo" class="card combo">
-        <div id="comboContent" class="cardContent">
+        <div id="comboContent" class ="dark">
             <button id="comboButton" class="btn btnCard comboBth" onclick="resetToDefault()" value="on">combo</button>
         </div>
     </div>
