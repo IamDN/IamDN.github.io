@@ -56,9 +56,7 @@ function ChangeOneSide(el) {
     var bottomList = document.getElementById(label+ "BottomList");
     if (elem.id.includes("Left") ) // this mean button top
     {
-
         i = data.findIndex(item => item.name === button.innerHTML);
-        console.log("left - TOP");
         if(i === 0) i = data.length; 
         button.innerHTML = data[i-1].name;
 
@@ -68,24 +66,21 @@ function ChangeOneSide(el) {
         {
             if(i-1-j < 0) break;
             //place string to the begiging of the list
-            var extra = i-1-j%3 == 0 ? "<br>" : "";
-            console.log(i-1-j + " - " + data[i-1-j].name + " - " + extra);
-            topList.innerHTML = data[i-1-j].name + "<br>" + extra+ topList.innerHTML;
+            var extra = (i-1-j)%3 == 2 ? "<br>" : "";
+            topList.innerHTML = data[i-1-j].name + "<br>" + extra + topList.innerHTML  ;
         }
         // fill 10 names after current to bottomList
         bottomList.innerHTML = "";
         for(var j = 1; j < 10; j++)
         {
             if(i+1+j > data.length-1) break;
-            var extra = i+1+j%3 == 0 ? "<br>" : "";
-            console.log(i+1+j + " - " + data[i+1+j].name + " - " + extra);
-            bottomList.innerHTML += data[i+1+j].name + "<br>" + extra;
+            var extra = ( i-1+j)%3== 0 ? "<br>" : "";
+            bottomList.innerHTML += data[i-1+j].name + "<br>" + extra;
         }
     }
 
     if (elem.id.includes("Right")) // this mean button bottom
     {
-        console.log("righ - BOTTOM");
         i= data.findIndex(item => item.name === button.innerHTML);
         if(i === data.length-1) i = -1; 
         button.innerHTML =data[i+1].name;
@@ -95,18 +90,16 @@ function ChangeOneSide(el) {
         for(var j = 0; j < 10; j++)
         {
             if(i-j < 0) break;
-            var extra = i-j%3 == 0 ? "<br>" : "";
-            console.log(i-j + " - " + data[i-j].name + " - " + extra);
-            topList.innerHTML = data[i-j].name + "<br>"+ extra + topList.innerHTML;
+            var extra = (i-j)%3 == 2 ? "<br>" : "";
+            topList.innerHTML =  data[i-j].name + "<br>" + extra + topList.innerHTML;
         }
         // fill 10 names after current to bottomList
         bottomList.innerHTML = "";
         for(var j = 1; j < 11; j++)
         {
             if(i+1+j > data.length-1) break;
-            console.log(i+1+j + " - " + data[i+1+j].name + " - " + extra);
-            var extra = i+1+j%3 == 0 ? "<br>" : "";
-            bottomList.innerHTML += data[i+1+j].name + "<br>"+extra;
+            var extra = (i+1+j)%3 == 2 ? "<br>" : "";
+            bottomList.innerHTML += data[i+1+j].name + "<br>"+ extra;
         }
     }
 }
@@ -128,7 +121,6 @@ function ChangeBothSides(el) {
     if (elem.id.includes("Left") ) // this mean button top
     {
         i = dataset[label].findIndex(item => item.name === button.innerHTML);
-        console.log("left - TOP");
         if(i === 0) i = dataVerb.length; 
         buttonVerb.innerHTML = dataVerb[i-1].name;
         buttonNoun.innerHTML = dataNoun[i-1].name;
@@ -142,7 +134,6 @@ function ChangeBothSides(el) {
             if(i-1-j < 0) break;
             //place string to the begiging of the list
             var extra = (i-1-j)%3 == 2 ? "<br>" : "";
-            console.log(i-1-j + " ? " + (i-1-j)%3);
             topListVerb.innerHTML = dataVerb[i-1-j].name + "<br>" + extra + topListVerb.innerHTML  ;
             topListNoun.innerHTML = dataNoun[i-1-j].name + "<br>" + extra + topListNoun.innerHTML  ;
         }
@@ -173,7 +164,6 @@ function ChangeBothSides(el) {
         {
             if(i-j < 0) break;
             var extra = (i-j)%3 == 2 ? "<br>" : "";
-            console.log(i-j + " ? " + (i+1+j)%3);
             topListVerb.innerHTML = dataVerb[i-j].name + "<br>" + extra + topListVerb.innerHTML;
             topListNoun.innerHTML = dataNoun[i-j].name + "<br>" + extra + topListNoun.innerHTML;
         }
