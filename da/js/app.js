@@ -23,7 +23,6 @@ function toggleContent(el) {
         elem.value = "on";
     }
 
-
     if (elem.value !== "on" && secElem.value !== "on")
         {
             var combo = document.getElementById("verbButton").value + " " + document.getElementById("nounButton").value;
@@ -42,13 +41,10 @@ function resetToDefault() {
 function changeWord(el) {
     if (lock) ChangeBothSides(el);
     else ChangeOneSide(el);
-
-   
 }
 
 function ChangeOneSide(el) {
     const elem = document.getElementById(el.id);
-   
     var label = el.id.includes("verb") ? "verb" : "noun";
     button =  document.getElementById(label+ "Button");
     var data = dataset[label];
@@ -107,7 +103,6 @@ function ChangeOneSide(el) {
 function ChangeBothSides(el) {
 
     const elem = document.getElementById(el.id);
-   
     var label = el.id.includes("verb") ? "verb" : "noun";
     button =  document.getElementById(label+ "Button");
     buttonVerb =  document.getElementById("verbButton");
@@ -124,7 +119,6 @@ function ChangeBothSides(el) {
         if(i === 0) i = dataVerb.length; 
         buttonVerb.innerHTML = dataVerb[i-1].name;
         buttonNoun.innerHTML = dataNoun[i-1].name;
-   
 
         // fill 10 names before current to toList 
         topListVerb.innerHTML = "";
@@ -151,7 +145,6 @@ function ChangeBothSides(el) {
 
     if (elem.id.includes("Right")) // this mean button bottom
     {
-
         i= dataset[label].findIndex(item => item.name === button.innerHTML);
         if(i === dataVerb.length-1) i = -1; 
         buttonVerb.innerHTML =dataVerb[i+1].name;
@@ -223,5 +216,4 @@ function ChangeLock(el) {
         document.getElementById("extraTohideUp").style.display = "none";
        lock = true;
     }
-
 }
