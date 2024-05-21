@@ -13,5 +13,4 @@ async function main() {
 
   console.log(message.content);
 }
-console.log("LOL")
 main();

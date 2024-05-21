@@ -68,14 +68,18 @@ function ChangeOneSide(el) {
         {
             if(i-1-j < 0) break;
             //place string to the begiging of the list
-            topList.innerHTML = data[i-1-j].name + "<br>" + topList.innerHTML;
+            var extra = i-1-j%3 == 0 ? "<br>" : "";
+            console.log(i-1-j + " - " + data[i-1-j].name + " - " + extra);
+            topList.innerHTML = data[i-1-j].name + "<br>" + extra+ topList.innerHTML;
         }
         // fill 10 names after current to bottomList
         bottomList.innerHTML = "";
         for(var j = 1; j < 10; j++)
         {
             if(i+1+j > data.length-1) break;
-            bottomList.innerHTML += data[i+1+j].name + "<br>";
+            var extra = i+1+j%3 == 0 ? "<br>" : "";
+            console.log(i+1+j + " - " + data[i+1+j].name + " - " + extra);
+            bottomList.innerHTML += data[i+1+j].name + "<br>" + extra;
         }
     }
 
@@ -91,20 +95,24 @@ function ChangeOneSide(el) {
         for(var j = 0; j < 10; j++)
         {
             if(i-j < 0) break;
-            topList.innerHTML = data[i-j].name + "<br>" + topList.innerHTML;
+            var extra = i-j%3 == 0 ? "<br>" : "";
+            console.log(i-j + " - " + data[i-j].name + " - " + extra);
+            topList.innerHTML = data[i-j].name + "<br>"+ extra + topList.innerHTML;
         }
         // fill 10 names after current to bottomList
         bottomList.innerHTML = "";
         for(var j = 1; j < 11; j++)
         {
             if(i+1+j > data.length-1) break;
-            bottomList.innerHTML += data[i+1+j].name + "<br>";
+            console.log(i+1+j + " - " + data[i+1+j].name + " - " + extra);
+            var extra = i+1+j%3 == 0 ? "<br>" : "";
+            bottomList.innerHTML += data[i+1+j].name + "<br>"+extra;
         }
     }
 }
 
 function ChangeBothSides(el) {
-   console.log("ChangeBothSides");
+
     const elem = document.getElementById(el.id);
    
     var label = el.id.includes("verb") ? "verb" : "noun";
@@ -119,7 +127,6 @@ function ChangeBothSides(el) {
     var bottomListNoun = document.getElementById("nounBottomList");
     if (elem.id.includes("Left") ) // this mean button top
     {
-
         i = dataset[label].findIndex(item => item.name === button.innerHTML);
         console.log("left - TOP");
         if(i === 0) i = dataVerb.length; 
@@ -134,23 +141,26 @@ function ChangeBothSides(el) {
         {
             if(i-1-j < 0) break;
             //place string to the begiging of the list
-            topListVerb.innerHTML = dataVerb[i-1-j].name + "<br>" + topListVerb.innerHTML;
-            topListNoun.innerHTML = dataNoun[i-1-j].name + "<br>" + topListNoun.innerHTML;
+            var extra = (i-1-j)%3 == 2 ? "<br>" : "";
+            console.log(i-1-j + " ? " + (i-1-j)%3);
+            topListVerb.innerHTML = dataVerb[i-1-j].name + "<br>" + extra + topListVerb.innerHTML  ;
+            topListNoun.innerHTML = dataNoun[i-1-j].name + "<br>" + extra + topListNoun.innerHTML  ;
         }
         // fill 10 names after current to bottomList
         bottomListVerb.innerHTML = "";
         bottomListNoun.innerHTML = "";
         for(var j = 1; j < 10; j++)
         {
-            if(i+1+j > dataVerb.length-1) break;
-            bottomListVerb.innerHTML += dataVerb[i+1+j].name + "<br>";
-            bottomListNoun.innerHTML += dataNoun[i+1+j].name + "<br>";
+            if(i-1+j > dataVerb.length-1) break;
+            var extra =( i-1+j)%3 == 2 ? "<br>" : "";
+            bottomListVerb.innerHTML += dataVerb[i-1+j].name + "<br>" + extra;
+            bottomListNoun.innerHTML += dataNoun[i-1+j].name + "<br>" + extra;
         }
     }
 
     if (elem.id.includes("Right")) // this mean button bottom
     {
-        console.log("righ - BOTTOM");
+
         i= dataset[label].findIndex(item => item.name === button.innerHTML);
         if(i === dataVerb.length-1) i = -1; 
         buttonVerb.innerHTML =dataVerb[i+1].name;
@@ -162,8 +172,10 @@ function ChangeBothSides(el) {
         for(var j = 0; j < 10; j++)
         {
             if(i-j < 0) break;
-            topListVerb.innerHTML = dataVerb[i-j].name + "<br>" + topListVerb.innerHTML;
-            topListNoun.innerHTML = dataNoun[i-j].name + "<br>" + topListNoun.innerHTML;
+            var extra = (i-j)%3 == 2 ? "<br>" : "";
+            console.log(i-j + " ? " + (i+1+j)%3);
+            topListVerb.innerHTML = dataVerb[i-j].name + "<br>" + extra + topListVerb.innerHTML;
+            topListNoun.innerHTML = dataNoun[i-j].name + "<br>" + extra + topListNoun.innerHTML;
         }
         // fill 10 names after current to bottomList
         bottomListVerb.innerHTML = "";
@@ -171,8 +183,9 @@ function ChangeBothSides(el) {
         for(var j = 1; j < 11; j++)
         {
             if(i+1+j > dataVerb.length-1) break;
-            bottomListVerb.innerHTML += dataVerb[i+1+j].name + "<br>";
-            bottomListNoun.innerHTML += dataNoun[i+1+j].name + "<br>";
+            var extra = (i+1+j)%3 == 2 ? "<br>" : "";
+            bottomListVerb.innerHTML += dataVerb[i+1+j].name + "<br>"+ extra;
+            bottomListNoun.innerHTML += dataNoun[i+1+j].name + "<br>"+ extra;
         }
     }
 }
@@ -190,15 +203,14 @@ function loadData(data) {
 bottomListNoun = document.getElementById("nounBottomList");
 bottomListVerb = document.getElementById("verbBottomList");
 
-
-
   // fill 10 names after current to bottomList
   bottomListVerb.innerHTML = "";
   bottomListNoun.innerHTML = "";
   for(var j = 1; j < 11; j++)
-  {
-      bottomListVerb.innerHTML += data["verb"][j].name + "<br>";
-      bottomListNoun.innerHTML += data["noun"][j].name + "<br>";
+  { 
+      var extra = (j)%3 == 2 ? "<br>" : "";
+      bottomListVerb.innerHTML += data["verb"][j].name + "<br>" + extra;
+      bottomListNoun.innerHTML += data["noun"][j].name + "<br>" + extra;
   }
 }
 
