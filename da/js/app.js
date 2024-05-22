@@ -291,12 +291,12 @@ var mobileScrollAdjust  =10
 window.addEventListener("scroll", function(e){ 
 
 // if it is on mobile ignore every second scroll
-if (isMobile && mobileScrollAdjust!= 0) {
-    mobileScrollAdjust--;
+if (isMobile && mobileScrollAdjust> 0) {
+    mobileScrollAdjust = mobileScrollAdjust - 1;
     this.document.getElementById("test").innerHTML = mobileScrollAdjust;
     return;
 }
-this.document.getElementById("test").innerHTML = "YEAH";
+this.document.getElementById("test").innerHTML = "YEAH" ;
    var st = window.pageYOffset || document.documentElement.scrollTop; 
    var half = isLeftHalf? "noun" : "verb";
    if (st > lastScrollTop) {
