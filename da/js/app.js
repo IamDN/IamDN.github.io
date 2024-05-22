@@ -286,7 +286,7 @@ function ChangeLock(el) {
 }
 var lastScrollTop = 0;
 var lastNow = 0;
-var mobileScrollAdjust  =10 
+var mobileScrollAdjust  =4 
 // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
 window.addEventListener("scroll", function(e){ 
 
@@ -295,7 +295,10 @@ if (isMobile && mobileScrollAdjust> 0) {
     mobileScrollAdjust = mobileScrollAdjust - 1;
     this.document.getElementById("test").innerHTML = mobileScrollAdjust;
     return;
-}
+} else if (isMobile)
+    {
+mobileScrollAdjust  =4 
+    }
 this.document.getElementById("test").innerHTML = "YEAH" ;
    var st = window.pageYOffset || document.documentElement.scrollTop; 
    var half = isLeftHalf? "noun" : "verb";
