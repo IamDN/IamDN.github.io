@@ -286,11 +286,13 @@ function ChangeLock(el) {
 }
 var lastScrollTop = 0;
 var lastNow = 0;
+var mobileScrollAdjust  =10 
 // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
 window.addEventListener("scroll", function(e){ 
 
 // if it is on mobile ignore every second scroll
-if (isMobile && e.timeStamp % 2 == 0) {
+if (isMobile && mobileScrollAdjust!= 0) {
+    mobileScrollAdjust--;
     return;
 }
 
