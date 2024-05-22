@@ -288,6 +288,12 @@ var lastScrollTop = 0;
 var lastNow = 0;
 // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
 window.addEventListener("scroll", function(e){ 
+
+// if it is on mobile ignore every second scroll
+if (isMobile && e.timeStamp % 2 == 0) {
+    return;
+}
+
    var st = window.pageYOffset || document.documentElement.scrollTop; 
    var half = isLeftHalf? "noun" : "verb";
    if (st > lastScrollTop) {
@@ -334,7 +340,7 @@ window.addEventListener("touchmove", function(e){
     var screenWidth = window.innerWidth;
     isLeftHalf = e.touches[0].screenX >screenWidth / 2;
 
-    this.document.getElementById("test").innerHTML = isLeftHalf ? "left": "right";
+
 }, false);
 
 //listen if on mobile user is swiping vertically to scroll
