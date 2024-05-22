@@ -74,7 +74,7 @@ body {
 
 .card {
   display: flex;
-  padding-left: 5%;
+  padding-left: 8%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 18px;
 }

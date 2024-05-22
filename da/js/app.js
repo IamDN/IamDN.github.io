@@ -299,7 +299,6 @@ mobileScrollAdjust= 5
 
 
    var st = window.pageYOffset || document.documentElement.scrollTop; 
-   this.document.getElementById("test").innerHTML = st + " ? " +  lastNow;
 
    var half = isLeftHalf? "noun" : "verb";
    if (st > lastScrollTop) {
