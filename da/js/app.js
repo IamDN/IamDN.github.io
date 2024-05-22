@@ -327,3 +327,14 @@ window.addEventListener("mousemove", function(e){
     var screenWidth = window.innerWidth;
     isLeftHalf = e.screenX >screenWidth / 2;
 }, false);
+
+// Listen to swipe
+window.addEventListener("touchmove", function(e){
+    // get screen size
+    var screenWidth = window.innerWidth;
+    isLeftHalf = e.touches[0].screenX >screenWidth / 2;
+
+    this.document.getElementById("test").innerHTML = isLeftHalf ? "left": "right";
+}, false);
+
+//listen if on mobile user is swiping vertically to scroll
