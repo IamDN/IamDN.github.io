@@ -80,6 +80,7 @@ function ChangeOneSide(el) {
         if(i === 0) i = data.length; 
         button.innerHTML = data[i-1].name;
         button.style.height = originalSize;
+        button.value = "on";
         // fill 10 names before current to toList 
         topList.innerHTML = "";
         for(var j = 1; j < 10; j++)
@@ -106,6 +107,7 @@ function ChangeOneSide(el) {
         if(i === data.length-1) i = -1; 
         button.innerHTML =data[i+1].name;
         button.style.height = originalSize;
+        button.value = "on";
         // fill 10 names before current to toList 
         topList.innerHTML = "";
         for(var j = 0; j < 10; j++)
@@ -146,9 +148,10 @@ function ChangeBothSides(el) {
         if(i === 0) i = dataVerb.length; 
         buttonVerb.innerHTML = dataVerb[i-1].name;
         buttonNoun.innerHTML = dataNoun[i-1].name;
-        console.log("? " +originalSize);
         buttonVerb.style.height = originalSize;
         buttonNoun.style.height  = originalSize;
+        buttonVerb.value = "on";
+        buttonNoun.value = "on";
 
         // fill 10 names before current to toList 
         topListVerb.innerHTML = "";
@@ -182,7 +185,8 @@ function ChangeBothSides(el) {
         buttonNoun.innerHTML =dataNoun[i+1].name;
         buttonVerb.style.height = originalSize;
         buttonNoun.style.height  = originalSize;
-        console.log( buttonNoun);
+        buttonVerb.value = "on";
+        buttonNoun.value = "on";
 
         // fill 10 names before current to toList 
         topListVerb.innerHTML = "";
@@ -280,14 +284,31 @@ function ChangeLock(el) {
     }
 }
 var lastScrollTop = 0;
-
+var lastNow = 0;
 // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
 window.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
    var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+  console.log("st"+ st + "  lastNow " +  lastNow  );
+
    if (st > lastScrollTop) {
-      console.log("scroll down");
+    if (st>=lastNow && st<=0 ) { 
+        lastNow  = st; 
+        console.log("preventing down" + lastNow) ;
+    } else if (lock) {
+       ChangeBothSides(document.getElementById("verbRight"));
+       console.log("scroll down");
+    }
    } else if (st < lastScrollTop) {
-      console.log("scroll up");
+    if ((st<=lastNow && st>=0)|| (st <= 0 && lastNow < st)) {
+
+        lastNow  = st; 
+        console.log("preventing up" + lastNow) ;
+    } else if (lock) {
+        ChangeBothSides(document.getElementById("verbLeft"));
+        console.log("scroll up");
+    }
+
    } // else was horizontal scroll
    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+  lastNow =  st;
 }, false);
