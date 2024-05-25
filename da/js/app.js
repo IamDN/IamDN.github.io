@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.2.2";
+var version = "0.1.6";
 
 function toggleContent(el) {
 
@@ -335,15 +335,32 @@ document.addEventListener("mousewheel", function(e){
 // }, false);
 
 // Listen to swipe
+var mobileScrollAdjust  =0;
 var previsualY = 0;
 var previsualX = 0;
-var testX = 0;
-var mobileScrollAdjust  =0;
+
 window.addEventListener("touchmove", function(e){
 //window.addEventListener("keydown", function(e){
+    var previsualY = 0;
+// check if swap is vertical or horizontal
+if (document.getElementById("combo").style.display != "none")
+    {
+        var button = document.getElementById("comboButton");
+        var isVerb = button.value.includes("verb");
+        console.log(button.value);
+        var data = isVerb  ? dataset.noun : dataset.verb;
+        console.log(data);
+        var otherLabel = isVerb  ? "noun" : "verb";
 
-    // check if swap is vertical or horizontal
-    if (document.getElementById("combo").style.display = "none")
+        var otherButton = document.getElementById(otherLabel + "Button");
+        var i = data.findIndex(item => item.name === otherButton.innerHTML);
+        console.log(i + " " + otherButton.innerHTML + " " );
+        if(i>=0)
+        {
+            button.innerHTML = data[i].desc;
+            button.value = button.value.includes("verb") ? "noun":"verb";
+        }
+    } else
     {
         if (mobileScrollAdjust> 0) {
             mobileScrollAdjust = mobileScrollAdjust - 1;
@@ -354,56 +371,16 @@ window.addEventListener("touchmove", function(e){
         isLeftHalf = e.touches[0].screenX >window.innerWidth/ 2;
         var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
         var half = isLeftHalf? "noun" : "verb";
-      
+        document.getElementById("test").innerHTML = -(e.touches[0].screenY - previsualY)/10;
         ScrollContent(-(e.touches[0].screenY - previsualY)/10, half);
         
     }
      previsualY = e.touches[0].screenY;
-    testX = e.touches[0].screenX;
+     previsualX = e.touches[0].screenX;
 }, false);
 
 
-window.addEventListener("touchstart", function(e){
 
-    previsualX = e.touches[0].screenX;
-});
-//window.addEventListener("keydown", function(e){
-    window.addEventListener("touchend", function(e){
-  
-    // if (document.getElementById("combo").style.display == "none")
-    //     return;
-
-    var button = document.getElementById("comboButton");
-    var isVerb = button.value.includes("verb");
-    document.getElementById("test").innerHTML = testX;
-//    if( testX <window.innerWidth/ 2 && isVerb)
-//      {
-//         var data = dataset.noun ;
-//         var otherLabel =  "noun" ;
-
-//         var otherButton = document.getElementById(otherLabel + "Button");
-//         var i = data.findIndex(item => item.name === otherButton.innerHTML);
-       
-//         if(i>=0)
-//         {
-//             button.innerHTML = data[i].desc;
-//             console.log(data[i].desc);
-//             button.value = "noun";
-//         }
-//     } else if( testX >window.innerWidth/ 2 && !isVerb)
-//     {
-//         var data = dataset.verb ;
-//         var otherLabel =  "verb" ;
-//         var otherButton = document.getElementById(otherLabel + "Button");
-//         var i = data.findIndex(item => item.name === otherButton.innerHTML);
-//         if(i>=0)
-//         {
-//             button.innerHTML = data[i].desc;
-//             button.value = "verb";
-//         }
-//    }
-    
-});
 //listen if on mobile user is swiping vertically to scroll
 // const element = document.querySelector('.block-swipe-nav');
 
