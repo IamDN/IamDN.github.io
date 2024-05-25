@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.1.8";
+var version = "0.1.9";
 
 function toggleContent(el) {
 
@@ -345,21 +345,7 @@ window.addEventListener("touchmove", function(e){
 // check if swap is vertical or horizontal
 if (document.getElementById("combo").style.display != "none")
     {
-        var button = document.getElementById("comboButton");
-        var isVerb = button.value.includes("verb");
-
-        var data = isVerb  ? dataset.noun : dataset.verb;
-
-        var otherLabel = isVerb  ? "noun" : "verb";
-
-        var otherButton = document.getElementById(otherLabel + "Button");
-        var i = data.findIndex(item => item.name === otherButton.innerHTML);
-
-        if(i>=0)
-        {
-            button.innerHTML = data[i].desc;
-            button.value = button.value.includes("verb") ? "noun":"verb";
-        }
+  
     } else
     {
         if (mobileScrollAdjust> 0) {
@@ -379,12 +365,35 @@ if (document.getElementById("combo").style.display != "none")
      previsualX = e.touches[0].screenX;
 }, false);
 
+var startX;
 window.addEventListener("touchstart", function(e){
     document.getElementById("test").innerHTML ="touch start";
+    startX = e.touches[0].screenX;
 }, false);
 
 window.addEventListener("touchend", function(e){
     document.getElementById("test").innerHTML ="touch ends";
+
+    if (document.getElementById("combo").style.display == "none")
+        return;
+  if (startX< e.changedTouches[0].screenX -100) {
+
+    var button = document.getElementById("comboButton");
+    var isVerb = button.value.includes("verb");
+
+    var data = isVerb  ? dataset.noun : dataset.verb;
+
+    var otherLabel = isVerb  ? "noun" : "verb";
+
+    var otherButton = document.getElementById(otherLabel + "Button");
+    var i = data.findIndex(item => item.name === otherButton.innerHTML);
+
+    if(i>=0)
+    {
+        button.innerHTML = data[i].desc;
+        button.value = button.value.includes("verb") ? "noun":"verb";
+    }
+  }
 }, false);
 
 //listen if on mobile user is swiping vertically to scroll
