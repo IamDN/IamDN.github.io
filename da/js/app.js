@@ -266,7 +266,7 @@ bottomListVerb = document.getElementById("verbBottomList");
     document.getElementById("verticalBottom").classList.remove("mobileList");
   }
   originalSize = document.getElementById("verbButton").offsetHeight + "px";
-  document.getElementById("test").innerHTML ="ROFL";
+  document.getElementById("test").innerHTML ="BOMBA";
 }
 
 function ChangeLock(el) {
@@ -353,7 +353,7 @@ window.addEventListener("touchmove", function(e){
          
     } else {
         if (document.getElementById("combo").style.display != "none") {
-            toggleContent(document.getElementById("nounButton"));
+            document.getElementById("comboButton").innerHTML = "It is a live";
         }
     }
     previsualY = e.touches[0].screenY;
