@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.2.0";
+var version = "0.2.1";
 
 function toggleContent(el) {
 
@@ -337,6 +337,7 @@ document.addEventListener("mousewheel", function(e){
 // Listen to swipe
 var previsualY = 0;
 var previsualX = 0;
+var testX = 0;
 var mobileScrollAdjust  =0;
 window.addEventListener("touchmove", function(e){
 //window.addEventListener("keydown", function(e){
@@ -358,7 +359,7 @@ window.addEventListener("touchmove", function(e){
         
     }
      previsualY = e.touches[0].screenY;
-    // previsualX = e.touches[0].screenX;
+    testX = e.touches[0].screenX;
 }, false);
 
 
@@ -368,15 +369,15 @@ window.addEventListener("touchstart", function(e){
 });
 //window.addEventListener("keydown", function(e){
     window.addEventListener("touchend", function(e){
-    // console.log("button down ");
+  
     if (document.getElementById("combo").style.display == "none")
         return;
 
     var button = document.getElementById("comboButton");
     var isVerb = button.value.includes("verb");
-    document.getElementById("test").innerHTML = previsualX + " " +e.touches[0].screenX;
-//    if(e.touches[0].screenX <window.innerWidth/ 2 && isVerb)
-//      {
+    document.getElementById("test").innerHTML = testX;
+   if( testX <window.innerWidth/ 2 && isVerb)
+     {
         var data = dataset.noun ;
         var otherLabel =  "noun" ;
 
@@ -389,18 +390,18 @@ window.addEventListener("touchstart", function(e){
             console.log(data[i].desc);
             button.value = "noun";
         }
-//     } else if(e.touches[0].screenX >window.innerWidth/ 2 && !isVerb)
-//     {
-//         var data = dataset.verb ;
-//         var otherLabel =  "verb" ;
-//         var otherButton = document.getElementById(otherLabel + "Button");
-//         var i = data.findIndex(item => item.name === otherButton.innerHTML);
-//         if(i>=0)
-//         {
-//             button.innerHTML = data[i].desc;
-//             button.value = "verb";
-//         }
-//    }
+    } else if( testX >window.innerWidth/ 2 && !isVerb)
+    {
+        var data = dataset.verb ;
+        var otherLabel =  "verb" ;
+        var otherButton = document.getElementById(otherLabel + "Button");
+        var i = data.findIndex(item => item.name === otherButton.innerHTML);
+        if(i>=0)
+        {
+            button.innerHTML = data[i].desc;
+            button.value = "verb";
+        }
+   }
     
 });
 //listen if on mobile user is swiping vertically to scroll
