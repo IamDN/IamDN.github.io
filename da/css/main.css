@@ -56,7 +56,7 @@ body {
 .btn {
   border: none;
   background-color: inherit;
-  font-size: 28px;
+  font-size: 22px;
   cursor: pointer;
   display: inline-block;
   color:rgb(255, 255, 255);
@@ -78,7 +78,7 @@ body {
   cursor: pointer;
   display: inline-block;
   color:rgb(255, 255, 255);
-  width: 120px;
+  width: 100%;
 }
 
 .img {
@@ -86,14 +86,26 @@ body {
 }
 
 /* On mouse-over */
-.btn:hover {color: #949494;}
+.btn:hover {color: #454545;}
 .image:hover {opacity: 0.5;}
+
+.header {
+  display: flex;
+  padding-left: 5%;
+  padding-top: 5%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 28px;
+  width: 100%;
+  background-color: black;
+  color : rgb(255, 255, 255);
+}
 
 .card {
   display: flex;
   padding-left: 8%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 18px;
+  font-size: 22px;
+  background-color: black;
   color : rgb(255, 255, 255);
 }
 
@@ -102,7 +114,7 @@ body {
 }
 
 .dark {
-  background-color: rgb(123, 123, 123);
+  background-color: rgb(177, 177, 177);
 }
 
 .top
@@ -139,11 +151,11 @@ body {
 } 
 
 .mobileCenter {
-  height: 20%;
+  height: 10%;
 }
 
 .mobileList {
-  height: 30%;
+  height: 35%;
 }
 
 .desktopCenter {
@@ -159,7 +171,7 @@ body {
   justify-content: center;
   width:100%;
   height: 10%;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
 } 
 .buttonContainer {
   display: flex;
@@ -169,9 +181,12 @@ body {
   background-color: rgb(0, 0, 0);
 }
 .lockButton {
-  position: absolute;
-  bottom: 12%;
-  right: -15px;
+  display: flex;
+  justify-content: right;
+  height: 100%;
+  aspect-ratio: 1;
+  background-color: rgb(255, 255, 255);
+  filter: invert(100%);
 }
 
 /* @media screen and (orientation:portrait) {

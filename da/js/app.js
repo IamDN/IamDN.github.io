@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-
+var version = "0.1.2";
 
 function toggleContent(el) {
 
@@ -268,7 +268,7 @@ bottomListVerb = document.getElementById("verbBottomList");
     document.getElementById("verticalBottom").classList.remove("mobileList");
   }
   originalSize = document.getElementById("verbButton").offsetHeight + "px";
-  document.getElementById("test").innerHTML ="VER-34";
+  document.getElementById("test").innerHTML ="Design Actions v" + version;
 }
 
 function ChangeLock(el) {
@@ -278,8 +278,8 @@ function ChangeLock(el) {
         lockButton.value = "off";
       // change icon of lockButton
       lockButton.innerHTML = '<img src="gui/unlock.png" alt="down" width="32" height="32">';
-      document.getElementById("extraTohideDown").style.display = "flex";
-      document.getElementById("extraTohideUp").style.display = "flex";
+    //   document.getElementById("extraTohideDown").style.display = "flex";
+    //   document.getElementById("extraTohideUp").style.display = "flex";
       lock = false;
     }
     else
@@ -312,40 +312,36 @@ function ScrollContent(value, half) {
 }
 
 }
+// listen to scroll to change coloums
 var mobileScrollAdjust  =0;
-// element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
 document.addEventListener("mousewheel", function(e){ 
+    // if it is on mobile ignore every second scroll
+    if (mobileScrollAdjust> 0) {
+        mobileScrollAdjust = mobileScrollAdjust - 1;
+        return;
+    } 
+    mobileScrollAdjust= 3
 
-// if it is on mobile ignore every second scroll
-if (mobileScrollAdjust> 0) {
-    mobileScrollAdjust = mobileScrollAdjust - 1;
-    return;
-} 
-mobileScrollAdjust= 3
-
-   var half = e.screenX >window.innerWidth / 2? "noun" : "verb";
-   ScrollContent(e.deltaY, half);
-
-  
-
+    var half = e.pageX >window.innerWidth / 2? "noun" : "verb";
+    ScrollContent(e.deltaY, half);
 }, false);
 
 // listen to mouse move
-window.addEventListener("mousemove", function(e){
-    // get screen size
-    var screenWidth = window.innerWidth;
-    isLeftHalf = e.screenX >screenWidth / 2;
-}, false);
+// window.addEventListener("mousemove", function(e){
+//     // get screen size
+//     var screenWidth = window.innerWidth;
+//     isLeftHalf = e.screenX >screenWidth / 2;
+//     console.log(isLeftHalf);
+// }, false);
 
 // Listen to swipe
 var previsualY = 0;
 var previsualX = 0;
 window.addEventListener("touchmove", function(e){
 //window.addEventListener("keydown", function(e){
-    // get screen size
+
     console.log(e);
 
-    
    document.getElementById("test").innerHTML = e.touches[0].screenY + " " + e.touches[0].screenX;
     
 // check if swap is vertical or horizontal
@@ -368,11 +364,11 @@ if (document.getElementById("combo").style.display != "none")
         }
     } else
     {
-
-            isLeftHalf = e.touches[0].screenX >window.innerWidth/ 2;
-            var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
-            var half = isLeftHalf? "noun" : "verb";
-            ScrollContent((e.touches[0].screenY - previsualY)/3, half);
+        
+        isLeftHalf = e.touches[0].screenX >window.innerWidth/ 2;
+        var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
+        var half = isLeftHalf? "noun" : "verb";
+        ScrollContent((e.touches[0].screenY - previsualY)/3, half);
         
     }
          
