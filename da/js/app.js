@@ -3,6 +3,7 @@ var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
 
+
 function toggleContent(el) {
 
     const elem = document.getElementById(el.id);
@@ -21,6 +22,7 @@ function toggleContent(el) {
            document.getElementById("container").style.display = "none";
            document.getElementById("combo").style.display = "flex";
            document.getElementById("comboButton").innerHTML = data[i].desc;
+     
         } else
         {
             elem.value = el.innerHTML;
@@ -37,6 +39,7 @@ function toggleContent(el) {
         document.getElementById("container").style.display = "none";
         document.getElementById("combo").style.display = "flex";
         document.getElementById("comboButton").innerHTML = data[i].desc;
+
      
             }
             else
@@ -62,6 +65,7 @@ function toggleContent(el) {
 function resetToDefault() {        
     document.getElementById("container").style.display = "block";
     document.getElementById("combo").style.display = "none";
+
 }
 function changeWord(el) {
     if (lock) ChangeBothSides(el);
@@ -262,7 +266,7 @@ bottomListVerb = document.getElementById("verbBottomList");
     document.getElementById("verticalBottom").classList.remove("mobileList");
   }
   originalSize = document.getElementById("verbButton").offsetHeight + "px";
-  document.getElementById("test").innerHTML ="LOL";
+  document.getElementById("test").innerHTML ="ROFL";
 }
 
 function ChangeLock(el) {
@@ -333,17 +337,28 @@ window.addEventListener("mousemove", function(e){
 
 // Listen to swipe
 var previsualY = 0;
+var previsualX = 0;
 window.addEventListener("touchmove", function(e){
     // get screen size
    document.getElementById("test").innerHTML = e.touches[0].screenY + " " + e.touches[0].screenX;
-    var screenWidth = window.innerWidth;
-    isLeftHalf = e.touches[0].screenX >screenWidth / 2;
-    var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
-    var half = isLeftHalf? "noun" : "verb";
-    ScrollContent(e.touches[0].screenY - previsualY, half);
+    
+// check if swap is vertical or horizontal
 
-     previsualY = e.touches[0].screenY;
-    console.log(e.scrollTop + " " + e.sc );
+    if (Math.abs(e.touches[0].screenY - previsualY) > Math.abs(e.touches[0].screenX - previsualX)) {
+        isLeftHalf = e.touches[0].screenX >window.innerWidth/ 2;
+        var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
+        var half = isLeftHalf? "noun" : "verb";
+        ScrollContent((e.touches[0].screenY - previsualY)/3, half);
+    
+         
+    } else {
+        if (document.getElementById("combo").style.display != "none") {
+            toggleContent(document.getElementById("nounButton"));
+        }
+    }
+    previsualY = e.touches[0].screenY;
+    previsualX = e.touches[0].screenX;
+
 
 }, false);
 
