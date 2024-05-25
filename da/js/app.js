@@ -353,8 +353,6 @@ const element = document.querySelector('.block-swipe-nav');
 
 element.addEventListener('touchstart', (e) => {
 
-    // is not near edge of view, exit
-    if (e.pageX > 5 && e.pageX < window.innerWidth - 5) return;
 
     // prevent swipe to navigate gesture
     e.preventDefault();
