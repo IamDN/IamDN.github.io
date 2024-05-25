@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.1.7";
+var version = "0.1.8";
 
 function toggleContent(el) {
 
@@ -379,7 +379,13 @@ if (document.getElementById("combo").style.display != "none")
      previsualX = e.touches[0].screenX;
 }, false);
 
+window.addEventListener("touchstart", function(e){
+    document.getElementById("test").innerHTML ="touch start";
+}, false);
 
+window.addEventListener("touchend", function(e){
+    document.getElementById("test").innerHTML ="touch ends";
+}, false);
 
 //listen if on mobile user is swiping vertically to scroll
 // const element = document.querySelector('.block-swipe-nav');
