@@ -390,7 +390,7 @@ if (document.getElementById("combo").style.display != "none")
         var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
         var half = isLeftHalf? "noun" : "verb";
 
-        ScrollContent(-(e.touches[0].screenY - previsualY)/10, half);
+        ScrollContent(-(e.touches[0].screenY - previsualY), half);
         
     }
      previsualY = e.touches[0].screenY;
