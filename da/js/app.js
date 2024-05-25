@@ -284,8 +284,28 @@ function ChangeLock(el) {
        lock = true;
     }
 }
+function ScrollContent(value, half) {
+    if (value > 0) {
 
-var mobileScrollAdjust  =0
+      if (lock) {
+       ChangeBothSides(document.getElementById("verbRight"));
+       }
+       else
+       {
+        ChangeOneSide(document.getElementById( half +"Right"));
+       }
+   } else if (value < 0) {
+
+        if (lock) {
+             ChangeBothSides(document.getElementById("verbLeft"));
+       }else
+         {
+              ChangeOneSide(document.getElementById( half + "Left"));
+          }
+}
+
+}
+var mobileScrollAdjust  =0;
 // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
 document.addEventListener("mousewheel", function(e){ 
 console.log( e);
@@ -297,30 +317,9 @@ if (mobileScrollAdjust> 0) {
 mobileScrollAdjust= 3
 
    var half = e.screenX >window.innerWidth / 2? "noun" : "verb";
+   ScrollContent(e.deltaY, half);
 
-   if (e.deltaY > 0) {
-
-        if (lock) {
-       ChangeBothSides(document.getElementById("verbRight"));
-    }
-    else
-    {
-        ChangeOneSide(document.getElementById( half +"Right"));
-    }
-   
-   } else if (e.deltaY < 0) {
-
-        if (lock) {
-        ChangeBothSides(document.getElementById("verbLeft"));
-
-    }else
-    {
-
-        ChangeOneSide(document.getElementById( half + "Left"));
-    }
-
-
-   } // else was horizontal scroll
+  
 
 }, false);
 
@@ -341,11 +340,23 @@ window.addEventListener("touchmove", function(e){
 }, false);
 
 //listen if on mobile user is swiping vertically to scroll
-// const element = document.querySelector('.block-swipe-nav');
+const element = document.querySelector('.block-swipe-nav');
 
-// element.addEventListener('touchstart', (e) => {
+element.addEventListener('touchstart', (e) => {
 
+    // prevent swipe to navigate gesture
+    e.preventDefault();
 
-//     // prevent swipe to navigate gesture
-//     e.preventDefault();
-// });
+    // 
+});
+
+var previsualY = 0;
+element.addEventListener('touchmove', (e) => {
+    // listen to vertical scroll
+
+        var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
+        var half = isLeftHalf? "noun" : "verb";
+        ScrollContent(e.touches[0].screenY - previsualY, half);
+   
+   previsualY = e.touches[0].screenY;
+});
