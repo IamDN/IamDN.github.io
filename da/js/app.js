@@ -341,7 +341,6 @@ function StartListening() {
 var desktopScrollAdjust  =0;
 document.addEventListener("mousewheel", function(e){ 
 
-    console.log(document.getElementById("verbButton").value +" "+ mouseOverVerb);
     if (document.getElementById("verbButton").value != "on" && mouseOverVerb) 
         return;
 
