@@ -308,7 +308,7 @@ function ScrollContent(value, half) {
 var mobileScrollAdjust  =0;
 // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
 document.addEventListener("mousewheel", function(e){ 
-console.log( e);
+
 // if it is on mobile ignore every second scroll
 if (mobileScrollAdjust> 0) {
     mobileScrollAdjust = mobileScrollAdjust - 1;
@@ -331,10 +331,17 @@ window.addEventListener("mousemove", function(e){
 }, false);
 
 // Listen to swipe
+var previsualY = 0;
 window.addEventListener("touchmove", function(e){
     // get screen size
+    this.document.getElementById("touchTest").innerHTML = e.touches[0].screenY + " " + e.touches[0].screenX;
     var screenWidth = window.innerWidth;
     isLeftHalf = e.touches[0].screenX >screenWidth / 2;
+    var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
+    var half = isLeftHalf? "noun" : "verb";
+    ScrollContent(e.touches[0].screenY - previsualY, half);
+
+     previsualY = e.touches[0].screenY;
     console.log(e.scrollTop + " " + e.sc );
 
 }, false);
@@ -350,13 +357,3 @@ element.addEventListener('touchstart', (e) => {
     // 
 });
 
-var previsualY = 0;
-element.addEventListener('touchmove', (e) => {
-    // listen to vertical scroll
-
-        var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
-        var half = isLeftHalf? "noun" : "verb";
-        ScrollContent(e.touches[0].screenY - previsualY, half);
-   
-   previsualY = e.touches[0].screenY;
-});
