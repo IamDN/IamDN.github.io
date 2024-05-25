@@ -375,7 +375,7 @@ window.addEventListener("touchmove", function(e){
 //window.addEventListener("keydown", function(e){
     var previsualY = 0;
 // check if swap is vertical or horizontal
-if (document.getElementById("combo").style.display != "none")
+     if (document.getElementById("combo").style.display != "none")
     {
   
     } else
@@ -389,7 +389,7 @@ if (document.getElementById("combo").style.display != "none")
         isLeftHalf = e.touches[0].screenX >window.innerWidth/ 2;
         var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
         var half = isLeftHalf? "noun" : "verb";
-
+this.document.getElementById("test").innerHTML = -(e.touches[0].screenY - previsualY);
         ScrollContent(-(e.touches[0].screenY - previsualY), half);
         
     }
