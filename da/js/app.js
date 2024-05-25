@@ -2,6 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
+
 function toggleContent(el) {
 
     const elem = document.getElementById(el.id);
@@ -261,7 +262,7 @@ bottomListVerb = document.getElementById("verbBottomList");
     document.getElementById("verticalBottom").classList.remove("mobileList");
   }
   originalSize = document.getElementById("verbButton").offsetHeight + "px";
-
+  document.getElementById("test").innerHTML ="LOL";
 }
 
 function ChangeLock(el) {
@@ -334,7 +335,7 @@ window.addEventListener("mousemove", function(e){
 var previsualY = 0;
 window.addEventListener("touchmove", function(e){
     // get screen size
-    this.document.getElementById("touchTest").innerHTML = e.touches[0].screenY + " " + e.touches[0].screenX;
+   document.getElementById("test").innerHTML = e.touches[0].screenY + " " + e.touches[0].screenX;
     var screenWidth = window.innerWidth;
     isLeftHalf = e.touches[0].screenX >screenWidth / 2;
     var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
@@ -347,13 +348,13 @@ window.addEventListener("touchmove", function(e){
 }, false);
 
 //listen if on mobile user is swiping vertically to scroll
-const element = document.querySelector('.block-swipe-nav');
+// const element = document.querySelector('.block-swipe-nav');
 
-element.addEventListener('touchstart', (e) => {
+// element.addEventListener('touchstart', (e) => {
 
-    // prevent swipe to navigate gesture
-    e.preventDefault();
+//     // prevent swipe to navigate gesture
+//     e.preventDefault();
 
-    // 
-});
+//     // 
+// });
 
