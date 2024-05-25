@@ -2,7 +2,9 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.2.1";
+var version = "0.2.2";
+var mouseOverVerb = false;
+var mouseOverNoun = false;
 
 function toggleContent(el) {
 
@@ -269,6 +271,7 @@ bottomListVerb = document.getElementById("verbBottomList");
   }
   originalSize = document.getElementById("verbButton").offsetHeight + "px";
   document.getElementById("test").innerHTML ="Design Actions v" + version;
+  StartListening();
 }
 
 function ChangeLock(el) {
@@ -312,9 +315,39 @@ function ScrollContent(value, half) {
 }
 
 }
+function StartListening() {
+    document.getElementById("verbButton").addEventListener("mouseover", function() {
+        mouseOverVerb = true;
+    },false);
+
+    document.getElementById("verbButton").addEventListener("mouseout", function() {
+        mouseOverVerb = false;
+    },false);
+    
+    document.getElementById("nounButton").addEventListener("mouseover", function() {
+        mouseOverNoun = true;
+    },false);
+    
+    document.getElementById("nounButton").addEventListener("mouseout", function() {
+        mouseOverNoun = false;
+    },false);
+    
+}
+
+
+
+
 // listen to scroll to change coloums
 var desktopScrollAdjust  =0;
 document.addEventListener("mousewheel", function(e){ 
+
+    console.log(document.getElementById("verbButton").value +" "+ mouseOverVerb);
+    if (document.getElementById("verbButton").value != "on" && mouseOverVerb) 
+        return;
+
+    if (document.getElementById("nounButton").value != "on" && mouseOverNoun) return;
+
+
     // if it is on mobile ignore every second scroll
     if (desktopScrollAdjust> 0) {
         desktopScrollAdjust = desktopScrollAdjust - 1;
@@ -367,13 +400,12 @@ if (document.getElementById("combo").style.display != "none")
 
 var startX;
 window.addEventListener("touchstart", function(e){
-    document.getElementById("test").innerHTML ="touch start";
+ 
     startX = e.touches[0].screenX;
 }, false);
 
 window.addEventListener("touchend", function(e){
-    document.getElementById("test").innerHTML ="touch ends";
-
+  
     if (document.getElementById("combo").style.display == "none")
         return;
 
