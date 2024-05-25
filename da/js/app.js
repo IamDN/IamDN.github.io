@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.1.5";
+var version = "0.1.6";
 
 function toggleContent(el) {
 
@@ -313,14 +313,14 @@ function ScrollContent(value, half) {
 
 }
 // listen to scroll to change coloums
-var mobileScrollAdjust  =0;
+var desktopScrollAdjust  =0;
 document.addEventListener("mousewheel", function(e){ 
     // if it is on mobile ignore every second scroll
-    if (mobileScrollAdjust> 0) {
-        mobileScrollAdjust = mobileScrollAdjust - 1;
+    if (desktopScrollAdjust> 0) {
+        desktopScrollAdjust = desktopScrollAdjust - 1;
         return;
     } 
-    mobileScrollAdjust= 3
+    desktopScrollAdjust= 3
 
     var half = e.pageX >window.innerWidth / 2? "noun" : "verb";
     ScrollContent(e.deltaY, half);
@@ -337,6 +337,7 @@ document.addEventListener("mousewheel", function(e){
 // Listen to swipe
 var previsualY = 0;
 var previsualX = 0;
+var mobileScrollAdjust  =0;
 window.addEventListener("touchmove", function(e){
 //window.addEventListener("keydown", function(e){
 
@@ -360,6 +361,11 @@ if (document.getElementById("combo").style.display != "none")
         }
     } else
     {
+        if (mobileScrollAdjust> 0) {
+            mobileScrollAdjust = mobileScrollAdjust - 1;
+            return;
+        } 
+        mobileScrollAdjust= 5
 
         isLeftHalf = e.touches[0].screenX >window.innerWidth/ 2;
         var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
