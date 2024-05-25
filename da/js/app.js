@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.1.4";
+var version = "0.1.5";
 
 function toggleContent(el) {
 
@@ -340,10 +340,6 @@ var previsualX = 0;
 window.addEventListener("touchmove", function(e){
 //window.addEventListener("keydown", function(e){
 
-    // console.log(document.getElementById("combo").style.display + "?" );
-
-   document.getElementById("test").innerHTML = e.touches[0].screenY + " " + e.touches[0].screenX;
-    
 // check if swap is vertical or horizontal
 if (document.getElementById("combo").style.display != "none")
     {
@@ -368,7 +364,8 @@ if (document.getElementById("combo").style.display != "none")
         isLeftHalf = e.touches[0].screenX >window.innerWidth/ 2;
         var isLeftHalf = e.touches[0].screenX >window.innerWidth / 2;
         var half = isLeftHalf? "noun" : "verb";
-        ScrollContent(-(e.touches[0].screenY - previsualY)/5, half);
+        document.getElementById("test").innerHTML = -(e.touches[0].screenY - previsualY)/10;
+        ScrollContent(-(e.touches[0].screenY - previsualY)/10, half);
         
     }
          
