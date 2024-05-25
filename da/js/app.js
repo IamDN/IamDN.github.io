@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.2.5";
+var version = "0.2.6";
 var mouseOverVerb = false;
 var mouseOverNoun = false;
 
@@ -373,11 +373,11 @@ var previsualX = 0;
 
 window.addEventListener("touchmove", function(e){
 //window.addEventListener("keydown", function(e){
-    var previsualY = 0;
+
 // check if swap is vertical or horizontal
      if (document.getElementById("combo").style.display != "none")
     {
-  
+       //do nothing
     } else
     {
         if (mobileScrollAdjust> 0) {
