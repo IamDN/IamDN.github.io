@@ -344,8 +344,18 @@ window.addEventListener("touchmove", function(e){
     // get screen size
     var screenWidth = window.innerWidth;
     isLeftHalf = e.touches[0].screenX >screenWidth / 2;
-
+    console.log(e.scrollTop + " " + e.sc );
 
 }, false);
 
 //listen if on mobile user is swiping vertically to scroll
+const element = document.querySelector('.block-swipe-nav');
+
+element.addEventListener('touchstart', (e) => {
+
+    // is not near edge of view, exit
+    if (e.pageX > 5 && e.pageX < window.innerWidth - 5) return;
+
+    // prevent swipe to navigate gesture
+    e.preventDefault();
+});
