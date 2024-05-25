@@ -22,7 +22,7 @@ function toggleContent(el) {
            document.getElementById("container").style.display = "none";
            document.getElementById("combo").style.display = "flex";
            document.getElementById("comboButton").innerHTML = data[i].desc;
-     
+           document.getElementById("comboButton").value = el.id.includes("verb")? "verb" : "noun";
         } else
         {
             elem.value = el.innerHTML;
@@ -36,18 +36,19 @@ function toggleContent(el) {
     {      
         if(isMobile)
             {
-        document.getElementById("container").style.display = "none";
-        document.getElementById("combo").style.display = "flex";
-        document.getElementById("comboButton").innerHTML = data[i].desc;
+               document.getElementById("container").style.display = "none";
+               document.getElementById("combo").style.display = "flex";
+               document.getElementById("comboButton").innerHTML = data[i].desc;
+               document.getElementById("comboButton").value = "none";
 
      
             }
             else
         {
-            console.log(" change back " + elem.value);
+           
              elem.innerHTML = elem.value ;
             elem.style.height = originalSize ;
-    console.log(" change back " +elem.style.height + "?" + originalSize);
+
         }
         elem.value = "on";
     }
@@ -65,6 +66,7 @@ function toggleContent(el) {
 function resetToDefault() {        
     document.getElementById("container").style.display = "block";
     document.getElementById("combo").style.display = "none";
+    document.getElementById("comboButton").value ="none";
 
 }
 function changeWord(el) {
@@ -266,7 +268,7 @@ bottomListVerb = document.getElementById("verbBottomList");
     document.getElementById("verticalBottom").classList.remove("mobileList");
   }
   originalSize = document.getElementById("verbButton").offsetHeight + "px";
-  document.getElementById("test").innerHTML ="BOMBA";
+  document.getElementById("test").innerHTML ="VER-33";
 }
 
 function ChangeLock(el) {
@@ -339,7 +341,11 @@ window.addEventListener("mousemove", function(e){
 var previsualY = 0;
 var previsualX = 0;
 window.addEventListener("touchmove", function(e){
+//window.addEventListener("keydown", function(e){
     // get screen size
+    console.log(e);
+
+    
    document.getElementById("test").innerHTML = e.touches[0].screenY + " " + e.touches[0].screenX;
     
 // check if swap is vertical or horizontal
@@ -353,9 +359,24 @@ window.addEventListener("touchmove", function(e){
          
     } else {
         if (document.getElementById("combo").style.display != "none") {
-            document.getElementById("comboButton").innerHTML = "It is a live";
+            var button = document.getElementById("comboButton");
+            var isVerb = button.value.includes("verb");
+            console.log(button.value);
+            var data = isVerb  ? dataset.noun : dataset.verb;
+            console.log(data);
+            var otherLabel = isVerb  ? "noun" : "verb";
+
+            var otherButton = document.getElementById(otherLabel + "Button");
+            var i = data.findIndex(item => item.name === otherButton.innerHTML);
+            console.log(i + " " + otherButton.innerHTML + " " );
+            if(i>=0)
+            {
+                button.innerHTML = data[i].desc;
+                button.value = button.value.includes("verb") ? "noun":"verb";
+            }
+         
         }
-    }
+   }
     previsualY = e.touches[0].screenY;
     previsualX = e.touches[0].screenX;
 
