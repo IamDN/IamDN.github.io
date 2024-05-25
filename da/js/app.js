@@ -284,27 +284,22 @@ function ChangeLock(el) {
        lock = true;
     }
 }
-var lastScrollTop = 0;
-var lastNow = 0;
+
 var mobileScrollAdjust  =0
 // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
-window.addEventListener("scroll", function(e){ 
-
+document.addEventListener("mousewheel", function(e){ 
+console.log( e);
 // if it is on mobile ignore every second scroll
-if (isMobile && mobileScrollAdjust> 0) {
+if (mobileScrollAdjust> 0) {
     mobileScrollAdjust = mobileScrollAdjust - 1;
     return;
 } 
-mobileScrollAdjust= 5
+mobileScrollAdjust= 3
 
+   var half = e.screenX >window.innerWidth / 2? "noun" : "verb";
 
-   var st = window.pageYOffset || document.documentElement.scrollTop; 
+   if (e.deltaY > 0) {
 
-   var half = isLeftHalf? "noun" : "verb";
-   if (st > lastScrollTop) {
-    if (st>=lastNow && st<=0 ) { 
-        lastNow  = st; 
-    } else {
         if (lock) {
        ChangeBothSides(document.getElementById("verbRight"));
     }
@@ -312,11 +307,9 @@ mobileScrollAdjust= 5
     {
         ChangeOneSide(document.getElementById( half +"Right"));
     }
-   }
-   } else if (st < lastScrollTop) {
-    if ((st<=lastNow && st>=0)|| (st <= 0 && lastNow < st)) {
-        lastNow  = st; 
-    } else {
+   
+   } else if (e.deltaY < 0) {
+
         if (lock) {
         ChangeBothSides(document.getElementById("verbLeft"));
 
@@ -325,11 +318,10 @@ mobileScrollAdjust= 5
 
         ChangeOneSide(document.getElementById( half + "Left"));
     }
-}
+
 
    } // else was horizontal scroll
-   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-  lastNow =  st;
+
 }, false);
 
 // listen to mouse move
@@ -349,11 +341,11 @@ window.addEventListener("touchmove", function(e){
 }, false);
 
 //listen if on mobile user is swiping vertically to scroll
-const element = document.querySelector('.block-swipe-nav');
+// const element = document.querySelector('.block-swipe-nav');
 
-element.addEventListener('touchstart', (e) => {
+// element.addEventListener('touchstart', (e) => {
 
 
-    // prevent swipe to navigate gesture
-    e.preventDefault();
-});
+//     // prevent swipe to navigate gesture
+//     e.preventDefault();
+// });
