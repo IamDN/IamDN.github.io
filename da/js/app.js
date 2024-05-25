@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.1.8";
+var version = "0.1.9";
 
 function toggleContent(el) {
 
@@ -335,6 +335,8 @@ document.addEventListener("mousewheel", function(e){
 // }, false);
 
 // Listen to swipe
+var previsualY = 0;
+var previsualX = 0;
 var mobileScrollAdjust  =0;
 window.addEventListener("touchmove", function(e){
 //window.addEventListener("keydown", function(e){
@@ -359,8 +361,7 @@ window.addEventListener("touchmove", function(e){
     // previsualX = e.touches[0].screenX;
 }, false);
 
-var previsualY = 0;
-var previsualX = 0;
+
 window.addEventListener("touchstart", function(e){
 
     previsualX = e.touches[0].screenX;
@@ -374,7 +375,7 @@ window.addEventListener("touchstart", function(e){
     var button = document.getElementById("comboButton");
     var isVerb = button.value.includes("verb");
     document.getElementById("test").innerHTML = previsualX + " " +e.touches[0].screenX;
-   if(previsualX  < e.touches[0].screenX -100 && isVerb)
+   if(e.touches[0].screenX <window.innerWidth/ 2 && isVerb)
      {
         var data = dataset.noun ;
         var otherLabel =  "noun" ;
@@ -388,7 +389,7 @@ window.addEventListener("touchstart", function(e){
             console.log(data[i].desc);
             button.value = "noun";
         }
-    } else if(previsualX  > e.touches[0].screenX +100 && !isVerb)
+    } else if(e.touches[0].screenX >window.innerWidth/ 2 && !isVerb)
     {
         var data = dataset.verb ;
         var otherLabel =  "verb" ;
