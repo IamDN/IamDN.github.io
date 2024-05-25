@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.1.9";
+var version = "0.2.0";
 
 function toggleContent(el) {
 
@@ -375,8 +375,8 @@ window.addEventListener("touchstart", function(e){
     var button = document.getElementById("comboButton");
     var isVerb = button.value.includes("verb");
     document.getElementById("test").innerHTML = previsualX + " " +e.touches[0].screenX;
-   if(e.touches[0].screenX <window.innerWidth/ 2 && isVerb)
-     {
+//    if(e.touches[0].screenX <window.innerWidth/ 2 && isVerb)
+//      {
         var data = dataset.noun ;
         var otherLabel =  "noun" ;
 
@@ -389,18 +389,18 @@ window.addEventListener("touchstart", function(e){
             console.log(data[i].desc);
             button.value = "noun";
         }
-    } else if(e.touches[0].screenX >window.innerWidth/ 2 && !isVerb)
-    {
-        var data = dataset.verb ;
-        var otherLabel =  "verb" ;
-        var otherButton = document.getElementById(otherLabel + "Button");
-        var i = data.findIndex(item => item.name === otherButton.innerHTML);
-        if(i>=0)
-        {
-            button.innerHTML = data[i].desc;
-            button.value = "verb";
-        }
-   }
+//     } else if(e.touches[0].screenX >window.innerWidth/ 2 && !isVerb)
+//     {
+//         var data = dataset.verb ;
+//         var otherLabel =  "verb" ;
+//         var otherButton = document.getElementById(otherLabel + "Button");
+//         var i = data.findIndex(item => item.name === otherButton.innerHTML);
+//         if(i>=0)
+//         {
+//             button.innerHTML = data[i].desc;
+//             button.value = "verb";
+//         }
+//    }
     
 });
 //listen if on mobile user is swiping vertically to scroll
