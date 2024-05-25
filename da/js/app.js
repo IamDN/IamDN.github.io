@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.1.9";
+var version = "0.2.0";
 
 function toggleContent(el) {
 
@@ -376,11 +376,26 @@ window.addEventListener("touchend", function(e){
 
     if (document.getElementById("combo").style.display == "none")
         return;
-  if (startX< e.changedTouches[0].screenX -100) {
 
     var button = document.getElementById("comboButton");
     var isVerb = button.value.includes("verb");
+  if (startX< e.changedTouches[0].screenX -100 && isVerb) {
 
+   
+     
+    var data = isVerb  ? dataset.noun : dataset.verb;
+
+    var otherLabel = isVerb  ? "noun" : "verb";
+
+    var otherButton = document.getElementById(otherLabel + "Button");
+    var i = data.findIndex(item => item.name === otherButton.innerHTML);
+
+    if(i>=0)
+    {
+        button.innerHTML = data[i].desc;
+        button.value = button.value.includes("verb") ? "noun":"verb";
+    }
+  } else if (startX> e.changedTouches[0].screenX +100 && !isVerb) {
     var data = isVerb  ? dataset.noun : dataset.verb;
 
     var otherLabel = isVerb  ? "noun" : "verb";
