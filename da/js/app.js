@@ -15,16 +15,20 @@ function toggleContent(el) {
                                         : document.getElementById("verbButton");
     if (elem.value === "on")
     {
-        console.log("change " + el.innerHTML);
+     
         elem.value = el.innerHTML;
         
         if(isMobile)
         {
-           console.log(" update data mobile " + data[i].desc);
+
            document.getElementById("container").style.display = "none";
            document.getElementById("combo").style.display = "flex";
            document.getElementById("comboButton").innerHTML = data[i].desc;
+           document.getElementById("comboButton").style.height = data[i].height ;
            document.getElementById("comboButton").value = el.id.includes("verb")? "verb" : "noun";
+           document.getElementById("comboButtonPrevious").innerHTML=  i ===0 ?data[data.length-1].name : data[i-1].name;
+           document.getElementById("comboButtonNext").innerHTML =  i=== data.length-1 ? data[0].name :data[i+1].name;
+
         } else
         {
             elem.value = el.innerHTML;
@@ -42,8 +46,8 @@ function toggleContent(el) {
                document.getElementById("combo").style.display = "flex";
                document.getElementById("comboButton").innerHTML = data[i].desc;
                document.getElementById("comboButton").value = "none";
+               document.getElementById("comboButton").style.height = data[i].height ;
 
-     
             }
             else
         {
@@ -442,6 +446,23 @@ window.addEventListener("touchend", function(e){
   }
 }, false);
 
+function setPrevious(button) {
+    var key = button.innerHTML;
+    // find key in dataset mongs name and get desc
+
+   var label = "verb"
+    var i = dataset[label].findIndex(item => item.name === key);
+    if (i<0) 
+        {
+            label = "noun"
+            i = dataset[label].findIndex(item => item.name === key);
+        }
+    var data = dataset[label];
+    document.getElementById("comboButton").innerHTML = data[i].desc;
+    document.getElementById("comboButton").style.height = data[i].height;
+    document.getElementById("comboButtonPrevious").innerHTML=  i ===0 ?data[data.length-1].name : data[i-1].name;
+    document.getElementById("comboButtonNext").innerHTML =  i=== data.length-1 ? data[0].name :data[i+1].name;
+}
 //listen if on mobile user is swiping vertically to scroll
 // const element = document.querySelector('.block-swipe-nav');
 
