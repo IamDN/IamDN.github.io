@@ -144,11 +144,11 @@ body {
 .comboPrevisous {
   display: flex;
   width: 100%;
-  height: 100px;
+  height: 50px;
   padding:0%;
   justify-content: left;
   position: absolute;
-  top: 0px;
+  top: 50px;
   left: 0px;
   padding-left: 5%;
   color: white;
@@ -157,7 +157,7 @@ body {
 .comboNext {
   display: flex;
   width: 100%;
-  height: 100px;
+  height: 50px;
   padding:0%;
   justify-content: left;
   position: absolute;
