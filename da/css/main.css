@@ -148,12 +148,13 @@ body {
   padding:0%;
   justify-content: left;
   position: absolute;
-  top: 50px;
+  top: 0px;
   left: 0px;
   padding-left: 5%;
   color: white;
   background-color: black;
 }
+
 .comboNext {
   display: flex;
   width: 100%;
