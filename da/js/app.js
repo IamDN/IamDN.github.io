@@ -2,7 +2,7 @@ var lock = true;
 var isMobile = false;
 var originalSize = 0;
 var isLeftHalf = true;
-var version = "0.3.0";
+var version = "0.3.1";
 var mouseOverVerb = false;
 var mouseOverNoun = false;
 
