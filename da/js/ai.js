@@ -1,9 +1,10 @@
+console.log("dsa");
 import Anthropic from '/@anthropic-ai/sdk';
-
+console.log("da");
 const anthropic = new Anthropic({
   apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
 });
-
+console.log("ba");
 async function main() {
   console.log("Start");
   const message = await anthropic.messages.create({
