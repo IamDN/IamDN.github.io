@@ -5,6 +5,7 @@ const anthropic = new Anthropic({
 });
 
 async function main() {
+  console.log("Start");
   const message = await anthropic.messages.create({
     max_tokens: 1024,
     messages: [{ role: 'user', content: 'Hello, Claude' }],
