@@ -113,7 +113,7 @@ render();
 
     // Scroll event handling
     const messages = [
-      "Scroll to rotate the cube!",
+      "Scroll to rotate the cube !",
       "Keep going!",
       "You're making the cube spin!",
       "Almost at full rotation...",
