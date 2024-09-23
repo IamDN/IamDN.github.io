@@ -111,6 +111,14 @@ function render() {
 }
 render();
 
+    // Scroll event handling
+    const messages = [
+      "Scroll to rotate the cube!",
+      "Keep going!",
+      "You're making the cube spin!",
+      "Almost at full rotation...",
+      "Enjoy the 3D effect!"
+  ];
 window.addEventListener('scroll', () => {
   const scrollPosition = window.scrollY;
   const totalHeight = document.body.scrollHeight - window.innerHeight;
