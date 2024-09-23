@@ -35,7 +35,6 @@ var camera = new THREE.PerspectiveCamera(70, WIDTH/HEIGHT);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
 
-
 scene.add(camera);
 
 var boxGeometry = new THREE.BoxGeometry(1, 1, 1);
