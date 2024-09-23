@@ -101,8 +101,8 @@ function render() {
   time *= 0.0001;  // convert time to seconds
  
 // make camera rotating around the scene
-  camera.position.x = Math.cos(time) * 100;
-  camera.position.z = Math.sin(time) * 100;
+  camera.position.x = Math.cos(time) * 10;
+  camera.position.z = Math.sin(time) * 10;
   camera.position.y =  30;
   camera.lookAt(0, -18, 0);
 
@@ -111,33 +111,59 @@ function render() {
 }
 render();
 
-//Listen to range "gfa"
-document.getElementById("gfa").addEventListener("input", function() { 
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY;
+  const totalHeight = document.body.scrollHeight - window.innerHeight;
 
-  gfa = 10 + this.value/2;
-  var size = 10-ga;
-  var height = gfa /(10-ga);
- // itirate through cubes array
-  for (var i = 0; i < cubes.length; i++) {
-    // scale cubes
-    cube.position.y = -gfa /(10-ga)/2 *0.1;
-    cubes[i].scale.x =  size*0.1;
-    cubes[i].scale.z =  height*0.1;
-    cubes[i].scale.y =size*0.1;
-  }
+  // Calculate rotation speed based on scroll
+  const rotationFactor = (scrollPosition / totalHeight) * Math.PI * 4;
+
+  // Rotate the cube
+  gfa = rotationFactor;
+    var size = 10-ga;
+    var height = gfa /(10-ga);
+   // itirate through cubes array
+    for (var i = 0; i < cubes.length; i++) {
+      // scale cubes
+      cube.position.y = -gfa /(10-ga)/2 *0.1;
+      cubes[i].scale.x =  size*0.1;
+      cubes[i].scale.z =  height*0.1;
+      cubes[i].scale.y =size*0.1;
+    }
+
+  // Change message based on scroll
+  const messageIndex = Math.floor((scrollPosition / totalHeight) * messages.length);
+  document.getElementById('message').textContent = messages[messageIndex];
 });
-document.getElementById("ga").addEventListener("input", function() { 
 
-  // clamping this.value to 1-9
-  ga = Math.max(1, Math.min(80, this.value))/10;
-  var size = 10-ga;
-  var height = gfa /(10-ga);
+// //Listen to range "gfa"
+// document.getElementById("gfa").addEventListener("input", function() { 
 
-  for (var i = 0; i < cubes.length; i++) {
-    // scale cubes
-    cube.position.y = -gfa /(10-ga)/2*0.1;
-    cubes[i].scale.x = size*0.1;
-    cubes[i].scale.z = height *0.1;
-    cubes[i].scale.y =size *0.1 ;
-  }
-});
+//   gfa = 10 + this.value/2;
+//   var size = 10-ga;
+//   var height = gfa /(10-ga);
+//  // itirate through cubes array
+//   for (var i = 0; i < cubes.length; i++) {
+//     // scale cubes
+//     cube.position.y = -gfa /(10-ga)/2 *0.1;
+//     cubes[i].scale.x =  size*0.1;
+//     cubes[i].scale.z =  height*0.1;
+//     cubes[i].scale.y =size*0.1;
+//   }
+// });
+// document.getElementById("ga").addEventListener("input", function() { 
+
+//   // clamping this.value to 1-9
+//   ga = Math.max(1, Math.min(80, this.value))/10;
+//   var size = 10-ga;
+//   var height = gfa /(10-ga);
+
+//   for (var i = 0; i < cubes.length; i++) {
+//     // scale cubes
+//     cube.position.y = -gfa /(10-ga)/2*0.1;
+//     cubes[i].scale.x = size*0.1;
+//     cubes[i].scale.z = height *0.1;
+//     cubes[i].scale.y =size *0.1 ;
+//   }
+//}
+//);
