@@ -60,6 +60,7 @@ const extrudeSettings = {
 	bevelEnabled: false,
 };
 
+
 // create cubes grid 20 x 20
 for (var i = -10; i < 10; i++) {
   for (var j = -10; j < 10; j++) {
