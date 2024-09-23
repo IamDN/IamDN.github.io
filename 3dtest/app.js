@@ -61,8 +61,8 @@ const extrudeSettings = {
 };
 
 // create cubes grid 20 x 20
-for (var i = -30; i < 30; i++) {
-  for (var j = -30; j < 30; j++) {
+for (var i = -10; i < 10; i++) {
+  for (var j = -10; j < 10; j++) {
     const geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
     const cube = new THREE.Mesh( geometry, basicMaterial )    
     cube.rotation.x = -Math.PI / 2;
@@ -101,8 +101,8 @@ function render() {
   time *= 0.0001;  // convert time to seconds
  
 // make camera rotating around the scene
-  camera.position.x = Math.cos(time) * 10;
-  camera.position.z = Math.sin(time) * 10;
+  camera.position.x = Math.cos(time) * 100;
+  camera.position.z = Math.sin(time) * 100;
   camera.position.y =  30;
   camera.lookAt(0, -18, 0);
 
