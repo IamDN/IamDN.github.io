@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Controlled 3D Object</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 200%; /* Make the body tall enough to scroll */
+            overflow-y: scroll;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+        }
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="message" id="message"></div>
+
+<!-- Add Three.js from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+    // Create scene, camera, and renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Create a geometry and material for the cube
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    // Set the camera position
+    camera.position.z = 5;
+
+    // Resize handling
+    window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+    });
+
+    // Scroll event handling
+    const messages = [
+        "Scroll to rotate the cube!",
+        "Keep going!",
+        "You're making the cube spin!",
+        "Almost at full rotation...",
+        "Enjoy the 3D effect!"
+    ];
+
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        const totalHeight = document.body.scrollHeight - window.innerHeight;
+
+        // Calculate rotation speed based on scroll
+        const rotationFactor = (scrollPosition / totalHeight) * Math.PI * 4;
+
+        // Rotate the cube
+        cube.rotation.x = rotationFactor;
+        cube.rotation.y = rotationFactor;
+
+        // Change message based on scroll
+        const messageIndex = Math.floor((scrollPosition / totalHeight) * messages.length);
+        document.getElementById('message').textContent = messages[messageIndex];
+    });
+
+    // Animation loop
+    const animate = function () {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    };
+
+    animate();
+</script>
+
+</body>
+</html>
