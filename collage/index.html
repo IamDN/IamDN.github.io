@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Grid Layout and Image Shuffle</title>
+    <style>
+        /* Ensure html and body stretch to the full height of the viewport */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Make the grid container fill the full available space */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); /* 6 columns */
+            gap: 0px;
+            padding: 10px;
+            width: 90vw;  /* Make grid responsive to viewport width */
+            height: 90vh; /* Make grid responsive to viewport height */
+        }
+
+        .grid-item {
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-container" id="grid-container">
+        <div class="grid-item grid-item1"></div>
+        <div class="grid-item grid-item2"></div>
+        <div class="grid-item grid-item3"></div>
+        <div class="grid-item grid-item4"></div>
+        <div class="grid-item grid-item5"></div>
+        <div class="grid-item grid-item6"></div>
+        <div class="grid-item grid-item7"></div>
+        <div class="grid-item grid-item8"></div>
+    </div>
+
+    <script>
+        // Number of images (assuming img0.jpg to img18.jpg)
+        const totalImages = 18;
+        const gridItems = document.querySelectorAll('.grid-item');
+
+        // Predefined array of layout variations
+        const layoutVariations = [
+            [ // Layout 1
+                { gridColumn: '1 / 4', gridRow: '1 / 2' },
+                { gridColumn: '1 / 2', gridRow: '2 / 5' },
+                { gridColumn: '1 / 5', gridRow: '5 / 6' },
+                { gridColumn: '2 / 4', gridRow: '2 / 5' },
+                { gridColumn: '4 / 6', gridRow: '1 / 3' },
+                { gridColumn: '4 / 5', gridRow: '3 / 5' },
+                { gridColumn: '5 / 6', gridRow: '3 / 6' },
+                { gridColumn: '6 / 8', gridRow: '1 / 6' },
+            ],
+            [ // Layout 1
+                { gridColumn: '1 / 3', gridRow: '1 / 3' },
+                { gridColumn: '4 / 8', gridRow: '1 / 3' },
+                { gridColumn: '1 / 2', gridRow: '3 / 6' },
+                { gridColumn: '3 / 8', gridRow: '3 / 4' },
+                { gridColumn: '3 / 4', gridRow: '1 / 3' },
+                { gridColumn: '2 / 5', gridRow: '3 / 6' },
+                { gridColumn: '5 / 8', gridRow: '4 / 4' },
+                { gridColumn: '5 / 8', gridRow: '5 / 6' },
+            ],
+            
+            // Add more layout variations as needed
+        ];
+
+        // Function to create and shuffle an array of image paths
+        function getRandomImages() {
+            const imageArray = [];
+            for (let i = 0; i <= totalImages; i++) {
+                imageArray.push(`data/img${i}.jpg`);
+            }
+            // Shuffle array
+            return imageArray.sort(() => 0.5 - Math.random()).slice(0, gridItems.length);
+        }
+
+        // Function to assign random images and a random layout to grid items
+        function assignRandomImagesAndLayout() {
+            // Get random layout from the array of layouts
+            const randomLayout = layoutVariations[Math.floor(Math.random() * layoutVariations.length)];
+            //const randomLayout = layoutVariations[1];
+            
+            // Get random images
+            const images = getRandomImages();
+
+            // Apply layout and images to grid items
+            gridItems.forEach((item, index) => {
+              
+                // Assign random layout (grid-column and grid-row)
+                const layout = randomLayout[index];
+                item.style.gridColumn = layout.gridColumn;
+                item.style.gridRow = layout.gridRow;
+
+                // Assign random background image
+                item.style.backgroundImage = `url(${images[index]})`;
+            });
+        }
+
+        // Initial assignment of random images and layout
+        assignRandomImagesAndLayout();
+
+        // Shuffle images and layout every 3 seconds
+        setInterval(assignRandomImagesAndLayout, 3000);
+    </script>
+
+</body>
+</html>

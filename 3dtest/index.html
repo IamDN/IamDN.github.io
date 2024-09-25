@@ -19,6 +19,17 @@
         text-align: left;
         
       }
+      .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+            z-index: 1;
+        }
+
       .one {
         left: 10%;
       }
@@ -30,7 +41,7 @@
 
 <body>
 <script src="app.js" type="module"></script>
-<div class="message" id="message"></div>
+<div class="message" id="message">"LOL"</div>
 <!-- <div class="range one">
   <label class="form-label" for="gfa">Gross floor area</label>
   <input type="range" class="form-range" id="gfa" />

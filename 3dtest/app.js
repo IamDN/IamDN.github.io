@@ -1,177 +1,144 @@
 var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
 
-
 // import trhee.js
 import * as THREE from 'https://threejs.org/build/three.module.js';
+import Element from './Element.js';  // Use the relative path
+import { parameters, updateWidth } from './parametersManager.js';
 
+const textureLoader = new THREE.TextureLoader();
 var renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap THREE.PCFSoftShadowMap
 renderer.setSize(WIDTH, HEIGHT);
 renderer.setClearColor(0xe8e7cc, 1);
 document.body.appendChild(renderer.domElement);
-var cubes=[];
-// create variable gfa with value from slider gfa
-var gfa =(10 + 40/2);
-var ga = Math.max(1, Math.min(80, 45))/10;
 
+var elementSetups = [
+  {"position" : "left" },
+  {"position" : "right" }, 
+  {"position" : "top" },
+  {"position" : "bottom" },
+  //{"position" : "back" }
+]
+var elements=[];
+for (var i = 0; i < elementSetups.length; i++) {
+  elements.push(new Element(elementSetups[i]));
+}
+
+
+textureLoader.load('text.jpg', function(texture) {
+  var texturedMaterial = new THREE.MeshPhongMaterial({
+      map: texture,  // Assign the texture to the 'map' property
+      color: 0xCCCCCC, // You can still retain the color for tinting
+  });
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].assignTexture(texturedMaterial); 
+    scene.add(elements[i].mesh);
+  }
+
+});
+
+// Create scene
 var scene = new THREE.Scene();
 
+// Add Hemisphere Light
 {
-  const color = 0xFFFFFF;
-  const intensity = 1.1;
-  const light = new THREE.DirectionalLight(color, intensity);
-  light.position.set(-1, 2, 4);
-  scene.add(light);
-
-  // add ambient light
-  const ambientLight = new THREE.AmbientLight(0x404040); // soft white light
-  scene.add(ambientLight);
-
-
+  const hemisphereLight = new THREE.HemisphereLight(0xaaaaaa, 0x444444, 0.9);
+  hemisphereLight.castShadow = true;
+  // The first color is the light from above (sky), the second is the ground light (darker).
+  scene.add(hemisphereLight);
 }
-var camera = new THREE.PerspectiveCamera(70, WIDTH/HEIGHT);
 
-// add shadows
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
+// Add Directional Light with Shadows
+{
+  const color = 0xffffff;
+  const intensity = 1.0;
+  const directionalLight = new THREE.DirectionalLight(color, intensity);
+  directionalLight.position.set(20, 20, -10);
+  
+  // Enable shadows for the directional light
+  directionalLight.castShadow = true;
+  scene.add(directionalLight);
 
+  // Configure shadow properties (optional, adjust as needed)
+  directionalLight.shadow.mapSize.width = 256; // higher values causing fans goes brrrrrr
+  directionalLight.shadow.mapSize.height = 256; // higher values causing fans goes brrrrrr
+  directionalLight.shadow.camera.near = 10; // default
+  directionalLight.shadow.camera.far = 100; // default
+  directionalLight.shadow.camera.left = -50; // default
+  directionalLight.shadow.camera.right =50; // default
+  directionalLight.shadow.camera.top = 50; // default
+  directionalLight.shadow.camera.bottom = -50; // default
+  scene.add( new THREE.CameraHelper( directionalLight.shadow.camera ) );
+}
+
+// Add Ambient Light
+{
+  const ambientLight = new THREE.AmbientLight(0x404040, 0.6); // soft white light
+  scene.add(ambientLight);
+}
+
+//Add camera
+var camera = new THREE.PerspectiveCamera(50, WIDTH / HEIGHT, 1, 1000);
 scene.add(camera);
 
+
+// add floor representation
 var boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-var basicMaterial = new THREE.MeshPhongMaterial({color: 0xCCCCCC});
-// basic material chnge color to ligt grey
+var greenMaterial = new THREE.MeshPhongMaterial({color: 0xCCCCCC});
+var plane = new THREE.Mesh(boxGeometry, greenMaterial );
+plane.position.x = 25;
+plane.position.y = -parameters.height/2-3;
+plane.position.z = 25;
+plane.scale.x = 100;
+plane.scale.z = 100;
+plane.scale.y = 1 ;
+plane.castShadow = true; //default is false
+plane.receiveShadow = true; //default
+scene.add(plane);
 
-
-const length = 12, width = 8;
-const shape = new THREE.Shape();
-shape.moveTo( 0,0 );
-shape.lineTo( 0, width );
-shape.lineTo( length/3, width );
-shape.lineTo( length/3, width + width/3 );
-shape.lineTo( length/3*2, width + width/3 );
-shape.lineTo( length/3*2, width );
-shape.lineTo( length, width );
-shape.lineTo( length, 0 );
-shape.lineTo( 0, 0 );
-const extrudeSettings = {
-	steps: 2,
-	depth: 16,
-	bevelEnabled: false,
-};
-
-
-// create cubes grid 20 x 20
-for (var i = -10; i < 10; i++) {
-  for (var j = -10; j < 10; j++) {
-    const geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
-    const cube = new THREE.Mesh( geometry, basicMaterial )    
-    cube.rotation.x = -Math.PI / 2;
-    cube.position.x = i*10;
-    cube.position.y = 0.5;
-    cube.position.z = j*10;
-    cube.scale.x = 0.5;
-    cube.scale.z = 0.5;
-    cube.scale.y = 0.5;
-    cube.castShadow = true; //default is false
-    scene.add(cube);
-    cubes.push(cube);
-  }
-}
-var greenMaterial = new THREE.MeshPhongMaterial({color: 0x9FC131});
-
-
-var cube = new THREE.Mesh(boxGeometry, greenMaterial );
-cube.position.x = -5;
-cube.position.y = -gfa /(10-ga)/2;
-cube.position.z = -5;
-cube.scale.x = 1000;
-cube.scale.z = 1000;
-cube.scale.y = 1 ;
-
-// add shadow
-cube.castShadow = true; //default is false
-cube.receiveShadow = true; //default
-
-scene.add(cube);
-//cube.rotation.set(0.4, 0.2, 0);
 
 function render() {
   // get time
   var time = new Date().getTime();
   time *= 0.0001;  // convert time to seconds
- 
 // make camera rotating around the scene
-  camera.position.x = Math.cos(time) * 100;
-  camera.position.z = Math.sin(time) * 100;
-  camera.position.y =  30;
-  camera.lookAt(0, -18, 0);
-
-    requestAnimationFrame(render);
-    renderer.render(scene, camera);
+  camera.position.x = Math.cos(time) * 20;
+  camera.position.z = Math.sin(time) * 20;
+  camera.position.y =  10;
+  camera.lookAt(0, 0, 0);
+  requestAnimationFrame(render);
+  renderer.render(scene, camera);
 }
+
+
 render();
 
     // Scroll event handling
-    const messages = [
-      "Scroll to rotate the cube !",
-      "Keep going!",
-      "You're making the cube spin!",
-      "Almost at full rotation...",
-      "Enjoy the 3D effect!"
-  ];
-window.addEventListener('scroll', () => {
-  const scrollPosition = window.scrollY;
-  const totalHeight = document.body.scrollHeight - window.innerHeight;
+const messages = [
+   "Scroll to rotate the cube !",
+   "Keep going!",
+   "You're making the cube spin!",
+   "Almost at full rotation...",
+   "Enjoy the 3D effect!"
+ ];
 
-  // Calculate rotation speed based on scroll
-  const rotationFactor = (scrollPosition / totalHeight) * Math.PI * 4;
+let value = 1;
+window.addEventListener('wheel', (event) => {
 
-  // Rotate the cube
-  gfa = rotationFactor;
-    var size = 10-ga;
-    var height = gfa /(10-ga);
-   // itirate through cubes array
-    for (var i = 0; i < cubes.length; i++) {
-      // scale cubes
-      cube.position.y = -gfa /(10-ga)/2 *0.1;
-      cubes[i].scale.x =  size*0.1;
-      cubes[i].scale.z =  height*0.1;
-      cubes[i].scale.y =size*0.1;
-    }
+
+  parameters.width += event.deltaY;
+
+  // itirate through cubes array
+  for (var i = 0; i < elements.length; i++) {
+      elements[i].updateSize();
+
+  }
 
   // Change message based on scroll
-  const messageIndex = Math.floor((scrollPosition / totalHeight) * messages.length);
-  document.getElementById('message').textContent = messages[messageIndex];
+  const messageIndex = Math.floor(( value) * messages.length);
+  document.getElementById('message').textContent = messages[0];
 });
 
-// //Listen to range "gfa"
-// document.getElementById("gfa").addEventListener("input", function() { 
 
-//   gfa = 10 + this.value/2;
-//   var size = 10-ga;
-//   var height = gfa /(10-ga);
-//  // itirate through cubes array
-//   for (var i = 0; i < cubes.length; i++) {
-//     // scale cubes
-//     cube.position.y = -gfa /(10-ga)/2 *0.1;
-//     cubes[i].scale.x =  size*0.1;
-//     cubes[i].scale.z =  height*0.1;
-//     cubes[i].scale.y =size*0.1;
-//   }
-// });
-// document.getElementById("ga").addEventListener("input", function() { 
-
-//   // clamping this.value to 1-9
-//   ga = Math.max(1, Math.min(80, this.value))/10;
-//   var size = 10-ga;
-//   var height = gfa /(10-ga);
-
-//   for (var i = 0; i < cubes.length; i++) {
-//     // scale cubes
-//     cube.position.y = -gfa /(10-ga)/2*0.1;
-//     cubes[i].scale.x = size*0.1;
-//     cubes[i].scale.z = height *0.1;
-//     cubes[i].scale.y =size *0.1 ;
-//   }
-//}
-//);
